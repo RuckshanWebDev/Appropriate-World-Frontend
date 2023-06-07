@@ -1,0 +1,39 @@
+.gamepage-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 50px 0;
+}
+
+.gamepage-item {
+    border-radius: 15px;
+    overflow: hidden;
+    flex: 0 0 300px;
+    height: 300px;
+    max-width: 300px;
+    transition: all 0.3s ease-out;
+}
+
+.gamepage-item img {
+    width: 100%;
+}
+
+.gamepage-item:hover {
+    box-shadow: #9d00ff 0px 0px 12px 3px;
+}
+
+.chess-width {
+    width: 50%;
+    max-width: 600px;
+}
+
+@media only screen and (max-width: 768px) {
+    .chess-width {
+        width: 90%;
+    }
+
+    .gamepage-container {
+        flex-direction: column;
+    }
+}

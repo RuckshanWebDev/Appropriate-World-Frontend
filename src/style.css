@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0);
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #19092e;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #280e49;
+}
+
+:root {
+    --color-orange: #feb74f;
+    --color-pink: #ff2c58;
+    --color-red: #f75338;
+    --color-blur: #4d8df9;
+    --color-purple: #5d55e9;
+}
+
+html,
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* background: #a12cf0; */
+    background: #000;
+    color: #fff;
+}
+
+/* .main {
+    min-height: 100vh;
+} */
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h6 {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+h5 {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+h4 {
+    color: #dfdfdf;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+span {
+    color: rgba(255, 255, 255, 0.712);
+}
+
+button {
+    background-color: transparent;
+    border: 3px solid var(--color-red);
+    border-radius: 15px;
+    padding: 10px 15px;
+    font-size: 22px;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 10px 10px 0 !important;
+}
+
+button:hover {
+    background-image: linear-gradient(to left, var(--color-orange), var(--color-pink));
+}
+
+.title-container {
+    margin: 20px 0;
+    font-weight: 800;
+    font-size: 40px;
+}
+
+.title-container>h2 {
+    font-size: 40px;
+    font-weight: 800;
+}
+
+.line {
+    width: 100%;
+    height: 8px;
+    margin: 10px 0 20px;
+    border-radius: 5px;
+    background-image: linear-gradient(to left, var(--color-orange), var(--color-pink));
+}
+
+.interface-grid {
+    background-color: #450074 !important;
+}
+
+.sortable-play-list .list-item-container {
+    background-color: #ff9900 !important;
+}
+
+.loader {
+    width: 50px;
+    height: 50%;
+}
+
+@media only screen and (max-width: 600px) {}
+
+
+@media only screen and (max-width: 768px) {
+    .title-container>h2 {
+        font-size: 30px;
+        font-weight: 800;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .title-container>h2 {
+        font-size: 20px;
+        font-weight: 500;
+    }
+}
+
+
+@media only screen and (max-width: 992px) {}
+
+
+@media only screen and (max-width: 1200px) {}
