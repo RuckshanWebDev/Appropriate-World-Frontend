@@ -7,13 +7,14 @@ import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser } from '../features/localSlice'
 
+
 const Login = () => {
+
+
   const navigate = useNavigate()
   const [loginUser, data] = useLoginUserMutation()
   const dispatch = useDispatch()
   const { user } = useSelector(state => state.local)
-  console.log(data);
-
 
 
   const formHandler = (e) => {
@@ -35,7 +36,6 @@ const Login = () => {
     }
     if (data.isSuccess) {
       toast.success("Successfully Registered")
-
       dispatch(setUser(data.data.data))
     }
 
@@ -63,7 +63,7 @@ const Login = () => {
               </div>
 
               <div className="form__field">
-                <input type="submit" value="Sign In" />
+                <input type="submit" value={data.isLoading ? "Loading..." : 'Sign In'} disabled={data.isLoading} />
               </div>
 
             </form>

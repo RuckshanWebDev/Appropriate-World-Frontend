@@ -68,7 +68,7 @@ function Register() {
               {data.isLoading ?
                 <p>Loading</p> :
                 <div className="form__field">
-                  <input type="submit" value="Sign Up" disabled={data.isLoading} />
+                  <input type="submit" value={data.isLoading ? "Loading..." : 'Sign Up'} disabled={data.isLoading} />
                 </div>
               }
             </form>

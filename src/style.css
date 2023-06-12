@@ -127,6 +127,35 @@ button:hover {
     height: 50%;
 }
 
+.input-container {
+    display: flex;
+    margin: 10px auto;
+    width: 100%;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.input-container label {
+    font-size: 24px;
+    margin-right: 10px;
+    line-height: 30px;
+    width: 20%;
+}
+
+.input-container input {
+    width: 100%;
+    font-size: 22px;
+    margin-right: 10px;
+    padding: 12px;
+    border-radius: 15px;
+}
+
+input[type=submit] {
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 600px) {}
 
 

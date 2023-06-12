@@ -11,8 +11,11 @@ const profileApi = createApi({
     reducerPath: 'profileApi',
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:5000/api/profile',
-        credentials: 'include',
-        withCredentials: true,
+        'credentials': 'include',
+        'mode': 'cors',
+        'headers': {
+            'accept': 'application/json, text/plain, */*', 'content-type': 'application/json'
+        }
     }),
 
     endpoints: (builder) => ({
@@ -22,9 +25,14 @@ const profileApi = createApi({
             query: () => {
                 return {
                     url: '/',
-                    headers: { withCredentials: true }
+                    'credentials': 'include',
+                    'mode': 'cors',
+                    'headers': {
+                        'accept': 'application/json, text/plain, */*', 'content-type': 'application/json'
+                    }
                 }
-            }
+            },
+            providesTags: ['profile'],
         }),
 
         // Create a profile
@@ -48,5 +56,5 @@ const profileApi = createApi({
     })
 })
 
-export const { useCreateProfileMutation, useGetProfileQuery, useUpdateProfileMutation } = profileApi
+export const { useCreateProfileMutation, useGetProfileQuery, useUpdateProfileMutation, useLazyGetProfileQuery } = profileApi
 export default profileApi

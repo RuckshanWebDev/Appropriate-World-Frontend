@@ -20,6 +20,10 @@
     border-radius: 15px;
 }
 
+.popup-model>div {
+    padding: 50px;
+}
+
 .close-icon {
     position: absolute;
     top: 15px;

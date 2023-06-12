@@ -20,7 +20,6 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Popup />
       <Routes>
         <Route path='/' element={<HomePage />} exact />
         <Route path='/games' element={<GamePage />} exact />

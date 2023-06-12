@@ -4,19 +4,19 @@ import './Popup.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { togglePopup } from '../features/localSlice'
 
-function Popup() {
+function Popup({ children }) {
 
-    const { popup } = useSelector(state => state.local)
     const dispatch = useDispatch()
 
     return <>
-        {
-            popup && <div id='popup-container' >
-                <div className="popup-model container">
-                    <RiCloseCircleFill className='close-icon' onClick={() => dispatch(togglePopup())} />
-                </div>
+        <div id='popup-container' >
+            <div className="popup-model container">
+                <RiCloseCircleFill className='close-icon' onClick={() => dispatch(togglePopup())} />
+
+                {children}
+
             </div>
-        }
+        </div>
     </>
 
 }
