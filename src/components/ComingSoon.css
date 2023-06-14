@@ -1,0 +1,44 @@
+.coming-container {
+    width: 100%;
+    height: 100vh;
+}
+
+.coming-container>div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logos {
+    display: flex;
+    justify-content: center;
+}
+
+.logos video {
+    width: 300px;
+}
+
+.coming-container input {
+    width: 100%;
+    margin: 30px auto;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 24px;
+    color: #000;
+}
+
+.coming-container input:focus {
+    outline: none;
+}
+
+.coming-container form {
+    margin: auto;
+    text-align: center;
+}
+
+.coming-container button {
+    width: 50%;
+    border-radius: 30px;
+    margin: 0 auto;
+}

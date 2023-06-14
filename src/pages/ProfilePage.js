@@ -10,7 +10,6 @@ import ProfileUpdate from '../components/ProfileUpdate'
 
 function ProfilePage() {
 
-
     const [profile, setProfile] = useState(null)
     const dispatch = useDispatch()
     const [logout, dataLogout] = useLogoutUserMutation()
@@ -53,7 +52,7 @@ function ProfilePage() {
             <Layout  >
                 <div className="container profile-pagep-container">
                     <div className="top">
-                        <img src="./user.png" alt="" id="profile-img" />
+                        <img src={profile?.profile_image === '' ? "./user.png" : profile?.profile_image} alt="" id="profile-img" />
                         <div>
                             <h2>{profile?.name || '-- : --'}</h2>
                             <button onClick={() => dispatch(togglePopup())} >Edit Profile</button>
