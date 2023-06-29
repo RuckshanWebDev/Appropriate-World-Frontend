@@ -10,7 +10,7 @@ const axiosOption = {
 const profileApi = createApi({
     reducerPath: 'profileApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: process.env.URL || 'http://localhost:5000',
+        baseUrl: process.env.NODE_ENV === "production" ? 'https://appropriate-world-backend.onrender.com' : 'http://localhost:5000',
         'credentials': 'include',
         'mode': 'cors',
         'headers': {
