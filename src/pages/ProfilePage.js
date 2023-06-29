@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../components/Layout'
 import './ProfilePage.css'
-import { useDispatch } from 'react-redux'
-import { clearUser, togglePopup } from '../features/localSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearUser, setProfileId, togglePopup } from '../features/localSlice'
 import { useLogoutUserMutation } from '../features/userApi'
 import { toast } from 'react-toastify'
 import { useGetProfileQuery, useLazyGetProfileQuery } from '../features/profileApi'
@@ -10,13 +10,13 @@ import ProfileUpdate from '../components/ProfileUpdate'
 
 function ProfilePage() {
 
+    const { popup } = useSelector(state => state.local)
     const [profile, setProfile] = useState(null)
     const dispatch = useDispatch()
     const [logout, dataLogout] = useLogoutUserMutation()
     const [getProfileData, data] = useLazyGetProfileQuery()
-    console.log(profile);
 
-
+    console.log(data);
     /**
      * Logout
      */
@@ -37,13 +37,13 @@ function ProfilePage() {
         if (data.data?.data.length) {
             setProfile(data.data.data[0])
             console.log(data);
-
+            dispatch(setProfileId(data.data.data[0]._id))
         } else {
             setProfile(null)
             console.log("empty");
         }
 
-    }, [data.data])
+    }, [data.data, popup])
 
 
     return (
@@ -69,10 +69,10 @@ function ProfilePage() {
                             </div>
                             <div>
                                 <h6>Date of Birth</h6>
-                                <h5>{profile?.dob.slice(0, 10) || '-- : --'}</h5>
+                                <h5>{profile?.dob?.slice(0, 10) || '-- : --'}</h5>
                             </div>
                             <div>
-                                <h6>Address</h6>
+                                <h6>Location</h6>
                                 <h5>{profile?.address || '-- : --'}</h5>
                             </div>
                             <div>

@@ -1,28 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const blogApi = createApi({
-    reducerPath: 'blogApi',
+const chatApi = createApi({
+    reducerPath: 'chatApi',
     baseQuery: fetchBaseQuery({ baseUrl: process.env.URL || 'http://localhost:5000/', }),
     endpoints: (builder) => ({
 
-        getBlogs: builder.query({
-            query: () => {
-                return 'api/blog/all'
-            }
-        }),
-
-        getSigleBlogs: builder.query({
-            query: (url = '') => {
-                console.log(url);
-                return `api/blog/${url}`
-            }
-        }),
-
-        getContact: builder.query({
-            query: () => {
+        getCoupleChat: builder.query({
+            query: ({ id }) => {
                 return {
-                    url: `api/profile/contact`,
-                    method: "GET",
+                    url: `api/chat/${id}`,
                     'credentials': 'include',
                     'mode': 'cors',
                     'headers': {
@@ -32,12 +18,12 @@ const blogApi = createApi({
             }
         }),
 
-        createBlog: builder.mutation({
+        sendMessage: builder.mutation({
             query: (data) => {
                 return {
-                    url: '/api/blog',
-                    method: "POST",
+                    url: `api/chat/`,
                     body: data,
+                    method: "POST",
                     'credentials': 'include',
                     'mode': 'cors',
                     'headers': {
@@ -50,6 +36,5 @@ const blogApi = createApi({
     })
 })
 
-
-export const { useGetContactQuery, useGetBlogsQuery, useGetSigleBlogsQuery, useCreateBlogMutation } = blogApi
-export default blogApi;
+export const { useGetCoupleChatQuery, useLazyGetCoupleChatQuery, useSendMessageMutation } = chatApi
+export default chatApi

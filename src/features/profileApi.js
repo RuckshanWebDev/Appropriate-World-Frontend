@@ -10,7 +10,7 @@ const axiosOption = {
 const profileApi = createApi({
     reducerPath: 'profileApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5000/api/profile',
+        baseUrl: process.env.URL || 'http://localhost:5000/api/profile',
         'credentials': 'include',
         'mode': 'cors',
         'headers': {
@@ -40,7 +40,8 @@ const profileApi = createApi({
             query: (data) => ({
                 url: '/',
                 method: "POST",
-                body: data
+                body: data,
+
             })
         }),
 
@@ -49,7 +50,8 @@ const profileApi = createApi({
             query: (data) => ({
                 url: '/',
                 method: "PUT",
-                body: data
+                body: data,
+
             })
         })
 

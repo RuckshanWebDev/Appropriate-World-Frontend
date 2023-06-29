@@ -1,0 +1,139 @@
+.chat-container {
+    width: 100%;
+    margin: 80px auto;
+
+    display: flex;
+    gap: 30px;
+}
+
+.contact-container {
+    background-color: rgba(80, 80, 80, 0.356);
+    height: 600px;
+    min-width: 250px;
+    max-width: 350px;
+    flex: 0 0 35%;
+    border-radius: 15px;
+    overflow-y: scroll;
+}
+
+.chatbox-container {
+    border-radius: 15px;
+    height: 600px;
+    width: 100%;
+    background-color: rgba(80, 80, 80, 0.356);
+
+}
+
+.contact-item {
+    padding: 15px 5px;
+    display: flex;
+    gap: 20px;
+    border-bottom: 3px solid #ffffff71;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.contact-item-head {
+    display: flex;
+    gap: 20px;
+    padding: 10px 20px;
+}
+
+.contact-item div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contact-item-head .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+
+.contact-item .avatar {
+    width: 50px;
+    border-radius: 100%;
+    height: 50px;
+}
+
+.contact-title {
+    padding: 15px;
+}
+
+.chatbox-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.chatbox-container .details-container {
+    width: 100%;
+    background-color: blueviolet;
+}
+
+.chatbox-container .message-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.left-flex-align {
+    align-self: flex-end;
+}
+
+.message-container .message-box {
+    padding: 15px 5px;
+    max-width: 80%;
+    width: -moz-fit-content;
+    width: fit-content;
+    min-width: 300px;
+    max-height: -webkit-fill-available;
+    background-color: rgb(163, 92, 255);
+    border-radius: 5px;
+    position: relative;
+
+}
+
+.message-container .message-box p {
+    font-weight: 700;
+}
+
+.message-container .message-box span {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: #000;
+}
+
+.chatbox-container .form-container {
+    background-color: rgb(107, 107, 107);
+    width: 100%;
+    flex: 0 0 60px;
+
+}
+
+.chatbox-container .form-container form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbox-container .form-container input {
+    margin: 10px;
+    width: 80%;
+    font-size: 22px;
+    border-radius: 15px;
+    background-color: #fff;
+    padding: 5px 15px;
+}
+
+.chatbox-container .form-container button {
+    align-self: flex-end;
+    margin: 0 10px !important;
+    font-size: 30px;
+    padding: 5px 15px !important;
+}

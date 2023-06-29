@@ -9,10 +9,12 @@ import { TbMenu2 } from 'react-icons/tb'
 import { CgClose } from 'react-icons/cg'
 import { IoGameController } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 function Navigation() {
 
   const [navOpen, setNavOpen] = useState(false)
+  const { user } = useSelector(state => state.local)
 
   const navHandler = () => {
     console.log("click");
@@ -33,21 +35,26 @@ function Navigation() {
             <IoGameController className='white-path' />
           </Link>
           <FaShoppingCart className='white-path' />
-          <MdOutlineMessage />
+          <Link to={'/chat'} >
+            <MdOutlineMessage />
+          </Link>
           <Link to={'/blogs'}>
             <FaBlogger />
           </Link>
           <BiWallet />
-          <Link to="/login">
-            <MdAccountCircle />
-          </Link>
-          <Link to="/profile">
-            <BsFillPersonFill />
-          </Link>
-          <Link to="/login">
-            <MdAccountCircle />
-          </Link>
+
+          {user ?
+            <Link to="/profile">
+              <BsFillPersonFill />
+            </Link>
+            :
+            <Link to="/login">
+              <MdAccountCircle />
+            </Link>
+          }
+
         </div>
+
         <div id='menu-icon' onClick={navHandler} >
           {navOpen ? <CgClose /> :
             <TbMenu2 />}
@@ -59,7 +66,9 @@ function Navigation() {
           <IoGameController className='white-path' />
         </Link>
         <FaShoppingCart className='white-path' />
-        <MdOutlineMessage />
+        <Link to={'/chat'} >
+          <MdOutlineMessage />
+        </Link>
         <Link to={'/blogs'}>
           <FaBlogger />
         </Link>

@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import Popup from './Popup'
 import { useGetProfileQuery, useCreateProfileMutation, useUpdateProfileMutation, useLazyGetProfileQuery } from '../features/profileApi'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
+import Loader from './Loader'
+import { togglePopup } from '../features/localSlice'
 
-function ProfileUpdate(data) {
+function ProfileUpdate({ data }) {
 
+    const dispatch = useDispatch()
     const [file, setFile] = useState()
+    const [formData, setFormData] = useState(null)
     const { popup } = useSelector(state => state.local)
     const [createProfile, createProfileData] = useCreateProfileMutation()
     const [updateProfile, updateProfileData] = useUpdateProfileMutation()
     const [getProfileData, updatedProfileData] = useLazyGetProfileQuery()
-    const [formData, setFormData] = useState(null)
+
 
     const updateFormHandler = async (e) => {
 
         e.preventDefault()
         console.log(data);
-        if (!data.data) {
+        if (!data) {
 
             console.log("form ");
 
@@ -41,6 +45,7 @@ function ProfileUpdate(data) {
                             hobby: e.target.hobby.value,
                             name: e.target.names.value,
                         })
+
                     }
 
                 } catch (error) {
@@ -54,6 +59,12 @@ function ProfileUpdate(data) {
                     hobby: e.target.hobby.value,
                     name: e.target.names.value,
                 })
+            }
+
+            if (createProfileData.isSuccess) {
+                toast.success("Successfully Created")
+            } else if (createProfileData.isError) {
+                toast.error("Something went wrong try again later!")
             }
 
 
@@ -79,6 +90,7 @@ function ProfileUpdate(data) {
                             hobby: e.target.hobby.value,
                             name: e.target.names.value,
                         })
+                        dispatch(togglePopup())
                     }
 
                 } catch (error) {
@@ -92,11 +104,12 @@ function ProfileUpdate(data) {
                     hobby: e.target.hobby.value,
                     name: e.target.names.value,
                 })
+                dispatch(togglePopup())
             }
-
 
             if (updateProfileData.isSuccess) {
                 toast.success("Successfully Updated")
+
             } else if (updateProfileData.isError) {
                 toast.error("Something went wrong try again later!")
             }
@@ -104,8 +117,9 @@ function ProfileUpdate(data) {
         }
     }
 
+
     useEffect(() => {
-        setFormData(data.data);
+        setFormData(data);
     }, [data])
 
     return (
@@ -138,7 +152,7 @@ function ProfileUpdate(data) {
                         <input type="text" name='hobby' />
                     </div>
 
-                    <button type='submit' >Update</button>
+                    <button type='submit' >{updateProfileData.isLoading || createProfileData.isLoading ? <Loader /> : 'Update'}</button>
                 </form>
             </div>
         </Popup>

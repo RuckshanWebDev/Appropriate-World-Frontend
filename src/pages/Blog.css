@@ -16,8 +16,21 @@
     margin: 50px 0;
 }
 
+.blog-item h1 {
+    margin-bottom: 10px;
+}
+
+.blog-item .blog-desc * {
+    font-size: 22px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.822);
+}
+
 .blog-item>img {
     width: 100%;
+    min-height: 200px;
+    max-height: 300px;
+    object-fit: cover;
     border-radius: 5px;
 }
 
@@ -55,6 +68,7 @@
 .author-avatar img {
     display: flex;
     width: 50px;
+    height: 50px;
     border-radius: 100%;
 }
 
@@ -69,11 +83,27 @@
 
 .singleBlog-container {
     width: 80%;
-    margin: 0 auto;
+    margin: 0 auto 100px;
 }
 
 .singleBlog-container>img {
     width: 100%;
     border-radius: 8px;
 
+}
+
+
+.addBlog-container form {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.addBlog-container form input {
+    width: 768px;
+    font-size: 22px;
+    margin-right: 10px;
+    padding: 12px;
+    border-radius: 15px;
 }

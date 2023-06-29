@@ -9,14 +9,14 @@ import {
 import Toolbar from "./Toolbar";
 import "./DraftEditor.css";
 
-const DraftEditor = () => {
+const DraftEditor = ({ setEditorData }) => {
     const [editorState, setEditorState] = useState(
         EditorState.createWithContent(
             convertFromRaw({
                 blocks: [
                     {
                         key: "3eesq",
-                        text: "A Text-editor with super cool features built in Draft.js.",
+                        text: "",
                         type: "unstyled",
                         depth: 0,
                         inlineStyleRanges: [
@@ -140,7 +140,7 @@ const DraftEditor = () => {
                     blockStyleFn={myBlockStyleFn}
                     onChange={(editorState) => {
                         const contentState = editorState.getCurrentContent();
-                        console.log(convertToRaw(contentState));
+                        setEditorData(contentState)
                         setEditorState(editorState);
                     }}
                 />
