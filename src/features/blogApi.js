@@ -2,26 +2,26 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const blogApi = createApi({
     reducerPath: 'blogApi',
-    baseQuery: fetchBaseQuery({ baseUrl: process.env.URL || 'http://localhost:5000/', }),
+    baseQuery: fetchBaseQuery({ baseUrl: process.env.URL || 'http://localhost:5000', }),
     endpoints: (builder) => ({
 
         getBlogs: builder.query({
             query: () => {
-                return 'api/blog/all'
+                return '/api/blog/all'
             }
         }),
 
         getSigleBlogs: builder.query({
             query: (url = '') => {
                 console.log(url);
-                return `api/blog/${url}`
+                return `/api/blog/${url}`
             }
         }),
 
         getContact: builder.query({
             query: () => {
                 return {
-                    url: `api/profile/contact`,
+                    url: `/api/profile/contact`,
                     method: "GET",
                     'credentials': 'include',
                     'mode': 'cors',

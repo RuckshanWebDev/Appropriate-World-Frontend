@@ -10,7 +10,7 @@ const axiosOption = {
 const profileApi = createApi({
     reducerPath: 'profileApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: process.env.URL || 'http://localhost:5000/api/profile',
+        baseUrl: process.env.URL || 'http://localhost:5000',
         'credentials': 'include',
         'mode': 'cors',
         'headers': {
@@ -24,7 +24,7 @@ const profileApi = createApi({
         getProfile: builder.query({
             query: () => {
                 return {
-                    url: '/',
+                    url: '/api/profile',
                     'credentials': 'include',
                     'mode': 'cors',
                     'headers': {
@@ -38,7 +38,7 @@ const profileApi = createApi({
         // Create a profile
         createProfile: builder.mutation({
             query: (data) => ({
-                url: '/',
+                url: '/api/profile',
                 method: "POST",
                 body: data,
 
@@ -48,7 +48,7 @@ const profileApi = createApi({
         // Update a profile
         updateProfile: builder.mutation({
             query: (data) => ({
-                url: '/',
+                url: '/api/profile',
                 method: "PUT",
                 body: data,
 

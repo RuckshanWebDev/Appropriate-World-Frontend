@@ -2,13 +2,13 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const chatApi = createApi({
     reducerPath: 'chatApi',
-    baseQuery: fetchBaseQuery({ baseUrl: process.env.URL || 'http://localhost:5000/', }),
+    baseQuery: fetchBaseQuery({ baseUrl: process.env.URL || 'http://localhost:5000', }),
     endpoints: (builder) => ({
 
         getCoupleChat: builder.query({
             query: ({ id }) => {
                 return {
-                    url: `api/chat/${id}`,
+                    url: `/api/chat/${id}`,
                     'credentials': 'include',
                     'mode': 'cors',
                     'headers': {
@@ -21,7 +21,7 @@ const chatApi = createApi({
         sendMessage: builder.mutation({
             query: (data) => {
                 return {
-                    url: `api/chat/`,
+                    url: `/api/chat/`,
                     body: data,
                     method: "POST",
                     'credentials': 'include',
