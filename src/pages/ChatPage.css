@@ -83,6 +83,7 @@
 
 .left-flex-align {
     align-self: flex-end;
+    background-color: rgb(163, 92, 255) !important;
 }
 
 .message-container .message-box {
@@ -92,7 +93,7 @@
     width: fit-content;
     min-width: 300px;
     max-height: -webkit-fill-available;
-    background-color: rgb(163, 92, 255);
+    background-color: #ff9900;
     border-radius: 5px;
     position: relative;
 

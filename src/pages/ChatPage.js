@@ -118,7 +118,7 @@ function ChatPage() {
             <div className="container chat-container">
                 <div className="contact-container">
 
-                    <h4 className='contact-title' >Friend List</h4>
+                    <h4 className='contact-title' >Community</h4>
 
                     {
                         data?.data.map((contact, index) => {

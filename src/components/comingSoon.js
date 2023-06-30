@@ -35,7 +35,9 @@ function ComingSoon() {
             <div>
                 <div className="logos">
                     {/* <video src="./logo-squre.mp4" muted loop ></video> */}
-                    <video src="./logo2.mp4" muted autoPlay loop ></video>
+                    <video src="./logo2.mp4" autoPlay
+                        loop
+                        playsInline muted ></video>
                 </div>
                 <form onSubmit={formHandler} >
                     <input type="email" name="email" id="" placeholder='Email' required />

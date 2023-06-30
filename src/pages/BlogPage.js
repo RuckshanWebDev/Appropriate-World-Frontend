@@ -20,7 +20,7 @@ function BlogPage() {
 
     return (
         <Layout>
-            {user && <AddMenu title={'Add Blog'} link={'/blog/add'} />}
+            {user && <AddMenu title={'Share'} link={'/blog/add'} />}
             <div className="blog-container container">
                 {
                     data?.data.length &&

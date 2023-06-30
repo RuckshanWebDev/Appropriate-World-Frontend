@@ -11,7 +11,9 @@ function Footer() {
                     <div className="contain">
 
                         <div className="social">
-                            <SiOpensea />
+                            <a href="https://opensea.io/collection/appropriateworld" target='_blank'>
+                                <SiOpensea />
+                            </a>
                             <a href='https://twitter.com/appropriatewrld' target='_blank' >
                                 <FaTwitter />
                             </a>
