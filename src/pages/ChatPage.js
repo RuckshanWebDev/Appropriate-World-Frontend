@@ -109,7 +109,7 @@ function ChatPage() {
         // Set all contact
         setAllContact(data?.data)
 
-        const newSocket = io(process.env.URL || 'http://localhost:5000', { transports: ['websocket'] })
+        const newSocket = io(process.env.NODE_ENV === "production" ? 'https://appropriate-world-backend.onrender.com' : 'http://localhost:5000', { transports: ['websocket'] })
         setSocket(newSocket)
     }, [])
 
