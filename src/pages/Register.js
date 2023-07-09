@@ -48,22 +48,22 @@ function Register() {
 
           <div className="register">
 
-            <img src="/logo.png" alt="" />
+            <video muted autoPlay loop src='/logo.mp4' ></video>
 
             <h2>Register</h2>
 
             <form className="form" onSubmit={formHandler} >
 
               <div className="form__field">
-                <input type="text" placeholder="John Doe" name='names' required />
+                <input type="text" placeholder="Name" name='names' required />
               </div>
 
               <div className="form__field">
-                <input type="email" placeholder="info@mailaddress.com" name='email' required />
+                <input type="email" placeholder="Email" name='email' required />
               </div>
 
               <div className="form__field">
-                <input type="password" placeholder="••••••••••••" name='password' required />
+                <input type="password" placeholder="Password" name='password' required />
               </div>
               {data.isLoading ?
                 <p>Loading</p> :

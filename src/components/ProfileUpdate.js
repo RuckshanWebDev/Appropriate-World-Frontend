@@ -136,19 +136,19 @@ function ProfileUpdate({ data }) {
                         <input type="text" name='names' />
                     </div>
                     <div className="input-container">
-                        <label >Address</label>
+                        <label >Location</label>
                         <input type="text" name='address' />
                     </div>
                     <div className="input-container">
-                        <label >profession</label>
+                        <label >Creator Type</label>
                         <input type="text" name='profession' />
                     </div>
                     <div className="input-container">
-                        <label >DOB</label>
+                        <label >Sign</label>
                         <input type="date" name='dob' />
                     </div>
                     <div className="input-container">
-                        <label >Hobby</label>
+                        <label >Interests</label>
                         <input type="text" name='hobby' />
                     </div>
 

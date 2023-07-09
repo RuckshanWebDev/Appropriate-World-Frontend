@@ -104,3 +104,8 @@ a {
   margin-bottom: 6rem;
   width: 100%;
 }
+
+.register video {
+  height: 150px;
+  mix-blend-mode: lighten;
+}

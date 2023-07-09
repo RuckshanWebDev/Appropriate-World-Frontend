@@ -27,33 +27,8 @@ const localSlice = createSlice({
         },
         addNotify: (state, action) => {
 
-            const { message, user, id } = action.payload
+            state.notifications = action.payload
 
-            const key = 'id';
-            console.log('Slice');
-            if (!state.notifications.length) {
-                state.notifications.push({ message, user, id })
-                localStorage.setItem('notification', JSON.stringify(state.notifications))
-            } else {
-
-                state.notifications.push({ message, user, id })
-
-                let uniqueObjArray = [
-                    ...new Map(state.notifications.map((item) => [item["id"], item])).values(),
-                ];
-                console.log(uniqueObjArray);
-
-                state.notifications = uniqueObjArray
-                localStorage.setItem('notification', JSON.stringify(state.notifications))
-
-            }
-
-            // state.notifications.map(item => {
-            //     if (item.id !== id) {
-            //         state.notifications.push({ message, user, id })
-            //         localStorage.setItem('notification', JSON.stringify(state.notifications))
-            //     }
-            // })
         },
         readNotify: (state, action) => {
 

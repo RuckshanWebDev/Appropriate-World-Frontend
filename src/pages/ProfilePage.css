@@ -13,7 +13,18 @@
     padding-bottom: 80px;
 }
 
-.profile-pagep-container .middle {}
+.profile-pagep-container .middle {
+    display: flex;
+    gap: 30px;
+}
+
+.profile-pagep-container .middle div:first-child {
+    flex: 0 0 30%;
+}
+
+.profile-pagep-container .middle div:last-child {
+    width: 100%;
+}
 
 .profile-pagep-container .info-container {
     margin: 20px auto 50px;

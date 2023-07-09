@@ -7,6 +7,7 @@ import { BsFillPersonFill } from 'react-icons/bs'
 import { MdAccountCircle } from 'react-icons/md'
 import { TbMenu2 } from 'react-icons/tb'
 import { CgClose } from 'react-icons/cg'
+import { CiStreamOn } from 'react-icons/ci'
 import { IoGameController } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -31,6 +32,7 @@ function Navigation() {
           </Link>
         </div>
         <div id='icons' >
+          <CiStreamOn />
           <Link to={'/games'} >
             <IoGameController className='white-path' />
           </Link>
@@ -41,8 +43,6 @@ function Navigation() {
           <Link to={'/blogs'}>
             <FaBlogger />
           </Link>
-          <BiWallet />
-
           {user ?
             <Link to="/profile">
               <BsFillPersonFill />
@@ -62,6 +62,7 @@ function Navigation() {
       </div>
 
       <div className='mobile-nav' style={{ display: navOpen ? "flex" : 'none' }} >
+        <CiStreamOn />
         <Link to={'/games'} >
           <IoGameController className='white-path' />
         </Link>
@@ -72,7 +73,7 @@ function Navigation() {
         <Link to={'/blogs'}>
           <FaBlogger />
         </Link>
-        <BiWallet />
+
         <Link to="/profile">
           <BsFillPersonFill />
         </Link>

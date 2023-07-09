@@ -53,10 +53,18 @@ const profileApi = createApi({
                 body: data,
 
             })
+        }),
+
+        // Get Signle Profile
+        getSingleProfile: builder.query({
+            query: ({ id }) => ({
+                url: `api/profile/${id}`,
+                method: "GET"
+            })
         })
 
     })
 })
 
-export const { useCreateProfileMutation, useGetProfileQuery, useUpdateProfileMutation, useLazyGetProfileQuery } = profileApi
+export const { useGetSingleProfileQuery, useCreateProfileMutation, useGetProfileQuery, useUpdateProfileMutation, useLazyGetProfileQuery } = profileApi
 export default profileApi

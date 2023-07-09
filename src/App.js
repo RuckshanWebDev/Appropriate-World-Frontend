@@ -18,6 +18,7 @@ import ComingSoon from './components/comingSoon.js';
 import SingleBlog from './pages/SingleBlog.js';
 import AddBlog from './pages/AddBlog.js';
 import ChatPage from './pages/ChatPage.js';
+import SingleProfile from './pages/profiles/SingleProfile.js';
 
 
 export default function App() {
@@ -35,6 +36,7 @@ export default function App() {
         <Route path='/blog/add' element={<ProtectRoute> <AddBlog /> </ProtectRoute>} exact />
         <Route path='/chat' element={<ProtectRoute>  <ChatPage /> </ProtectRoute>} exact />
         <Route path='/profile' element={<ProtectRoute> <ProfilePage /></ProtectRoute>} exact />
+        <Route path='/profile/:id' element={<SingleProfile />} exact />
         <Route path='/games/chess' element={<ChessGamePage />} exact />
         <Route path='/games/snake' element={<SnakeGamePage />} exact />
         <Route path='/login' element={<Login />} exact />

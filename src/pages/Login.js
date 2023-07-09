@@ -10,7 +10,6 @@ import { setUser } from '../features/localSlice'
 
 const Login = () => {
 
-
   const navigate = useNavigate()
   const [loginUser, data] = useLoginUserMutation()
   const dispatch = useDispatch()
@@ -25,11 +24,11 @@ const Login = () => {
     })
   }
 
+  if (user && user._id) {
+    navigate('/profile')
+  }
   useEffect(() => {
     console.log(user);
-    if (user && user._id) {
-      navigate('/profile')
-    }
 
     if (data.isError) {
       toast.error("Invalid Email or Password")
@@ -39,7 +38,7 @@ const Login = () => {
       dispatch(setUser(data.data.data))
     }
 
-  }, [user, data])
+  }, [data])
 
   return (
     <Layout>
@@ -48,18 +47,18 @@ const Login = () => {
 
           <div className="register">
 
-            <img src="/logo.png" alt="" />
+            <video muted autoPlay loop src='/logo.mp4' ></video>
 
             <h2>Sign Up</h2>
 
             <form className="form" onSubmit={formHandler} >
 
               <div className="form__field">
-                <input type="email" placeholder="info@mailaddress.com" name='email' required />
+                <input type="email" placeholder="Email" name='email' required />
               </div>
 
               <div className="form__field">
-                <input type="password" placeholder="••••••••••••" name='password' required />
+                <input type="password" placeholder="Password" name='password' required />
               </div>
 
               <div className="form__field">

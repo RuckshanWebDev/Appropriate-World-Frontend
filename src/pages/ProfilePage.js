@@ -27,13 +27,16 @@ function ProfilePage() {
     if (dataLogout.isError) {
         toast.error("Something went wrong!")
     }
+    if (data.isError) {
+        toast.error("Something went wrong!")
+    }
     const logoutHandler = () => {
         logout()
     }
 
 
     useEffect(() => {
-        getProfileData()
+        data.isFetching || getProfileData()
         if (data.data?.data.length) {
             setProfile(data.data.data[0])
             console.log(data);
@@ -43,7 +46,7 @@ function ProfilePage() {
             console.log("empty");
         }
 
-    }, [data.data, popup])
+    }, [popup, data.isSuccess])
 
 
     return (
@@ -55,42 +58,49 @@ function ProfilePage() {
                         <img src={profile?.profile_image === '' ? "./user.png" : profile?.profile_image} alt="" id="profile-img" />
                         <div>
                             <h2>{profile?.name || '-- : --'}</h2>
+                            <h3 >Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error nisi aliquid vero modi asperiores libero dignissimos cum veritatis provident perferendis eum aspernatur, aut delectus atque corporis ex, temporibus consequatur!z</h3>
+                            <br />
+                            <br />
                             <button onClick={() => dispatch(togglePopup())} >Edit Profile</button>
                             <button onClick={logoutHandler} >Logout</button>
                         </div>
                     </div>
                     <div className="middle">
-                        <h4> Information</h4>
-                        <div className="line"></div>
-                        <div className='info-container' >
-                            <div>
-                                <h6>Name</h6>
-                                <h5>{profile?.name || '-- : --'}</h5>
-                            </div>
-                            <div>
-                                <h6>Date of Birth</h6>
-                                <h5>{profile?.dob?.slice(0, 10) || '-- : --'}</h5>
-                            </div>
-                            <div>
-                                <h6>Location</h6>
-                                <h5>{profile?.address || '-- : --'}</h5>
-                            </div>
-                            <div>
-                                <h6>Profession</h6>
-                                <h5>{profile?.profession || '-- : --'}</h5>
-                            </div>
-                            <div>
-                                <h6>Hobby</h6>
-                                <h5>{profile?.hobby || '-- : --'}</h5>
-                            </div>
-                            <div>
-                                <h6>Joined at</h6>
-                                <h5>{profile?.createdAt.slice(0, 10) || '-- : --'}</h5>
+
+                        <div>
+                            <h4> Information</h4>
+                            <div className="line"></div>
+                            <div className='info-container' >
+                                <div>
+                                    <h6>Name</h6>
+                                    <h5>{profile?.name || '-- : --'}</h5>
+                                </div>
+                                <div>
+                                    <h6>Sign</h6>
+                                    <h5>{profile?.dob?.slice(0, 10) || '-- : --'}</h5>
+                                </div>
+                                <div>
+                                    <h6>Location</h6>
+                                    <h5>{profile?.address || '-- : --'}</h5>
+                                </div>
+                                <div>
+                                    <h6>Creator Type</h6>
+                                    <h5>{profile?.profession || '-- : --'}</h5>
+                                </div>
+                                <div>
+                                    <h6>Interests</h6>
+                                    <h5>{profile?.hobby || '-- : --'}</h5>
+                                </div>
+                                <div>
+                                    <h6>Joined at</h6>
+                                    <h5>{profile?.createdAt.slice(0, 10) || '-- : --'}</h5>
+                                </div>
                             </div>
                         </div>
-
-                        <h4>Activities</h4>
-                        <div className="line"></div>
+                        <div>
+                            <h4>Activities</h4>
+                            <div className="line"></div>
+                        </div>
 
                     </div>
                 </div>

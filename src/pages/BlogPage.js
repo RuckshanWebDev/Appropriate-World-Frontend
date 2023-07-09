@@ -11,11 +11,11 @@ function BlogPage() {
 
     const { data } = useGetBlogsQuery()
     const { user } = useSelector(state => state.local)
-
+    console.log(data);
 
     useEffect(() => {
 
-    }, [])
+    }, [data?.data])
 
 
     return (
@@ -25,17 +25,19 @@ function BlogPage() {
                 {
                     data?.data.length &&
                     data.data.map((blogItem, index) => {
-
+                        console.log(blogItem);
                         return <div className="blog-item" key={index}>
                             <h1>{blogItem.title} </h1>
                             <img src={blogItem.image || "./1.png"} alt="" />
-                            <div className="author-avatar">
-                                <img src={blogItem.author.profile_image !== '' ? blogItem.author.profile_image : "./user.png"} alt="" />
-                                <div>
-                                    <h3>{blogItem.author.name}</h3>
-                                    <span>2 days ago</span>
+                            <Link to={`/profile/${blogItem?.author._id}`} style={{ textDecoration: 'none' }} >
+                                <div className="author-avatar">
+                                    <img src={blogItem.author?.profile_image || "./user.png"} alt="" />
+                                    <div>
+                                        <h3>{blogItem.author.name}</h3>
+                                        <span>{blogItem.createdAt?.slice(0, 10)}</span>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                             {/* <p className='blog-desc' >{blogItem.content.slice(0, 250)} </p> */}
                             <div className='blog-desc' dangerouslySetInnerHTML={{ __html: blogItem.content.slice(0, 250).trim() }} >
                             </div>
