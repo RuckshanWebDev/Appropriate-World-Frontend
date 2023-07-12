@@ -19,11 +19,12 @@ function ProfilePage() {
 
     const getNotification = useGetotificationQuery()
     if (getNotification.isSuccess) {
-        dispatch(addNotify(getNotification.data.data))
+        console.log(getNotification.data);
+        getNotification.data.data && dispatch(addNotify(getNotification.data?.data))
     }
-    console.log(getNotification);
+    // console.log(getNotification);
 
-    console.log(data);
+    // console.log(data);
     /**
      * Logout
      */
