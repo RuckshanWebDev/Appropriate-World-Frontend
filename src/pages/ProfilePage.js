@@ -17,11 +17,11 @@ function ProfilePage() {
     const [logout, dataLogout] = useLogoutUserMutation()
     const [getProfileData, data] = useLazyGetProfileQuery()
 
-    const getNotification = useGetotificationQuery()
-    if (getNotification.isSuccess) {
-        console.log(getNotification.data);
-        getNotification.data.data && dispatch(addNotify(getNotification.data?.data))
-    }
+    // const getNotification = useGetotificationQuery()
+    // if (getNotification.isSuccess) {
+    //     console.log(getNotification.data);
+    //     getNotification.data.data && dispatch(addNotify(getNotification.data?.data))
+    // }
     // console.log(getNotification);
 
     // console.log(data);
