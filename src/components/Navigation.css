@@ -77,11 +77,24 @@ nav {
     cursor: pointer;
 }
 
-@media only screen and (max-width: 480px) {}
+.notification-icon {
+    position: absolute;
+    background-color: tomato;
+    border-radius: 100%;
+    padding: 5px;
+    font-size: 15px;
+    line-height: 10px;
+    font-weight: 900;
+    color: #fff;
+    bottom: 0;
+    right: 0;
+}
 
 
-@media only screen and (max-width: 600px) {}
 
+@media only screen and (max-width: 1200px) {}
+
+@media only screen and (max-width: 992px) {}
 
 @media only screen and (max-width: 768px) {
     #icons {
@@ -93,11 +106,11 @@ nav {
     }
 }
 
+@media only screen and (max-width: 480px) {}
 
-@media only screen and (max-width: 992px) {}
+@media only screen and (max-width: 600px) {}
 
 
-@media only screen and (max-width: 1200px) {}
 
 /* @media only screen and (max-width: 480px) {}
 

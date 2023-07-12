@@ -31,10 +31,22 @@ const chatApi = createApi({
                     }
                 }
             }
+        }),
+
+        getotification: builder.query({
+            query: (query) => ({
+                url: `/api/chat/notification`,
+                method: "GET",
+                'credentials': 'include',
+                'mode': 'cors',
+                'headers': {
+                    'accept': 'application/json, text/plain, */*', 'content-type': 'application/json'
+                }
+            })
         })
 
     })
 })
 
-export const { useGetCoupleChatQuery, useLazyGetCoupleChatQuery, useSendMessageMutation } = chatApi
+export const { useGetotificationQuery, useGetCoupleChatQuery, useLazyGetCoupleChatQuery, useSendMessageMutation } = chatApi
 export default chatApi

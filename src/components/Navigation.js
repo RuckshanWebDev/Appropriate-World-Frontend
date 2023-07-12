@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Navigation.css'
 import { MdOutlineMessage, MdOutlineUnsubscribe } from 'react-icons/md'
 import { FaBlogger, FaShoppingCart } from 'react-icons/fa'
@@ -15,12 +15,16 @@ import { useSelector } from 'react-redux'
 function Navigation() {
 
   const [navOpen, setNavOpen] = useState(false)
-  const { user } = useSelector(state => state.local)
+  const { user, notificationCount } = useSelector(state => state.local)
 
   const navHandler = () => {
     console.log("click");
     setNavOpen(!navOpen)
   }
+
+  useEffect(() => {
+
+  }, [])
 
   return (
     <nav>
@@ -38,7 +42,10 @@ function Navigation() {
           </Link>
           <FaShoppingCart className='white-path' />
           <Link to={'/chat'} >
-            <MdOutlineMessage />
+            <div style={{ position: 'relative' }} >
+              <div className="notification-icon">{notificationCount}</div>
+              <MdOutlineMessage />
+            </div>
           </Link>
           <Link to={'/blogs'}>
             <FaBlogger />

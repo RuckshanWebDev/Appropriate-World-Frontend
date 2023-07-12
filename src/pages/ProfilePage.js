@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Layout from '../components/Layout'
 import './ProfilePage.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearUser, setProfileId, togglePopup } from '../features/localSlice'
+import { addNotify, clearUser, setProfileId, togglePopup } from '../features/localSlice'
 import { useLogoutUserMutation } from '../features/userApi'
 import { toast } from 'react-toastify'
 import { useGetProfileQuery, useLazyGetProfileQuery } from '../features/profileApi'
 import ProfileUpdate from '../components/ProfileUpdate'
+import { useGetotificationQuery } from '../features/chatApi'
 
 function ProfilePage() {
 
@@ -15,6 +16,12 @@ function ProfilePage() {
     const dispatch = useDispatch()
     const [logout, dataLogout] = useLogoutUserMutation()
     const [getProfileData, data] = useLazyGetProfileQuery()
+
+    const getNotification = useGetotificationQuery()
+    if (getNotification.isSuccess) {
+        dispatch(addNotify(getNotification.data.data))
+    }
+    console.log(getNotification);
 
     console.log(data);
     /**

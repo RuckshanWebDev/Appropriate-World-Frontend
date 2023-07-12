@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
     popup: false,
     user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
-    notifications: localStorage.getItem('notification') ? JSON.parse(localStorage.getItem('notification')) : []
+    notifications: localStorage.getItem('notification') ? JSON.parse(localStorage.getItem('notification')) : [],
+    notificationCount: 0
 }
 
 const localSlice = createSlice({
@@ -26,9 +27,8 @@ const localSlice = createSlice({
             localStorage.removeItem('user')
         },
         addNotify: (state, action) => {
-
-            state.notifications = action.payload
-
+            state.notifications = action.payload[0].from
+            state.notificationCount = state.notifications.length
         },
         readNotify: (state, action) => {
 

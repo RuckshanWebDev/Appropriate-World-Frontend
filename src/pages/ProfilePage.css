@@ -59,3 +59,32 @@
     border: 8px solid var(--color-pink);
     position: relative;
 }
+
+@media only screen and (max-width: 1200px) {}
+
+@media only screen and (max-width: 992px) {}
+
+@media only screen and (max-width: 768px) {
+    .profile-pagep-container .top {
+
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-pagep-container h2 {
+        font-size: 42px;
+    }
+
+    .profile-pagep-container .middle {
+        flex-direction: column;
+    }
+
+    #profile-img {
+        width: 80%;
+        height: 80%;
+    }
+}
+
+@media only screen and (max-width: 480px) {}
+
+@media only screen and (max-width: 600px) {}
