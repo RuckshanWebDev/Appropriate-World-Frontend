@@ -19,6 +19,8 @@ function ProfileUpdate({ data }) {
 
     const updateFormHandler = async (e) => {
 
+        console.log(e.target.dob.value);
+
         e.preventDefault()
         console.log(data);
         if (!data) {
@@ -84,11 +86,12 @@ function ProfileUpdate({ data }) {
                         console.log(result.secure_url);
                         updateProfile({
                             profile_image: result.secure_url,
-                            dob: e.target.dob.value || formData.data?.dob,
+                            dob: e.target.dob.value,
                             address: e.target.address.value,
                             profession: e.target.profession.value,
                             hobby: e.target.hobby.value,
                             name: e.target.names.value,
+                            bio: e.target.bio.value,
                         })
                         dispatch(togglePopup())
                     }
@@ -98,11 +101,12 @@ function ProfileUpdate({ data }) {
                 }
             } else {
                 updateProfile({
-                    dob: e.target.dob.value || formData.data?.dob,
+                    dob: e.target.dob.value,
                     address: e.target.address.value,
                     profession: e.target.profession.value,
                     hobby: e.target.hobby.value,
                     name: e.target.names.value,
+                    bio: e.target.bio.value,
                 })
                 dispatch(togglePopup())
             }
@@ -136,6 +140,10 @@ function ProfileUpdate({ data }) {
                         <input type="text" name='names' />
                     </div>
                     <div className="input-container">
+                        <label >Bio</label>
+                        <input type="text" name='bio' />
+                    </div>
+                    <div className="input-container">
                         <label >Location</label>
                         <input type="text" name='address' />
                     </div>
@@ -145,7 +153,22 @@ function ProfileUpdate({ data }) {
                     </div>
                     <div className="input-container">
                         <label >Sign</label>
-                        <input type="date" name='dob' />
+                        <select name="dob" id="">
+                            <option value="">Select a Sign</option>
+                            <option value="Aries">Aries: March 21 - April 19</option>
+                            <option value="Taurus">Taurus: April 20 - May 20</option>
+                            <option value="Gemini">Gemini: May 21 - June 20</option>
+                            <option value="Cancer">Cancer: June 21 - July 22</option>
+                            <option value="Leo">Leo: July 23 - August 22</option>
+                            <option value="Virgo">Virgo: August 23 - September 22</option>
+                            <option value="Libra">Libra: September 23 - October 22</option>
+                            <option value="Scorpio">Scorpio: October 23 - November 21</option>
+                            <option value="Sagittarius">Sagittarius: November 22 - December 21</option>
+                            <option value="Capricorn">Capricorn: December 22 - January 19</option>
+                            <option value="Aquarius">Aquarius: January 20 - February 18</option>
+                            <option value="Pisces">Pisces: February 19 - March 20</option>
+                        </select>
+                        {/* <input type="date" name='dob' /> */}
                     </div>
                     <div className="input-container">
                         <label >Interests</label>

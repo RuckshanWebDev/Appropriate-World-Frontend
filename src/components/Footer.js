@@ -5,7 +5,7 @@ import { SiOpensea } from 'react-icons/si'
 
 function Footer() {
     return (
-        <footer>
+        <footer  >
             <div className='container' >
                 <div className="footer">
                     <div className="contain">

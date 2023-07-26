@@ -7,7 +7,7 @@ import { useLogoutUserMutation } from '../features/userApi'
 import { toast } from 'react-toastify'
 import { useGetProfileQuery, useLazyGetProfileQuery } from '../features/profileApi'
 import ProfileUpdate from '../components/ProfileUpdate'
-import { useGetotificationQuery } from '../features/chatApi'
+import { useLazyGetotificationQuery } from '../features/chatApi'
 
 function ProfilePage() {
 
@@ -17,11 +17,13 @@ function ProfilePage() {
     const [logout, dataLogout] = useLogoutUserMutation()
     const [getProfileData, data] = useLazyGetProfileQuery()
 
-    // const getNotification = useGetotificationQuery()
-    // if (getNotification.isSuccess) {
-    //     console.log(getNotification.data);
-    //     getNotification.data.data && dispatch(addNotify(getNotification.data?.data))
-    // }
+    const [getNotificationFn, getNotification] = useLazyGetotificationQuery()
+
+
+    if (getNotification.isSuccess && getNotification?.data?.data[0].from.length) {
+        console.log(getNotification.data);
+        getNotification.data.data && dispatch(addNotify(getNotification.data?.data))
+    }
     // console.log(getNotification);
 
     // console.log(data);
@@ -42,10 +44,17 @@ function ProfilePage() {
         logout()
     }
 
+    const colorChanger = (e) => {
+        console.log(e.target.dataset.color);
+        document.documentElement.style.setProperty('--color-purple', e.target.dataset.color);
+
+    }
+
 
     useEffect(() => {
+
         data.isFetching || getProfileData()
-        if (data.data?.data.length) {
+        if (data.isSuccess) {
             setProfile(data.data.data[0])
             console.log(data);
             dispatch(setProfileId(data.data.data[0]._id))
@@ -54,6 +63,7 @@ function ProfilePage() {
             console.log("empty");
         }
 
+        getNotificationFn()
     }, [popup, data.isSuccess])
 
 
@@ -61,12 +71,25 @@ function ProfilePage() {
         <>
             <ProfileUpdate data={data.data?.data[0]} />
             <Layout  >
-                <div className="container profile-pagep-container">
+                <div className="container profile-page-container">
+
+                    <div className="color-container">
+                        <div className="current-color"></div>
+                        <div className="color-box">
+                            <div className="color-option" id='color-1' data-color='#FBB924' onClick={colorChanger}></div>
+                            <div className="color-option" id='color-2' data-color='#FF2E56' onClick={colorChanger}></div>
+                            <div className="color-option" id='color-3' data-color='#F37F2C' onClick={colorChanger}></div>
+                            <div className="color-option" id='color-4' data-color='#5E58EC' onClick={colorChanger}></div>
+                            <div className="color-option" id='color-5' data-color='#05A2E9' onClick={colorChanger}></div>
+                            <div className="color-option" id='color-6' data-color='#F3432C' onClick={colorChanger}></div>
+                        </div>
+                    </div>
+
                     <div className="top">
                         <img src={profile?.profile_image === '' ? "./user.png" : profile?.profile_image} alt="" id="profile-img" />
                         <div>
                             <h2>{profile?.name || '-- : --'}</h2>
-                            <h3 >Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error nisi aliquid vero modi asperiores libero dignissimos cum veritatis provident perferendis eum aspernatur, aut delectus atque corporis ex, temporibus consequatur!z</h3>
+                            <h3 >{profile?.bio || 'Add your bio'}</h3>
                             <br />
                             <br />
                             <button onClick={() => dispatch(togglePopup())} >Edit Profile</button>
@@ -85,7 +108,7 @@ function ProfilePage() {
                                 </div>
                                 <div>
                                     <h6>Sign</h6>
-                                    <h5>{profile?.dob?.slice(0, 10) || '-- : --'}</h5>
+                                    <h5>{profile?.dob || '-- : --'}</h5>
                                 </div>
                                 <div>
                                     <h6>Location</h6>

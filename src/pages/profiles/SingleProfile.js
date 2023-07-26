@@ -19,12 +19,12 @@ function SingleProfile() {
 
     return (
         <Layout>
-            <div className="container profile-pagep-container">
+            <div className="container profile-page-container">
                 <div className="top">
                     <img src={profile?.profile_image === '' ? "/user.png" : profile?.profile_image} alt="" id="profile-img" />
                     <div>
                         <h2>{profile?.name || '-- : --'}</h2>
-                        <h3 >Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error nisi aliquid vero modi asperiores libero dignissimos cum veritatis provident perferendis eum aspernatur, aut delectus atque corporis ex, temporibus consequatur!z</h3>
+                        <h3 >{profile?.bio || 'Add your bio'}</h3>
                         <br />
                         <br />
                     </div>
@@ -57,7 +57,7 @@ function SingleProfile() {
                             </div>
                             <div>
                                 <h6>Joined at</h6>
-                                <h5>{profile?.createdAt.slice(0, 10) || '-- : --'}</h5>
+                                <h5>{profile?.createdAt?.slice(0, 10) || '-- : --'}</h5>
                             </div>
                         </div>
                     </div>

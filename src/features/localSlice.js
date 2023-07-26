@@ -4,7 +4,8 @@ const initialState = {
     popup: false,
     user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
     notifications: localStorage.getItem('notification') ? JSON.parse(localStorage.getItem('notification')) : [],
-    notificationCount: 0
+    notificationCount: 0,
+    localContactId: ''
 }
 
 const localSlice = createSlice({
@@ -36,5 +37,5 @@ const localSlice = createSlice({
     }
 })
 
-export const { togglePopup, setUser, clearUser, setProfileId, addNotify } = localSlice.actions
+export const { setLocalContactId, togglePopup, setUser, clearUser, setProfileId, addNotify } = localSlice.actions
 export default localSlice.reducer

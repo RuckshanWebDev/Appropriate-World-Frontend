@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from './pages/HomePage.js'
 import ErrorPage from './pages/ErrorPage.js'
@@ -23,7 +23,16 @@ import SingleProfile from './pages/profiles/SingleProfile.js';
 
 export default function App() {
 
-  console.log(process.env);
+  const siteEnter = new Audio('/music/ENTER_SITE.wav')
+
+
+  useEffect(() => {
+
+    // siteEnter.play()
+
+    console.log("site enter");
+
+  }, [])
 
   return (
     <BrowserRouter>

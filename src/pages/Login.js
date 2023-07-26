@@ -24,10 +24,10 @@ const Login = () => {
     })
   }
 
-  if (user && user._id) {
-    navigate('/profile')
-  }
   useEffect(() => {
+    if (user && user._id) {
+      navigate('/profile')
+    }
     console.log(user);
 
     if (data.isError) {

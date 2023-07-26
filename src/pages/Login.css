@@ -66,8 +66,9 @@ a {
   box-shadow: 0 0 250px #000;
   text-align: center;
   padding: 4rem 2rem;
-  background-color: #450074;
+  background-color: var(--color-purple);
   margin: 100px 0;
+  border-radius: 15px;
 }
 
 .register input {

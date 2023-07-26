@@ -48,5 +48,5 @@ const chatApi = createApi({
     })
 })
 
-export const { useGetotificationQuery, useGetCoupleChatQuery, useLazyGetCoupleChatQuery, useSendMessageMutation } = chatApi
+export const { useLazyGetotificationQuery, useGetCoupleChatQuery, useLazyGetCoupleChatQuery, useSendMessageMutation } = chatApi
 export default chatApi

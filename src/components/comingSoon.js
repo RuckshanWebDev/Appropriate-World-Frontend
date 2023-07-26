@@ -35,7 +35,7 @@ function ComingSoon() {
             <div>
                 <div className="logos">
                     {/* <video src="./logo-squre.mp4" muted loop ></video> */}
-                    <video src="./logo2.mp4" autoPlay
+                    <video src="./logo3.mp4" autoPlay
                         loop
                         playsInline muted ></video>
                 </div>

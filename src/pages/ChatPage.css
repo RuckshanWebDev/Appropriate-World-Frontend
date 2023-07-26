@@ -31,12 +31,25 @@
     border-bottom: 3px solid #ffffff71;
     margin: 0 10px;
     cursor: pointer;
+
+    position: relative;
 }
 
 .contact-item-head {
     display: flex;
     gap: 20px;
     padding: 10px 20px;
+}
+
+.notify-icon {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: red;
+    padding: 5px 6px;
+    border-radius: 100%;
+    line-height: 10px;
 }
 
 .contact-item div {

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import AddMenu from '../components/AddMenu'
 import { useSelector } from 'react-redux'
+import EmptyMessage from '../components/EmptyMessage'
 
 function BlogPage() {
 
@@ -23,28 +24,29 @@ function BlogPage() {
             {user && <AddMenu title={'Share'} link={'/blog/add'} />}
             <div className="blog-container container">
                 {
-                    data?.data.length &&
-                    data.data.map((blogItem, index) => {
-                        console.log(blogItem);
-                        return <div className="blog-item" key={index}>
-                            <h1>{blogItem.title} </h1>
-                            <img src={blogItem.image || "./1.png"} alt="" />
-                            <Link to={`/profile/${blogItem?.author._id}`} style={{ textDecoration: 'none' }} >
-                                <div className="author-avatar">
-                                    <img src={blogItem.author?.profile_image || "./user.png"} alt="" />
-                                    <div>
-                                        <h3>{blogItem.author.name}</h3>
-                                        <span>{blogItem.createdAt?.slice(0, 10)}</span>
+                    data?.data.length ?
+                        data.data.map((blogItem, index) => {
+                            return <div className="blog-item" key={index}>
+                                <h1>{blogItem.title} </h1>
+                                <img src={blogItem.image || "./1.png"} alt="" />
+                                <Link to={`/profile/${blogItem?.author._id}`} style={{ textDecoration: 'none' }} >
+                                    <div className="author-avatar">
+                                        <img src={blogItem.author?.profile_image || "./user.png"} alt="" />
+                                        <div>
+                                            <h3>{blogItem.author.name}</h3>
+                                            <span>{blogItem.createdAt?.slice(0, 10)}</span>
+                                        </div>
                                     </div>
+                                </Link>
+                                {/* <p className='blog-desc' >{blogItem.content.slice(0, 250)} </p> */}
+                                <div className='blog-desc' dangerouslySetInnerHTML={{ __html: blogItem.content.slice(0, 250).trim() }} >
                                 </div>
-                            </Link>
-                            {/* <p className='blog-desc' >{blogItem.content.slice(0, 250)} </p> */}
-                            <div className='blog-desc' dangerouslySetInnerHTML={{ __html: blogItem.content.slice(0, 250).trim() }} >
+                                <Link to={`/blog/${blogItem._id}`} >See more...</Link>
                             </div>
-                            <Link to={`/blog/${blogItem._id}`} >See more...</Link>
-                        </div>
 
-                    })
+                        })
+                        :
+                        <EmptyMessage text={"Something went Wrong, Please try again later!"} />
                 }
 
                 {/* <div className="blog-item">

@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
 /* width */
@@ -33,7 +32,7 @@
     --color-pink: #ff2c58;
     --color-red: #f75338;
     --color-blur: #4d8df9;
-    --color-purple: #5d55e9;
+    --color-purple: #5E58EC;
 }
 
 html,
@@ -44,9 +43,9 @@ body {
     color: #fff;
 }
 
-/* .main {
+.main {
     min-height: 100vh;
-} */
+}
 
 .container {
     width: 95%;
@@ -143,6 +142,16 @@ button:hover {
     display: inline-block;
 }
 
+.empty-message-container {
+    width: 100%;
+    height: calc(100vh - 190px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 .input-container {
     display: flex;
     margin: 10px auto;
@@ -211,6 +220,21 @@ input:focus {
         font-size: 30px;
         font-weight: 800;
     }
+
+    .input-container {
+        padding: 0 5px;
+        gap: 10px;
+    }
+
+    .input-container label {
+        font-size: 18px;
+    }
+
+    .input-container input {
+        font-size: 18px;
+        padding: 10px 10px;
+    }
+
 }
 
 @media only screen and (max-width: 480px) {

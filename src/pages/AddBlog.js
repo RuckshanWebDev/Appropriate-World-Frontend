@@ -84,7 +84,7 @@ function AddBlog() {
             <div className='container addBlog-container' >
 
                 <h1 className="title-big-color">
-                    Post a Blog
+                    Community Post
                 </h1>
 
                 <form onSubmit={blogFormHandler}>
@@ -94,7 +94,7 @@ function AddBlog() {
 
                         <DraftEditor setEditorData={setEditorData} />
                     </div>
-                    <button disabled={createBlogApi.isLoading} type='submit' style={{ display: "inline-block", margin: "0 auto" }} >{createBlogApi.isLoading ? <> Loading < Loader /></> : "Post the Blog"}</button>
+                    <button disabled={createBlogApi.isLoading} type='submit' style={{ display: "inline-block", margin: "0 auto" }} >{createBlogApi.isLoading ? <> Loading < Loader /></> : "Share Blog"}</button>
                 </form>
 
                 {/* Editor */}
