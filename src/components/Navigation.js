@@ -66,8 +66,8 @@ function Navigation() {
       <div className='container navigation' >
         <div id='logo' >
           <Link to={'/admin'}>
-            {/* <img src='/logo.jpg' /> */}
-            <video muted autoPlay loop src='/logo.mp4' ></video>
+            <img src='/logo.gif' />
+            {/* <video muted autoPlay loop src='/logo.mp4' ></video> */}
           </Link>
         </div>
         <div id='icons' >

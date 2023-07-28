@@ -19,8 +19,6 @@ function ProfileUpdate({ data }) {
 
     const updateFormHandler = async (e) => {
 
-        console.log(e.target.dob.value);
-
         e.preventDefault()
         console.log(data);
         if (!data) {

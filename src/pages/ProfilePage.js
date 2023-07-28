@@ -11,7 +11,7 @@ import { useLazyGetotificationQuery } from '../features/chatApi'
 
 function ProfilePage() {
 
-    const { popup } = useSelector(state => state.local)
+    const { popup, user } = useSelector(state => state.local)
     const [profile, setProfile] = useState(null)
     const dispatch = useDispatch()
     const [logout, dataLogout] = useLogoutUserMutation()
@@ -53,18 +53,18 @@ function ProfilePage() {
 
     useEffect(() => {
 
-        data.isFetching || getProfileData()
+        getProfileData()
         if (data.isSuccess) {
             setProfile(data.data.data[0])
-            console.log(data);
             dispatch(setProfileId(data.data.data[0]._id))
+            console.log(data);
         } else {
             setProfile(null)
             console.log("empty");
         }
 
         getNotificationFn()
-    }, [popup, data.isSuccess])
+    }, [popup, data.data])
 
 
     return (
@@ -86,7 +86,12 @@ function ProfilePage() {
                     </div>
 
                     <div className="top">
-                        <img src={profile?.profile_image === '' ? "./user.png" : profile?.profile_image} alt="" id="profile-img" />
+                        {
+                            profile?.profile_image ?
+                                <img src={profile?.profile_image} key={profile?.profile_image} alt="" id="profile-img" />
+                                :
+                                <img src="./user.png" alt="" id="profile-img" />
+                        }
                         <div>
                             <h2>{profile?.name || '-- : --'}</h2>
                             <h3 >{profile?.bio || 'Add your bio'}</h3>

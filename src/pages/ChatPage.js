@@ -100,12 +100,19 @@ function ChatPage() {
 
         if (data?.from) {
             dispatch(addNotify([data]))
-            notificationSound.play()
+        }
+    })
+    socket?.once(`removeNotification${profileId}`, (data) => {
+
+        console.log("Socket :=> Add Notification");
+
+        if (data?.from) {
+            dispatch(addNotify([data]))
         }
     })
 
     // Recieve Message Socket
-    socket?.once('message', function (data) {
+    socket?.once(`message${profileId}`, function (data) {
 
 
         const lastMessage = data
@@ -114,15 +121,18 @@ function ChatPage() {
 
         if (lastMessage.sender === profileId) {
 
-            // Message Sent by us
+            //     // Message Sent by us
             setRecentChat([...recentChat, data])
-            socket?.emit('addNotification', lastMessage.reciever, lastMessage.sender)
+            socket.emit('removeNotification', profileId, lastMessage.sender)
+
 
 
         } else if (lastMessage.sender === localStorage.getItem('contactId') && lastMessage.reciever === profileId) {
 
             // Message to us
             setRecentChat([...recentChat, data])
+            socket.emit('removeNotification', profileId, lastMessage.sender)
+
 
         } else {
 
@@ -233,7 +243,7 @@ function ChatPage() {
                                             chat.map(((mes, index) => {
                                                 return <div key={index} className={mes.sender !== contactId ? "message-box left-flex-align" : "message-box"}>
                                                     <p>{mes.message}</p>
-                                                    <span>{mes.createdAt.slice(0, 10)}</span>
+                                                    <span>{mes.createdAt?.slice(0, 10)}</span>
                                                 </div>
                                             }))
                                             : ''

@@ -24,6 +24,11 @@ const Login = () => {
     })
   }
 
+
+  if (user && user._id) {
+    navigate('/profile')
+  }
+
   useEffect(() => {
     if (user && user._id) {
       navigate('/profile')
@@ -47,7 +52,7 @@ const Login = () => {
 
           <div className="register">
 
-            <video muted autoPlay loop src='/logo.mp4' ></video>
+            <img src='/logo.gif' style={{ width: '80%', marginBottom: "50px" }} />
 
             <h2>Sign Up</h2>
 
@@ -67,7 +72,7 @@ const Login = () => {
 
             </form>
 
-            <p>Create an new accout? <Link to="/register" >Register</Link></p>
+            <p>Create an new accout? <Link to="/register" style={{ color: 'blue' }}  >Register</Link></p>
 
           </div>
         </div>

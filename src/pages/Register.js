@@ -26,8 +26,11 @@ function Register() {
 
   }
 
+  if (user && user._id) {
+    navigate('/profile')
+  }
   useEffect(() => {
-    console.log(user);
+
     if (user && user._id) {
       navigate('/profile')
     }
@@ -48,7 +51,7 @@ function Register() {
 
           <div className="register">
 
-            <video muted autoPlay loop src='/logo.mp4' ></video>
+            <img src='/logo.gif' style={{ width: '80%', marginBottom: "50px" }} />
 
             <h2>Register</h2>
 
@@ -73,7 +76,7 @@ function Register() {
               }
             </form>
 
-            <p>Already have an accout? <Link to="/login" >Login</Link></p>
+            <p>Already have an accout? <Link style={{ color: 'blue' }} to="/login" >Login</Link></p>
 
           </div>
         </div>
