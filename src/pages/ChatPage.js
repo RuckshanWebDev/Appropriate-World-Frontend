@@ -62,6 +62,21 @@ function ChatPage() {
 
         setSideOpen(!sideOpen)
 
+
+        let contactArray = [...document.querySelectorAll('.contact-item')]
+        contactArray = contactArray.slice(0, contactArray.length / 2)
+
+        contactArray.map(i => {
+            if (i.dataset.id === e.target.dataset.id) {
+                i.classList.add('active-contact')
+                console.log('add');
+            } else {
+                console.log('remove');
+                i.classList.remove('active-contact')
+            }
+        })
+
+
         if (e.target.dataset.id) {
 
             setRecentChat([])
@@ -69,6 +84,7 @@ function ChatPage() {
             localStorage.setItem('contactId', e.target.dataset.id)
 
             const chatHistory = await getChat({ id: e.target.dataset.id }).unwrap()
+            console.log(chatData);
             setChat(chatHistory?.data)
 
             const filteredUser = data?.data.filter(i => i._id === e.target.dataset.id)
@@ -99,6 +115,7 @@ function ChatPage() {
         console.log("Socket :=> Add Notification");
 
         if (data?.from) {
+            notificationSound.play()
             dispatch(addNotify([data]))
         }
     })
@@ -124,6 +141,7 @@ function ChatPage() {
             //     // Message Sent by us
             setRecentChat([...recentChat, data])
             socket.emit('removeNotification', profileId, lastMessage.sender)
+            socket?.emit('addNotification', lastMessage.reciever, lastMessage.sender)
 
 
 

@@ -20,14 +20,28 @@ import AddBlog from './pages/AddBlog.js';
 import ChatPage from './pages/ChatPage.js';
 import SingleProfile from './pages/profiles/SingleProfile.js';
 
+import { useLazyGetotificationQuery } from './features/chatApi.js';
+import { addNotify } from './features/localSlice.js';
+import { useDispatch } from 'react-redux';
+
 
 export default function App() {
 
   const siteEnter = new Audio('/music/ENTER_SITE.wav')
 
+  const dispatch = useDispatch()
+  const [getNotificationFn, getNotification] = useLazyGetotificationQuery()
+
+
+  if (getNotification.isSuccess && getNotification?.data?.data[0].from.length) {
+    console.log(getNotification.data);
+    getNotification.data.data && dispatch(addNotify(getNotification.data?.data))
+  }
+
 
   useEffect(() => {
 
+    getNotificationFn()
     // siteEnter.play()
 
     console.log("site enter");

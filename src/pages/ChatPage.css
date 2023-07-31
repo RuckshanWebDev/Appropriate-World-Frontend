@@ -52,6 +52,11 @@
     line-height: 10px;
 }
 
+.active-contact {
+    background-color: #06070861;
+    border-radius: 10px;
+}
+
 .contact-item div {
     display: flex;
     flex-direction: column;
@@ -81,7 +86,7 @@
 
 .chatbox-container .details-container {
     width: 100%;
-    background-color: blueviolet;
+    background-color: var(--color-purple);
 }
 
 .chatbox-container .message-container {

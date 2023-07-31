@@ -17,13 +17,13 @@ function ProfilePage() {
     const [logout, dataLogout] = useLogoutUserMutation()
     const [getProfileData, data] = useLazyGetProfileQuery()
 
-    const [getNotificationFn, getNotification] = useLazyGetotificationQuery()
+    // const [getNotificationFn, getNotification] = useLazyGetotificationQuery()
 
 
-    if (getNotification.isSuccess && getNotification?.data?.data[0].from.length) {
-        console.log(getNotification.data);
-        getNotification.data.data && dispatch(addNotify(getNotification.data?.data))
-    }
+    // if (getNotification.isSuccess && getNotification?.data?.data[0].from.length) {
+    //     console.log(getNotification.data);
+    //     getNotification.data.data && dispatch(addNotify(getNotification.data?.data))
+    // }
     // console.log(getNotification);
 
     // console.log(data);
@@ -63,7 +63,7 @@ function ProfilePage() {
             console.log("empty");
         }
 
-        getNotificationFn()
+        // getNotificationFn()
     }, [popup, data.data])
 
 
