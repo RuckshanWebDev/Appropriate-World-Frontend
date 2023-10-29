@@ -36,7 +36,7 @@ function SingleProfile() {
                         <div className="line"></div>
                         <div className='info-container' >
                             <div>
-                                <h6>Name</h6>
+                                <h6>Creator's Name</h6>
                                 <h5>{profile?.name || '-- : --'}</h5>
                             </div>
                             <div>

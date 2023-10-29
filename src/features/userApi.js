@@ -40,8 +40,31 @@ const userApi = createApi({
             }),
         }),
 
+        // Forgot Password
+        forgotPassword: builder.mutation({
+            query: ({ email }) => {
+                return {
+                    url: `/api/user/forgot-password`,
+                    method: 'POST',
+                    body: { email }
+                }
+            }
+        }),
+
+        resetPassword: builder.mutation({
+
+            query: ({ token, password }) => {
+                return {
+                    url: `/api/user/reset-password/${token}`,
+                    method: 'POST',
+                    body: { newPassword: password }
+                }
+            }
+
+        })
+
     })
 })
 
-export const { useLoginUserMutation, useRegisterUserMutation, useLogoutUserMutation } = userApi
+export const { useLoginUserMutation, useRegisterUserMutation, useLogoutUserMutation, useForgotPasswordMutation, useResetPasswordMutation } = userApi
 export default userApi

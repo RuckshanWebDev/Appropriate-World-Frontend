@@ -2,6 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* font-family: 'Roboto', sans-serif; */
+    /* font-family: 'Open Sans', sans-serif; */
+    /* /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.InputContainer .InputElement {
+    background-color: #fff;
 }
 
 /* width */
@@ -62,7 +70,7 @@ h6 {
 
 h5 {
     color: #ffffff;
-    font-size: 30px;
+    font-size: 22px;
     font-weight: 700;
     line-height: 30px;
 }
@@ -112,6 +120,7 @@ button:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 50px 0;
+    width: max-content;
 }
 
 .text-color {
@@ -140,6 +149,27 @@ button:hover {
     width: 50px;
     height: 100%;
     display: inline-block;
+}
+
+.checkout {
+    width: 50%;
+    width: 90%;
+    max-width: 500px;
+    margin: 100px auto;
+}
+
+.checkout-button {
+    background-color: #24216d;
+    border: 1px solid #efc078;
+    border-radius: 8px;
+    margin: 20px 0 !important;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.checkout-button:hover {
+    background-color: #1b194e;
+    background-image: none;
 }
 
 .empty-message-container {

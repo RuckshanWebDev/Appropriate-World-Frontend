@@ -20,7 +20,9 @@ const localSlice = createSlice({
             localStorage.setItem('user', JSON.stringify(action.payload))
         },
         setProfileId: (state, action) => {
-            state.user.profileId = action.payload;
+            console.log(action.payload);
+            state.user.profileId = action.payload._id;
+            state.user.profile = action.payload;
             localStorage.setItem('user', JSON.stringify(state.user))
         },
         clearUser: (state) => {

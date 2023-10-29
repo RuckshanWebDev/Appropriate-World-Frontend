@@ -66,7 +66,7 @@ function Register() {
               </div>
 
               <div className="form__field">
-                <input type="password" placeholder="Password" name='password' required />
+                <input type="password" placeholder="Password" name='password' required minLength={8} />
               </div>
               {data.isLoading ?
                 <p>Loading</p> :

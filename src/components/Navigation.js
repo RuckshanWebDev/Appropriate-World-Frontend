@@ -7,7 +7,7 @@ import { BsFillPersonFill } from 'react-icons/bs'
 import { MdAccountCircle } from 'react-icons/md'
 import { TbMenu2 } from 'react-icons/tb'
 import { CgClose } from 'react-icons/cg'
-import { CiStreamOn } from 'react-icons/ci'
+import { HiUserGroup } from 'react-icons/hi'
 import { IoGameController } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -48,9 +48,12 @@ function Navigation() {
         audio.headerClickSound.volume = 0.5
 
         // Play sound
-        audio.headerClickSound.play()
+        if (localStorage.getItem('mute') === 'true') {
 
-        setTimeout(() => audio.enterPageSound.play(), 1000)
+          audio.headerClickSound.play()
+
+          setTimeout(() => audio.enterPageSound.play(), 1000)
+        }
 
       })
 
@@ -67,7 +70,6 @@ function Navigation() {
         <div id='logo' >
           <Link to={'/admin'}>
             <img src='/logo.gif' />
-            {/* <video muted autoPlay loop src='/logo.mp4' ></video> */}
           </Link>
         </div>
         <div id='icons' >
@@ -76,6 +78,9 @@ function Navigation() {
             <IoGameController className='white-path' />
           </Link>
           <FaShoppingCart className='white-path' />
+          <Link to={'/community'}>
+            <HiUserGroup />
+          </Link>
           <Link to={'/chat'} >
             <div style={{ position: 'relative' }} >
               <div className="notification-icon">{notificationCount}</div>
@@ -109,6 +114,9 @@ function Navigation() {
           <IoGameController className='white-path' />
         </Link>
         <FaShoppingCart className='white-path' />
+        <Link to={'/community'}>
+          <HiUserGroup />
+        </Link>
         <Link to={'/chat'} >
           <MdOutlineMessage />
         </Link>

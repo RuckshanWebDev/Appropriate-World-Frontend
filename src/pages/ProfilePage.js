@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 import { useGetProfileQuery, useLazyGetProfileQuery } from '../features/profileApi'
 import ProfileUpdate from '../components/ProfileUpdate'
 import { useLazyGetotificationQuery } from '../features/chatApi'
+import Activity from '../components/Activity'
 
 function ProfilePage() {
 
@@ -56,7 +57,7 @@ function ProfilePage() {
         getProfileData()
         if (data.isSuccess) {
             setProfile(data.data.data[0])
-            dispatch(setProfileId(data.data.data[0]._id))
+            dispatch(setProfileId(data.data.data[0]))
             console.log(data);
         } else {
             setProfile(null)
@@ -100,15 +101,13 @@ function ProfilePage() {
                             <button onClick={() => dispatch(togglePopup())} >Edit Profile</button>
                             <button onClick={logoutHandler} >Logout</button>
                         </div>
-                    </div>
-                    <div className="middle">
 
-                        <div>
+                        <div style={{ width: '100%' }}>
                             <h4> Information</h4>
                             <div className="line"></div>
                             <div className='info-container' >
                                 <div>
-                                    <h6>Name</h6>
+                                    <h6>Creator's Name</h6>
                                     <h5>{profile?.name || '-- : --'}</h5>
                                 </div>
                                 <div>
@@ -133,12 +132,20 @@ function ProfilePage() {
                                 </div>
                             </div>
                         </div>
-                        <div>
+
+                    </div>
+
+                    <div className="middle">
+
+
+                        <div >
                             <h4>Activities</h4>
                             <div className="line"></div>
+                            <Activity />
                         </div>
 
                     </div>
+
                 </div>
             </Layout>
         </>

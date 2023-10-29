@@ -1,0 +1,167 @@
+.activity-container {
+    background-color: rgba(228, 228, 228, 0.041);
+    height: max-content;
+    padding: 15px;
+    display: flex;
+    gap: 30px;
+    border-bottom: 2px solid #fff;
+
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+
+.activity-form {
+    width: 100%;
+}
+
+.activity-form textarea {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    resize: none;
+}
+
+.activity-form textarea:focus {
+    outline: none;
+}
+
+.activity-icons {
+    font-size: 30px;
+}
+
+.activity-icons svg {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.activity-form button {
+    padding: 0;
+    background-color: #fff;
+    border: none;
+    margin-left: auto;
+    background-image: linear-gradient(to left, var(--color-orange), var(--color-pink));
+    padding: 7px 14px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* ################ TWEET ################## */
+.tweetbox {
+    display: flex;
+    gap: 30px;
+    margin: 30px auto;
+    position: relative;
+}
+
+.tweet-content {
+    flex: 1;
+}
+
+.tweet-content>div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.tweet-content>p {
+    margin-top: 10px;
+}
+
+.tweet-utils {
+    display: flex;
+    margin-top: 15px;
+    flex: 0 0 0%;
+    font-size: 22px;
+    align-items: center;
+    width: min-content !important;
+}
+
+.tweet-utils svg {
+    font-size: 22px;
+    max-width: fit-content !important;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.tweet-image {
+    margin: 10px auto;
+    width: 100%;
+    border-radius: 15px;
+    max-height: 350px;
+    object-fit: cover;
+}
+
+.image-preview {
+    margin: 10px auto;
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 15px;
+
+}
+
+.video-preview {
+    margin: 10px auto;
+    width: 100%;
+    max-height: 350px;
+    border-radius: 15px;
+    display: none;
+}
+
+.video-preview-tweet {
+    margin: 10px auto;
+    width: 100%;
+    max-height: 350px;
+    border-radius: 15px;
+}
+
+.comment-box {
+    flex-direction: column;
+    width: 100%;
+    height: 0px;
+    border-radius: 15px;
+    background-color: #3a3a3a;
+    overflow: hidden;
+    transition: all .3s ease-in;
+    padding: 0px 20px;
+}
+
+.comment-box form {
+    padding: 10px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.comment-box>form>input[type=text] {
+    padding: 5px;
+    border: none;
+    background-color: #313131;
+    width: 80%;
+    color: #fff;
+}
+
+.comment-box>form>input[type=submit] {
+    padding: 5px;
+    border: none;
+    background-color: #5e5e5e;
+    width: 20%;
+    color: #fff;
+}
+
+.comment-list {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 10px;
+}
+
+.comment-list img {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}

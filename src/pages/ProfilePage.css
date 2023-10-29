@@ -6,6 +6,9 @@
     border-radius: 15px;
 
     position: relative;
+
+    display: flex;
+    gap: 30px;
 }
 
 .profile-page-container .top {
@@ -13,19 +16,34 @@
     display: flex;
     gap: 30px;
     padding-bottom: 80px;
+    flex-direction: column;
 }
 
 .profile-page-container .middle {
-    display: flex;
     gap: 30px;
+    width: 100%;
+    flex: 1 1;
+    margin-top: 20px;
 }
 
-.profile-page-container .middle div:first-child {
+.profile-page-container .middle>div:first-child {
     flex: 0 0 30%;
 }
 
-.profile-page-container .middle div:last-child {
+.profile-page-container .middle>div:last-child {
     width: 100%;
+}
+
+.profile-page-container .middle::-webkit-scrollbar {
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
+}
+
+/* Optional: show position indicator in red */
+.profile-page-container .middle::-webkit-scrollbar-thumb {
+    background: #FF0000;
 }
 
 .profile-page-container .info-container {
@@ -44,7 +62,7 @@
 }
 
 .profile-page-container h2 {
-    font-size: 80px;
+    font-size: 50px;
     font-weight: 800;
     background: -webkit-linear-gradient(left, var(--color-pink), var(--color-orange));
     -webkit-background-clip: text;
@@ -165,6 +183,7 @@ select {
         padding: 5px 15px;
 
         position: relative;
+        flex-direction: column;
     }
 
     .color-container {

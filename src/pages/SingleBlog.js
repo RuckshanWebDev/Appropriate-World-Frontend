@@ -2,8 +2,7 @@ import React from 'react'
 import Layout from '../components/Layout'
 import { useParams } from 'react-router-dom'
 import { useGetSigleBlogsQuery } from '../features/blogApi';
-import { WhatsappShareButton } from "react-share";
-import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs'
+
 
 function SingleBlog() {
 
@@ -15,7 +14,6 @@ function SingleBlog() {
         <Layout>
             <div className="singleBlog-container container">
 
-                <WhatsappShareButton title={data?.data.title} image={data?.data.image || "/user.png"} style={{ backgroundColor: 'red', height: '50px', width: '50px' }} />
 
                 <h1 className='title-big-color' >{data?.data.title}</h1>
 

@@ -17,7 +17,7 @@ function ChatPage() {
 
     const dispatch = useDispatch()
     const messageContainerRef = useRef()
-    const { profileId } = useSelector(state => state.local.user)
+    const { profileId, profile } = useSelector(state => state.local.user)
     const { notifications } = useSelector(state => state.local)
     const { data } = useGetContactQuery()
     const [getChat, chatData] = useLazyGetCoupleChatQuery()
@@ -181,9 +181,11 @@ function ChatPage() {
 
                 <div className="contact-container">
 
-                    <h4 className='contact-title' >Community</h4>
+                    <Link to={'/community'} >
+                        <h4 className='contact-title' >Community</h4>
+                    </Link>
                     {
-                        allContact?.map((contact, index) => {
+                        profile.friendList?.map((contact, index) => {
                             if (contact._id === profileId) return
 
                             var notify = notifications.includes(contact._id)

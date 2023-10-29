@@ -61,10 +61,35 @@ const profileApi = createApi({
                 url: `api/profile/${id}`,
                 method: "GET"
             })
+        }),
+
+        // Add Friend
+        addFriend: builder.mutation({
+            query: ({ id, friendId }) => {
+                console.log(id, friendId);
+                return {
+                    url: `api/profile/add/${id}`,
+                    method: 'POST',
+                    body: { friendId }
+                }
+            }
+        }),
+
+
+        // Remove Friend
+        removeFriend: builder.mutation({
+            query: ({ id, friendId }) => {
+
+                return {
+                    url: `api/profile/remove/${id}`,
+                    method: 'POST',
+                    body: { friendId }
+                }
+            }
         })
 
     })
 })
 
-export const { useGetSingleProfileQuery, useCreateProfileMutation, useGetProfileQuery, useUpdateProfileMutation, useLazyGetProfileQuery } = profileApi
+export const { useGetSingleProfileQuery, useCreateProfileMutation, useGetProfileQuery, useUpdateProfileMutation, useLazyGetProfileQuery, useAddFriendMutation, useRemoveFriendMutation } = profileApi
 export default profileApi
