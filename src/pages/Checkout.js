@@ -159,7 +159,7 @@ const Form = ({ paymentIntentId, clientSecrent }) => {
             toast.update(popup, { render: "Your payment has been success", type: "success", isLoading: false });
             toast.dismiss()
             if (responese.message === 'Success') {
-                naviagate('/payment-confirm')
+                naviagate(`/payment-confirm#type=${packageSelected}`)
             }
         } else {
             toast.update(popup, { render: "Something went wrong, Please try again later.", type: "error", isLoading: false });
@@ -181,7 +181,8 @@ const Form = ({ paymentIntentId, clientSecrent }) => {
 
         <div className="container">
 
-            <h1 style={{ textAlign: "center", marginTop: '50px' }} >Hooray!🎉, One last step to join with the <br /> <span className='text-color '>Appropriate World</span></h1>
+            <h1 style={{ textAlign: "center", marginTop: '50px' }} >Congrats! One last step to
+                becoming a  <br /> <span className='text-color '>JustCreate premium member</span></h1>
 
             <h5 style={{ textAlign: "center", marginTop: '30px', textTransform: 'capitalize' }} >You have selected {packageSelected} Package,  <Link to={'/packages'} >packages</Link> </h5>
 

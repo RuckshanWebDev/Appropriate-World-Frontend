@@ -33,8 +33,6 @@ import PaymentConfirm from './pages/PaymentConfirm.js';
 
 export default function App() {
 
-  const siteEnter = new Audio('/music/ENTER_SITE.wav')
-
   const dispatch = useDispatch()
   const [getNotificationFn, getNotification] = useLazyGetotificationQuery()
 
@@ -48,7 +46,6 @@ export default function App() {
   useEffect(() => {
 
     getNotificationFn()
-    // siteEnter.play()
     localStorage.setItem('mute', true)
     console.log("site enter");
 
@@ -68,19 +65,18 @@ export default function App() {
         <Route path='/profile/:id' element={<SingleProfile />} exact />
         <Route path='/games/chess' element={<ChessGamePage />} exact />
         <Route path='/games/snake' element={<SnakeGamePage />} exact />
-        <Route path='/community' element={<CommunityPage />} exact />
+        <Route path='/community' element={<ProtectRoute> <CommunityPage /> </ProtectRoute>} exact />
         <Route path='/login' element={<Login />} exact />
         <Route path='/register' element={<Register />} exact />
         <Route path='/forgot-password' element={<ForgotPassword />} exact />
         <Route path='/reset-password/:token' element={<ResetPassword />} exact />
         <Route path='/audio/:id' element={<ProductPage />} exact />
         <Route path='/video/:id' element={<ProductPageVideo />} exact />
-        <Route path='/checkout' element={<Checkout />} exact />
-        <Route path='/packages' element={<Package />} exact />
-        <Route path='/payment-confirm' element={<PaymentConfirm />} exact />
-        <Route path='*' element={<ErrorPage />} />
+        <Route path='/checkout' element={<ProtectRoute> <Checkout /> </ProtectRoute>} exact />
+        <Route path='/packages' element={<ProtectRoute><Package /> </ProtectRoute>} exact />
+        <Route path='/payment-confirm' element={<ProtectRoute><PaymentConfirm /> </ProtectRoute>} exact />
+        <Route path='*' element={<ProtectRoute><ErrorPage /> </ProtectRoute>} />
       </Routes>
     </BrowserRouter>
   )
-
 }

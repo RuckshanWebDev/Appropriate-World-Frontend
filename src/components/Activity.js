@@ -11,6 +11,7 @@ import { ImBin2 } from 'react-icons/im'
 import { useCommentTweetMutation, useCreateTweetMutation, useDeleteTweetMutation, useGetAllTweetsQuery, useLikeTweetMutation } from '../features/forumApi'
 import Loader from './Loader'
 import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
 
 
 function Activity() {
@@ -241,10 +242,14 @@ function Activity() {
 
 
                             return (<div className="tweetbox" key={index} >
-                                <img className='avatar' src={item.author.profile_image || "/user.png"} alt="" />
+                                <Link to={`/profile/${item.author._id}`}>
+                                    <img className='avatar' src={item.author.profile_image || "/user.png"} alt="" />
+                                </Link>
                                 <div className='tweet-content'>
                                     {item.author._id === user?.profileId && <ImBin2 data-id={item._id} onClick={deleteTweet} style={{ position: 'absolute', top: '10px', right: '10px' }} />}
-                                    <h6>{item.author.name} <span>@{item.author.name}</span> </h6>
+                                    <Link to={`/profile/${item.author._id}`}>
+                                        <h6>{item.author.name} <span>@{item.author.name}</span> </h6>
+                                    </Link>
                                     <p>{item.text} </p>
                                     {item.mediaLink &&
                                         item.mediaType === 'video' ?

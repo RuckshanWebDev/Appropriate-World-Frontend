@@ -51,6 +51,10 @@
     font-weight: 500;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* ################ TWEET ################## */
 .tweetbox {
     display: flex;

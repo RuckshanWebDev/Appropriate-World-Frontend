@@ -91,9 +91,9 @@ function ProfilePage() {
                         <div>
                             {
                                 profile?.isPremium ?
-                                    profile?.accountType === 'LAVENDER' ?
+                                    profile?.accountType === 'VIOLET' ?
                                         <Link to={'/packages'} id='account-type'>
-                                            <img src="./card/LAVENDER.gif" alt="" />
+                                            <img src="./card/VIOLET.gif" alt="" />
                                         </Link>
                                         :
                                         <Link to={'/packages'} id='account-type' >
@@ -102,7 +102,7 @@ function ProfilePage() {
 
                                     :
                                     <Link to={'/packages'} id='account-type'>
-                                        <img src="./card/VIOLET.gif" alt="" />
+                                        <img src="./card/LAVENDER.gif" alt="" />
                                     </Link>
 
                             }
