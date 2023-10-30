@@ -145,9 +145,9 @@ function Activity() {
                 const newObj = { ...i }
                 newObj.likes = [...newObj.likes]
                 node.liked === 'true' ?
-                    newObj.likes.indexOf(user.profileId) > -1 && newObj.likes.splice(newObj.likes.indexOf(user.profileId, 1))
+                    newObj.likes.indexOf(user?.profileId) > -1 && newObj.likes.splice(newObj.likes.indexOf(user?.profileId, 1))
                     :
-                    newObj.likes.push(user.profileId)
+                    newObj.likes.push(user?.profileId)
                 return newObj
             }
             return i
@@ -243,7 +243,7 @@ function Activity() {
                             return (<div className="tweetbox" key={index} >
                                 <img className='avatar' src={item.author.profile_image || "/user.png"} alt="" />
                                 <div className='tweet-content'>
-                                    {item.author._id === user.profileId && <ImBin2 data-id={item._id} onClick={deleteTweet} style={{ position: 'absolute', top: '10px', right: '10px' }} />}
+                                    {item.author._id === user?.profileId && <ImBin2 data-id={item._id} onClick={deleteTweet} style={{ position: 'absolute', top: '10px', right: '10px' }} />}
                                     <h6>{item.author.name} <span>@{item.author.name}</span> </h6>
                                     <p>{item.text} </p>
                                     {item.mediaLink &&
@@ -254,7 +254,7 @@ function Activity() {
                                     }
                                     <div   >
                                         <div className=' tweet-utils'>
-                                            <AiOutlineHeart style={item.likes.includes(user.profileId) ? { color: '#e53939' } : { color: "#fff" }} data-liked={item.likes.includes(user.profileId)} data-id={item._id} onClick={likeHandler} />
+                                            <AiOutlineHeart style={item.likes.includes(user?.profileId) ? { color: '#e53939' } : { color: "#fff" }} data-liked={item.likes.includes(user?.profileId)} data-id={item._id} onClick={likeHandler} />
                                             <span className='tweet-span'> {item.likes.length} </span>
                                         </div>
                                         <div className=' tweet-utils'>

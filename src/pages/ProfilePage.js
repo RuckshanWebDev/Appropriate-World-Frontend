@@ -9,6 +9,7 @@ import { useGetProfileQuery, useLazyGetProfileQuery } from '../features/profileA
 import ProfileUpdate from '../components/ProfileUpdate'
 import { useLazyGetotificationQuery } from '../features/chatApi'
 import Activity from '../components/Activity'
+import { Link } from 'react-router-dom'
 
 function ProfilePage() {
 
@@ -87,12 +88,31 @@ function ProfilePage() {
                     </div>
 
                     <div className="top">
-                        {
-                            profile?.profile_image ?
-                                <img src={profile?.profile_image} key={profile?.profile_image} alt="" id="profile-img" />
-                                :
-                                <img src="./user.png" alt="" id="profile-img" />
-                        }
+                        <div>
+                            {
+                                profile?.isPremium ?
+                                    profile?.accountType === 'LAVENDER' ?
+                                        <Link to={'/packages'} id='account-type'>
+                                            <img src="./card/LAVENDER.gif" alt="" />
+                                        </Link>
+                                        :
+                                        <Link to={'/packages'} id='account-type' >
+                                            <img src="./card/ONYX.gif" alt="" />
+                                        </Link>
+
+                                    :
+                                    <Link to={'/packages'} id='account-type'>
+                                        <img src="./card/VIOLET.gif" alt="" />
+                                    </Link>
+
+                            }
+                            {
+                                profile?.profile_image ?
+                                    <img src={profile?.profile_image} key={profile?.profile_image} alt="" id="profile-img" />
+                                    :
+                                    <img src="./user.png" alt="" id="profile-img" />
+                            }
+                        </div>
                         <div>
                             <h2>{profile?.name || '-- : --'}</h2>
                             <h3 >{profile?.bio || 'Add your bio'}</h3>

@@ -69,12 +69,12 @@ function CommunityPage() {
                                 </Link>
                                 <div>
                                     <h1>{item.name}</h1>
-                                    <h6>{item.profession || '-- : --'}</h6>
-                                    <p>{item.bio || '-- : --'}</p>
+                                    <h6>{item.profession} &nbsp;</h6>
+                                    <p>{item.bio}&nbsp;</p>
                                     {profile?.friendList.length ?
 
                                         profile.friendList.map(i => i._id).includes(item._id) ?
-                                            <button onClick={() => removeFriendHandler(item._id)} >Remove</button>
+                                            <button onClick={() => removeFriendHandler(item._id)} >Unfollow</button>
                                             :
                                             <button onClick={() => addFriendHandler(item._id)}>  Follow</button>
                                         :

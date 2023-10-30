@@ -96,9 +96,8 @@ const Form = ({ paymentIntentId, clientSecrent }) => {
         let popup = toast.loading("Please wait...")
         let _amount = 0;
 
-        if (packageSelected === 'gold') _amount = 199
-        else if (packageSelected === 'premium') _amount = 299
-        else if (packageSelected === 'elite') _amount = 399
+        if (packageSelected === 'VIOLET') _amount = 35.99
+        else if (packageSelected === 'ONYX') _amount = 99.99
 
         e.preventDefault()
 

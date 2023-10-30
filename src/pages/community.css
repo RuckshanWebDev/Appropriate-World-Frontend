@@ -9,25 +9,58 @@
 
 .community-member {
     display: flex;
+    flex-direction: column;
     gap: 20px;
+    justify-content: center;
     align-items: center;
-    flex: 0 0 30%;
+    flex: 1 0 30%;
     margin-bottom: 30px;
-    border: 1px solid;
+    /* border: 1px solid; */
     border-radius: 15px;
     padding: 15px;
     justify-content: start;
-    align-items: start;
+    /* align-items: start; */
+    background: #44a8ff1a;
+    text-align: center;
+}
+
+.community-member .avatar {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
 }
 
 .community-member h6 {
     font-weight: 400;
-    line-height: 18px;
+    line-height: 16px;
+    font-size: 16px;
     justify-content: space-between;
+    margin: 5px 0;
+    color: #cbcbcb;
+}
+
+.community-member p {
+    color: #cbcbcb;
+    font-size: 14px;
+}
+
+.community-member h1 {
+    color: #d8e6fe;
+    font-size: 25px;
+    font-weight: 400;
 }
 
 .community-member button {
-    margin: 10px 0 !important;
+    margin: 10px 0 0 !important;
+    border: 1px solid #003052;
+    appearance: auto;
+    font-weight: 500;
+    font-size: 19px;
+}
+
+.community-member button:hover {
+    background-color: #003052;
+    background-image: none;
 }
 
 .community-bio {
