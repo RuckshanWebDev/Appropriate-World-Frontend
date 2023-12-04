@@ -27,12 +27,12 @@ function Register() {
   }
 
   if (user && user._id) {
-    navigate('/profile')
+    navigate('/profile?editProfile=true')
   }
   useEffect(() => {
 
     if (user && user._id) {
-      navigate('/profile')
+      navigate('/profile?editProfile=true')
     }
 
     if (data.isError) {
@@ -76,7 +76,7 @@ function Register() {
               }
             </form>
 
-            <p>Already have an accout? <Link style={{ color: 'blue' }} to="/login" >Login</Link></p>
+            <p>Already have an account? <Link style={{ color: 'blue' }} to="/login" >Login</Link></p>
 
           </div>
         </div>

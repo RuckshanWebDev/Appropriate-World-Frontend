@@ -7,7 +7,7 @@ import Loader from '../components/Loader';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-let stripePromise = await loadStripe('pk_test_51Nnw7qF40YQ3vkpscae5w6XGoTd8HCCzVsp7o4B53kwsV1mmweY60pfzqDfLM8CGwXeXcQA8PfklEoWC3sHgIWsx00Pv0jCcL2')
+let stripePromise = await loadStripe('pk_test_51OAcXEImpSftCiTAEcdfWs0YKnbuPf7xNTWSWbe8L8B0DvUJ1RTnAE2EKUU9gOreOcEYSI2SdHgJJarh2FNNXtYe00ZaOJHEH2')
 
 function Checkout() {
 

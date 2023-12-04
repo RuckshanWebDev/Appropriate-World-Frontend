@@ -65,7 +65,7 @@ const ForgotPassword = () => {
 
                         </form>
 
-                        <p>Create an new accout? <Link to="/register" style={{ color: 'blue' }}  >Register</Link></p>
+                        <p>Create an new account? <Link to="/register" style={{ color: 'blue' }}  >Register</Link></p>
 
                         <p style={{ paddingTop: '20px' }}  >Already have a account?<Link to="/login" style={{ color: 'blue', paddingTop: '20px' }}  >Login</Link></p>
 

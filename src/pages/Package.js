@@ -14,7 +14,9 @@ function Package() {
 
                 <div className="package-container">
                     <div className="package-item">
-                        <img src="/card/LAVENDER.gif" alt="" />
+                        <Link to={'/profile'} style={{ textDecoration: 'none', color: '#fff' }} >
+                            <img src="/card/LAVENDER.gif" alt="" />
+                        </Link>
                         <div>
                             <h2>LAVENDER</h2>
                             <div className="content">
@@ -29,7 +31,28 @@ function Package() {
                         </div>
                     </div>
                     <div className="package-item">
-                        <img src="/card/ONYX.gif" alt="" />
+                        <Link to={'/checkout#type=VIOLET'} style={{ textDecoration: 'none', color: '#fff' }} >
+                            <img src="/card/VIOLET.gif" alt="" />
+                        </Link>
+                        <div>
+                            <h2>VIOLET</h2>
+                            <div className="content">
+                                <span>Basic Social Network Access</span>
+                                <span>Premium Content Access</span>
+                                <span>Content Hosting</span>
+                                <span>All Access to IRL Events/classes</span>
+                                <span>Community Voting Rights</span>
+                                <span>Digital Bundle Box</span>
+                            </div>
+                            <button>
+                                <Link to={'/checkout#type=VIOLET'} style={{ textDecoration: 'none', color: '#fff' }} >35.99</Link>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="package-item">
+                        <Link to={'/checkout#type=ONYX'} style={{ textDecoration: 'none', color: '#fff' }} >
+                            <img src="/card/ONYX.gif" alt="" />
+                        </Link>
                         <div>
                             <h2>ONYX</h2>
                             <div className="content">
@@ -48,23 +71,7 @@ function Package() {
                             </button>
                         </div>
                     </div>
-                    <div className="package-item">
-                        <img src="/card/VIOLET.gif" alt="" />
-                        <div>
-                            <h2>VIOLET</h2>
-                            <div className="content">
-                                <span>Basic Social Network Access</span>
-                                <span>Premium Content Access</span>
-                                <span>Content Hosting</span>
-                                <span>All Access to IRL Events/classes</span>
-                                <span>Community Voting Rights</span>
-                                <span>Digital Bundle Box</span>
-                            </div>
-                            <button>
-                                <Link to={'/checkout#type=VIOLET'} style={{ textDecoration: 'none', color: '#fff' }} >35.99</Link>
-                            </button>
-                        </div>
-                    </div>
+
 
                 </div>
 

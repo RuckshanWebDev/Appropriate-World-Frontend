@@ -39,7 +39,7 @@ function BlogPage() {
                                     </div>
                                 </Link>
                                 {/* <p className='blog-desc' >{blogItem.content.slice(0, 250)} </p> */}
-                                <div className='blog-desc' dangerouslySetInnerHTML={{ __html: blogItem.content.slice(0, 250).trim() }} >
+                                <div className='blog-desc' dangerouslySetInnerHTML={{ __html: blogItem.content.slice(0, 150).trim() }} >
                                 </div>
                                 <Link to={`/blog/${blogItem._id}`} >See more...</Link>
                             </div>

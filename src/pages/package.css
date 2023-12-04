@@ -40,8 +40,8 @@
     background-clip: content-box, border-box;
 }
 
-.package-item>img {
-    width: 100%;
+.package-item img {
+    width: 63%;
     /* transform: rotate(-10deg); */
     margin: 30px auto;
     display: block;

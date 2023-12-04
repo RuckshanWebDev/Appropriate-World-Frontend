@@ -68,6 +68,13 @@ function ProfilePage() {
         // getNotificationFn()
     }, [popup, data.data])
 
+    useEffect(() => {
+        const params = window.location.search?.replace('?', '').split('=')
+        console.log(params);
+        if (params[0] === 'editProfile' && params[1] === 'true') {
+            dispatch(togglePopup())
+        }
+    }, [])
 
     return (
         <>
@@ -143,7 +150,7 @@ function ProfilePage() {
                                     <h5>{profile?.profession || '-- : --'}</h5>
                                 </div>
                                 <div>
-                                    <h6>Interests</h6>
+                                    <h6>Interests/Credits</h6>
                                     <h5>{profile?.hobby || '-- : --'}</h5>
                                 </div>
                                 <div>

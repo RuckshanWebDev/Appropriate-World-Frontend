@@ -18,8 +18,13 @@ function ProfileUpdate({ data }) {
 
 
     const updateFormHandler = async (e) => {
-
         e.preventDefault()
+
+        const params = window.location.search?.replace('?', '').split('=')
+        if (params[1]) {
+            window.location.search = ''
+        }
+
         console.log(data);
         if (!data) {
 
@@ -169,7 +174,7 @@ function ProfileUpdate({ data }) {
                         {/* <input type="date" name='dob' /> */}
                     </div>
                     <div className="input-container">
-                        <label >Interests</label>
+                        <label >Interests/Credits</label>
                         <input type="text" name='hobby' />
                     </div>
 

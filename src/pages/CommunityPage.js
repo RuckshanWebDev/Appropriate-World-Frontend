@@ -74,11 +74,11 @@ function CommunityPage() {
                                     {profile?.friendList.length ?
 
                                         profile.friendList.map(i => i._id).includes(item._id) ?
-                                            <button onClick={() => removeFriendHandler(item._id)} >Unfollow</button>
+                                            <button onClick={() => removeFriendHandler(item._id)} >Disconnect</button>
                                             :
-                                            <button onClick={() => addFriendHandler(item._id)}>  Follow</button>
+                                            <button onClick={() => addFriendHandler(item._id)}>  Connect</button>
                                         :
-                                        <button onClick={() => addFriendHandler(item._id)}>Follow</button>
+                                        <button onClick={() => addFriendHandler(item._id)}>Connect</button>
                                     }
                                 </div>
 

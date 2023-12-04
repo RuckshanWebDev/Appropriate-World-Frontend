@@ -1,7 +1,7 @@
 .profile-page-container {
     width: 100%;
     margin: 80px auto;
-    background-color: rgba(240, 248, 255, 0.144);
+    background-color: #44a8ff1a;
     padding: 15px;
     border-radius: 15px;
 
@@ -28,7 +28,7 @@
     position: absolute;
     bottom: -50px;
     right: -50px;
-    z-index: 50;
+    z-index: 15;
 }
 
 #account-type>img {

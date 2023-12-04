@@ -72,7 +72,7 @@ const Login = () => {
 
             </form>
 
-            <p>Create an new accout? <Link to="/register" style={{ color: 'blue' }}  >Register</Link></p>
+            <p>Create an new account? <Link to="/register" style={{ color: 'blue' }}  >Register</Link></p>
 
             <p style={{ paddingTop: '20px' }}  >Forgot Password <Link to="/forgot-password" style={{ color: 'blue', paddingTop: '20px' }}  >Reset</Link></p>
 

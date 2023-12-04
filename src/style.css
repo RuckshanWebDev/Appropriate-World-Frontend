@@ -69,9 +69,9 @@ h6 {
 }
 
 h5 {
-    color: #ffffff;
+    color: #cbcbcb;
     font-size: 22px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 30px;
 }
 
@@ -271,6 +271,10 @@ input:focus {
     .title-container>h2 {
         font-size: 20px;
         font-weight: 500;
+    }
+
+    .title-big-color {
+        font-size: 20px;
     }
 }
 
