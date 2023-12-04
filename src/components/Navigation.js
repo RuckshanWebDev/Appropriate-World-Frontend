@@ -74,9 +74,6 @@ function Navigation() {
         </div>
         <div id='icons' >
           {/* <CiStreamOn /> */}
-          <Link to={'/games'} >
-            <IoGameController className='white-path' />
-          </Link>
           <FaShoppingCart className='white-path' />
           <Link to={'/community'}>
             <HiUserGroup />
@@ -110,9 +107,6 @@ function Navigation() {
 
       <div className='mobile-nav' style={{ display: navOpen ? "flex" : 'none' }} >
         {/* <CiStreamOn /> */}
-        <Link to={'/games'} >
-          <IoGameController className='white-path' />
-        </Link>
         <FaShoppingCart className='white-path' />
         <Link to={'/community'}>
           <HiUserGroup />
