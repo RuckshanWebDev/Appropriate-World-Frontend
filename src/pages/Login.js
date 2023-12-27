@@ -39,7 +39,7 @@ const Login = () => {
       toast.error("Invalid Email or Password")
     }
     if (data.isSuccess) {
-      toast.success("Successfully Registered")
+      toast.success("Logged In Successfully")
       dispatch(setUser(data.data.data))
     }
 

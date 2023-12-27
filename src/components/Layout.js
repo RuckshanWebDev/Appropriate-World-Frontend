@@ -2,13 +2,16 @@ import React from 'react'
 
 import Footer from './Footer'
 import Navigation from './Navigation'
+import LoaderContainer from './LoaderContainer';
 
-function Layout({ children }) {
+function Layout({ children, loader }) {
+  console.log(loader);
   return (
     <>
       <div className='main' >
         <Navigation />
-        <div style={{ minHeight: ' calc(100vh - 310px)' }} >
+        <div style={{ minHeight: ' calc(100vh - 210px)' }} >
+          {loader && <LoaderContainer />}
           {children}
         </div>
         <Footer />

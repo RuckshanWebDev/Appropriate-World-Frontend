@@ -22,6 +22,7 @@
     /* align-items: start; */
     background: #44a8ff1a;
     text-align: center;
+    max-width: 33%;
 }
 
 .community-member .avatar {
@@ -65,4 +66,10 @@
 
 .community-bio {
     display: flex;
+}
+
+@media only screen and (max-width: 768px) {
+    .community-member {
+        max-width: 50%;
+    }
 }

@@ -10,6 +10,8 @@ import ProfileUpdate from '../components/ProfileUpdate'
 import { useLazyGetotificationQuery } from '../features/chatApi'
 import Activity from '../components/Activity'
 import { Link } from 'react-router-dom'
+import { IoMdSettings } from "react-icons/io";
+
 
 function ProfilePage() {
 
@@ -98,9 +100,9 @@ function ProfilePage() {
                         <div>
                             {
                                 profile?.isPremium ?
-                                    profile?.accountType === 'VIOLET' ?
+                                    profile?.accountType === 'EMERALD' ?
                                         <Link to={'/packages'} id='account-type'>
-                                            <img src="./card/VIOLET.gif" alt="" />
+                                            <img src="./card/emerald.gif" alt="" />
                                         </Link>
                                         :
                                         <Link to={'/packages'} id='account-type' >
@@ -109,7 +111,7 @@ function ProfilePage() {
 
                                     :
                                     <Link to={'/packages'} id='account-type'>
-                                        <img src="./card/LAVENDER.gif" alt="" />
+                                        <img src="./card/VIOLET.gif" alt="" />
                                     </Link>
 
                             }
@@ -159,6 +161,10 @@ function ProfilePage() {
                                 </div>
                             </div>
                         </div>
+                        <Link to={'/settings'} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }} >
+                            <IoMdSettings style={{ color: '#d8e6fe', fontSize: '32px' }} /> <span style={{ fontSize: '24px' }} >Account Settings</span>
+                        </Link>
+
 
                     </div>
 

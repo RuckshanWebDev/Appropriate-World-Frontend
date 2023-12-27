@@ -23,9 +23,10 @@ import { useDispatch } from 'react-redux';
 import CommunityPage from './pages/CommunityPage.js';
 import ResetPassword from './pages/ResetPassword.js';
 import ForgotPassword from './pages/ForgotPassword.js';
-import Checkout from './pages/Checkout.js';
 import Package from './pages/Package.js';
 import PaymentConfirm from './pages/PaymentConfirm.js';
+import Settings from './pages/Settings.js';
+import TestPage from './pages/TestPage.js';
 
 
 export default function App() {
@@ -42,7 +43,7 @@ export default function App() {
 
   useEffect(() => {
 
-    getNotificationFn()
+    localStorage.getItem('user') && getNotificationFn()
     localStorage.setItem('mute', true)
     console.log("site enter");
 
@@ -66,9 +67,11 @@ export default function App() {
         <Route path='/reset-password/:token' element={<ResetPassword />} exact />
         <Route path='/audio/:id' element={<ProductPage />} exact />
         <Route path='/video/:id' element={<ProductPageVideo />} exact />
-        <Route path='/checkout' element={<ProtectRoute> <Checkout /> </ProtectRoute>} exact />
+        {/* <Route path='/checkout' element={<ProtectRoute> <Checkout /> </ProtectRoute>} exact /> */}
         <Route path='/packages' element={<ProtectRoute><Package /> </ProtectRoute>} exact />
         <Route path='/payment-confirm' element={<ProtectRoute><PaymentConfirm /> </ProtectRoute>} exact />
+        <Route path='/settings' element={<ProtectRoute><Settings /> </ProtectRoute>} exact />
+        <Route path='/test' element={<ProtectRoute><TestPage /> </ProtectRoute>} exact />
         <Route path='*' element={<ProtectRoute><ErrorPage /> </ProtectRoute>} />
       </Routes>
     </BrowserRouter>

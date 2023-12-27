@@ -10,8 +10,10 @@ const root = ReactDOM.createRoot(document.querySelector('#root'))
 root.render(
     <Provider store={store} >
         <ToastContainer position="top-center"
-            autoClose={3000}
-            pauseOnFocusLoss={false}>
+            pauseOnFocusLoss={false}
+            autoClose={1000}
+            hideProgressBar={true}
+        >
         </ToastContainer  >
         <App />
     </Provider>

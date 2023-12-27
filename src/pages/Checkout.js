@@ -158,7 +158,7 @@ const Form = ({ paymentIntentId, clientSecrent }) => {
             console.log(responese);
             toast.update(popup, { render: "Your payment has been success", type: "success", isLoading: false });
             toast.dismiss()
-            if (responese.message === 'Success') {
+            if (responese.message === '    Success') {
                 naviagate(`/payment-confirm#type=${packageSelected}`)
             }
         } else {

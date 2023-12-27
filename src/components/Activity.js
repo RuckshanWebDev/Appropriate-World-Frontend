@@ -170,10 +170,16 @@ function Activity() {
         }
 
     }
-    const commentHandlerReq = (e) => {
+
+    const commentHandlerReq = async (e) => {
         e.preventDefault()
 
-        commentFn({ id: e.target.dataset.id, data: { comment: e.target.name.value, commetedUser: user.profileId } })
+        const responce = await commentFn({ id: e.target.dataset.id, data: { comment: e.target.name.value, commetedUser: user.profileId } }).unwrap()
+
+        console.log(responce);
+
+        console.log(feed);
+        MutateData(feed, responce.data)
 
         e.target.reset()
     }
@@ -195,6 +201,37 @@ function Activity() {
 
         const filteredArray = feed.filter(i => i._id !== id)
         setFeed(filteredArray)
+    }
+
+    // Mutate Data Functions 
+    const MutateData = (arr, item) => {
+
+        let count = 0
+        let newArray = [...arr]
+
+        const looper = () => {
+
+            if (newArray[count].id === item.id) {
+
+                // Logic
+                console.log(newArray[count], item);
+                newArray[count] = { ...item, author: newArray[count].author }
+                setFeed(newArray)
+
+                return
+
+            } else {
+
+                if (arr.length - 1 < count) return
+
+                count++
+
+                looper()
+            }
+        }
+
+
+        looper()
     }
 
     // useEffect
@@ -235,7 +272,9 @@ function Activity() {
 
                 {
                     !feed.length ?
-                        <Loader custom={{ width: '100%', textAlign: 'center', marginTop: '30px' }} />
+                        allTweet.isLoading ?
+                            <Loader custom={{ width: '100%', textAlign: 'center', marginTop: '30px' }} /> :
+                            <h4 style={{ marginTop: '20px', textAlign: 'center' }}  >No Activities</h4>
                         :
 
                         feed.map((item, index) => {
@@ -271,7 +310,11 @@ function Activity() {
                                     <div className="comment-box">
                                         <form data-id={item._id} onSubmit={commentHandlerReq} >
                                             <input type="text" name="name" id="" />
-                                            <input type="submit" value='Comment' id="" />
+                                            {
+                                                commentData.isLoading ? <Loader custom={{ width: '25px', height: '25px', marginLeft: '15px' }} />
+                                                    :
+                                                    <input type="submit" value='Comment' id="" />
+                                            }
                                         </form>
                                         {
                                             item.comments.map(com => {

@@ -98,9 +98,9 @@ button {
     margin: 10px 10px 0 !important;
 }
 
-button:hover {
+/* button:hover {
     background-image: linear-gradient(to left, var(--color-orange), var(--color-pink));
-}
+} */
 
 .title-container {
     margin: 20px 0;
