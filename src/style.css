@@ -98,6 +98,10 @@ button {
     margin: 10px 10px 0 !important;
 }
 
+.card-1-3 {
+    flex-basis: 32%;
+}
+
 /* button:hover {
     background-image: linear-gradient(to left, var(--color-orange), var(--color-pink));
 } */
@@ -246,6 +250,10 @@ input:focus {
 
 
 @media only screen and (max-width: 768px) {
+    .card-1-3 {
+        flex-basis: 100%;
+    }
+
     .title-container>h2 {
         font-size: 30px;
         font-weight: 800;

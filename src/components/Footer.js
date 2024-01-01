@@ -8,17 +8,17 @@ import { useEffect } from 'react'
 
 function Footer() {
 
-    const [mute, setMute] = useState()
+    // const [mute, setMute] = useState()
 
-    const muteHandler = () => {
-        if (localStorage.getItem('mute') === 'true') {
-            localStorage.setItem('mute', false)
-            setMute(false)
-        } else {
-            setMute(true)
-            localStorage.setItem('mute', true)
-        }
-    }
+    // const muteHandler = () => {
+    //     if (localStorage.getItem('mute') === 'true') {
+    //         localStorage.setItem('mute', false)
+    //         setMute(false)
+    //     } else {
+    //         setMute(true)
+    //         localStorage.setItem('mute', true)
+    //     }
+    // }
 
     // const footerPosition = () => {
     //     const mainEl = document.querySelector('.main')
@@ -45,11 +45,11 @@ function Footer() {
 
         // footerPosition()
 
-        if (localStorage.getItem('mute') === 'true') {
-            setMute(true)
-        } else {
-            setMute(false)
-        }
+        // if (localStorage.getItem('mute') === 'true') {
+        //     setMute(true)
+        // } else {
+        //     setMute(false)
+        // }
     }, [])
 
     return (
@@ -69,11 +69,11 @@ function Footer() {
                             <a href='https://www.instagram.com/appropriateworld/' target='_blank'  >
                                 <FaInstagram />
                             </a>
-                            {
+                            {/* {
                                 mute ?
                                     <AiFillSound onClick={muteHandler} /> :
                                     <BsFillVolumeMuteFill onClick={muteHandler} />
-                            }
+                            } */}
                         </div>
                         <div className="clearfix"></div>
                     </div>

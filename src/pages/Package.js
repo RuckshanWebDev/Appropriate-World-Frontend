@@ -7,6 +7,7 @@ import { useCreateCustomerMutation, useCreateSessionMutation, useGetPricesQuery 
 import { setProfileId } from '../features/localSlice'
 import { useLazyGetProfileQuery } from '../features/profileApi'
 import { loadStripe } from '@stripe/stripe-js'
+import { toast } from 'react-toastify'
 
 let stripePromise = loadStripe('pk_test_51Nnw7qF40YQ3vkpscae5w6XGoTd8HCCzVsp7o4B53kwsV1mmweY60pfzqDfLM8CGwXeXcQA8PfklEoWC3sHgIWsx00Pv0jCcL2')
 
@@ -31,6 +32,8 @@ function Package() {
 
     const handleCheckout = async (val) => {
 
+        toast.loading('Performing the Payment Method...')
+
         if (stripe) {
             console.log(val, user.profile.customerId);
 
@@ -42,7 +45,9 @@ function Package() {
                 sessionId: response.id,
             });
 
+
             if (result.error) {
+                toast.error(result.error.message)
                 console.error(result.error.message);
             }
         }

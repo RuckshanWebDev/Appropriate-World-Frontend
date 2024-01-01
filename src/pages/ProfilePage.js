@@ -72,7 +72,6 @@ function ProfilePage() {
 
     useEffect(() => {
         const params = window.location.search?.replace('?', '').split('=')
-        console.log(params);
         if (params[0] === 'editProfile' && params[1] === 'true') {
             dispatch(togglePopup())
         }

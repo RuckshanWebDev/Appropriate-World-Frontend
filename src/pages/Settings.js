@@ -4,7 +4,7 @@ import { useCancelSubscriptionsMutation, useCreateCustomerMutation, useCreatePor
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import LoaderContainer from '../components/LoaderContainer'
-import { useGetProfileQuery, useLazyGetProfileQuery } from '../features/profileApi'
+import { useGetProfileQuery, useLazyGetProfileQuery, useUpdateProfileMutation } from '../features/profileApi'
 import { setProfileId } from '../features/localSlice'
 import '@radix-ui/themes/styles.css';
 import { AlertDialog, Avatar, Badge, Box, Button, Card, Flex, Heading, Separator, Table, Text, TextField, Theme } from '@radix-ui/themes'
@@ -17,7 +17,7 @@ function Settings() {
     const [data, setDate] = useState()
     const dispatch = useDispatch()
 
-    console.log(user.profile.customerId);
+    const [profileUpdate, profileData] = useUpdateProfileMutation()
     const [getProfileData, dataProfile] = useLazyGetProfileQuery()
     const [getSubscriptions, getSubscriptionsData] = useGetSubscriptionsMutation()
     const [createCustomer, createCustomerData] = useCreateCustomerMutation()
@@ -28,8 +28,7 @@ function Settings() {
     const cancelSubscriptionHandler = async (id) => {
         try {
             const responce = await cancelSubscription({ subscription: id }).unwrap()
-            console.log(responce);
-
+            window.location.reload()
         } catch (error) {
             console.log(error);
 
@@ -84,19 +83,54 @@ function Settings() {
         }
     }
 
-    // console.log(getSubscriptionsData.data?.data.data[0]);
-    if (getSubscriptionsData.data?.data.data[0]?.items.total_count) {
-        console.log(getPackageName(getSubscriptionsData.data.data.data[0]?.items.data[0].plan.id));
-    } else {
-        console.log('basic');
-    }
 
-    // console.log(invoiceData.data.data.);
+    const updateProfileWithSubsciption = () => {
+
+        // GET PACKAGS NAME AND ADD TO THE PROFILE
+        if (getSubscriptionsData.data?.data.data[0]?.items.total_count) {
+
+            // CHECKING THE ACTIVE PACKAGES
+            if (getSubscriptionsData.data.data.data[0].status === 'active') {
+
+                if (getPackageName(getSubscriptionsData.data.data.data[0].plan.id) === 'EMERALD') {
+
+                    if (user.profile.accountType !== 'EMERALD') {
+                        profileUpdate({ isPremium: true, accountType: 'EMERALD' })
+                    }
+
+                } else if (getPackageName(getSubscriptionsData.data.data.data[0].plan.id) === 'ONYX') {
+
+                    if (user.profile.accountType !== 'ONYX') {
+                        console.log('🎉🎉🎉');
+                        profileUpdate({ isPremium: true, accountType: 'ONYX' })
+                    }
+
+                }
+
+            } else {
+
+                // FREE PACKAGE
+                if (user.profile.isPremium) {
+                    profileUpdate({ isPremium: false, accountType: 'basic' })
+                }
+
+            }
+
+        } else {
+
+            //    FREE PACKAGE
+            if (user.profile.isPremium) {
+                profileUpdate({ isPremium: false, accountType: 'basic' })
+            }
+
+        }
+    }
 
     useEffect(() => {
 
         apiCall()
         invoices()
+        updateProfileWithSubsciption()
 
     }, [])
 
@@ -152,7 +186,7 @@ function Settings() {
 
                                             return (
                                                 <>
-                                                    <Card style={{ flex: '0 0 32%', maxWidth: '50%' }}>
+                                                    <Card className='card-1-3' >
                                                         <Flex direction={'column'} align={'start'} >
                                                             <Badge color={item.status === 'active' ? 'green' : 'red'} style={{ alignSelf: 'flex-end', position: 'absolute', top: '15px', right: '15px' }} >{item.status} </Badge>
                                                             <Avatar

@@ -24,43 +24,43 @@ function Navigation() {
     setNavOpen(!navOpen)
   }
 
-  const audio = useMemo(() => {
-    return {
-      headerClickSound: new Audio('/music/HEADER_BUTTONS.wav'),
-      enterPageSound: new Audio('/music/ENTER_PAGE.wav')
-    }
-  }, [])
+  // const audio = useMemo(() => {
+  //   return {
+  //     headerClickSound: new Audio('/music/HEADER_BUTTONS.wav'),
+  //     enterPageSound: new Audio('/music/ENTER_PAGE.wav')
+  //   }
+  // }, [])
 
   useEffect(() => {
 
     // 'a' tag Array
-    const linkArray = [...navigation.current.querySelectorAll('a')]
-    console.log(linkArray[2]);
+    // const linkArray = [...navigation.current.querySelectorAll('a')]
+    // console.log(linkArray[2]);
 
     // Looping the array
-    linkArray.map(singleLink => {
+    // linkArray.map(singleLink => {
 
-      // Adding eventlistener
-      const event = singleLink.addEventListener('click', () => {
+    // Adding eventlistener
+    // const event = singleLink.addEventListener('click', () => {
 
-        // Volume Control
-        audio.enterPageSound.volume = 0.5
-        audio.headerClickSound.volume = 0.5
+    // Volume Control
+    // audio.enterPageSound.volume = 0.5
+    // audio.headerClickSound.volume = 0.5
 
-        // Play sound
-        if (localStorage.getItem('mute') === 'true') {
+    // Play sound
+    //   if (localStorage.getItem('mute') === 'true') {
 
-          audio.headerClickSound.play()
+    //     audio.headerClickSound.play()
 
-          setTimeout(() => audio.enterPageSound.play(), 1000)
-        }
+    //     setTimeout(() => audio.enterPageSound.play(), 1000)
+    //   }
 
-      })
+    // })
 
-      // Remove eventlistener
-      singleLink.removeEventListener('click', event)
+    // Remove eventlistener
+    // singleLink.removeEventListener('click', event)
 
-    })
+    // })
 
   }, [])
 

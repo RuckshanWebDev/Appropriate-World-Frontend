@@ -4,7 +4,7 @@ import Footer from './Footer'
 import Navigation from './Navigation'
 import LoaderContainer from './LoaderContainer';
 
-function Layout({ children, loader }) {
+function Layout({ children, loader = false }) {
   console.log(loader);
   return (
     <>
@@ -12,7 +12,7 @@ function Layout({ children, loader }) {
         <Navigation />
         <div style={{ minHeight: ' calc(100vh - 210px)' }} >
           {loader && <LoaderContainer />}
-          {children}
+          {loader || children}
         </div>
         <Footer />
       </div>
