@@ -45,11 +45,42 @@ const blogApi = createApi({
                     }
                 }
             }
+        }),
+
+        deleteBlog: builder.mutation({
+
+            query: ({ id }) => {
+                console.log(id);
+                return {
+                    url: `/api/blog/${id}`,
+                    method: "DELETE",
+                    'credentials': 'include',
+                    'mode': 'cors',
+                    'headers': {
+                        'accept': 'application/json, text/plain, */*', 'content-type': 'application/json'
+                    }
+                }
+            }
+        }),
+
+        updateBlog: builder.mutation({
+            query: (data) => {
+                return {
+                    url: '/api/blog',
+                    method: "POST",
+                    body: data,
+                    'credentials': 'include',
+                    'mode': 'cors',
+                    'headers': {
+                        'accept': 'application/json, text/plain, */*', 'content-type': 'application/json'
+                    }
+                }
+            }
         })
 
     })
 })
 
 
-export const { useGetContactQuery, useGetBlogsQuery, useGetSigleBlogsQuery, useCreateBlogMutation } = blogApi
+export const { useDeleteBlogMutation, useGetContactQuery, useGetBlogsQuery, useGetSigleBlogsQuery, useCreateBlogMutation } = blogApi
 export default blogApi;

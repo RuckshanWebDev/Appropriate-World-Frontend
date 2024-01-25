@@ -1,7 +1,7 @@
 import React from 'react'
 
-function Loader(custom={}) {
-  console.log(custom);
+function Loader(custom = {}) {
+
     return (
         <div className='loader' style={custom.custom} >
             <svg class="whole" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">

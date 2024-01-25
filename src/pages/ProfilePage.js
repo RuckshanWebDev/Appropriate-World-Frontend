@@ -80,7 +80,7 @@ function ProfilePage() {
     return (
         <>
             <ProfileUpdate data={data.data?.data[0]} />
-            <Layout  >
+            <Layout loader={data.isLoading}  >
                 <div className="container profile-page-container">
 
                     <div className="color-container">

@@ -19,7 +19,6 @@ function AddBlog() {
     const [html, setHtml] = useState()
     const [createBlog, createBlogApi] = useCreateBlogMutation()
 
-    console.log(createBlogApi.data?.data._id);
 
     if (createBlogApi.isError) {
         toast.error(createBlogApi.error?.data.message || "Something went wrong")
@@ -43,6 +42,8 @@ function AddBlog() {
         e.preventDefault()
 
         try {
+
+            if (!e.target.title.value) throw new Error("Please Provide a title")
 
             if (e.target.image.files && e.target.image.files[0]) {
                 const data = new FormData()
@@ -74,7 +75,7 @@ function AddBlog() {
 
 
         } catch (error) {
-            toast.error("Something went wrong, Please try again")
+            toast.error(error?.message || "Something went wrong, Please try again Later")
         }
 
     }
@@ -94,7 +95,7 @@ function AddBlog() {
 
                         <DraftEditor setEditorData={setEditorData} />
                     </div>
-                    <button disabled={createBlogApi.isLoading} type='submit' style={{ display: "inline-block", margin: "0 auto" }} >{createBlogApi.isLoading ? <> Loading < Loader /></> : "Share Blog"}</button>
+                    <button disabled={createBlogApi.isLoading} type='submit' style={{ display: "inline-block", margin: "0 auto" }} >{createBlogApi.isLoading ? <> Loading < Loader custom={{ height: '20px', width: '20px' }} /></> : "Share Blog"}</button>
                 </form>
 
                 {/* Editor */}

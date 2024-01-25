@@ -10,9 +10,8 @@ import EmptyMessage from '../components/EmptyMessage'
 
 function BlogPage() {
 
-    const { data } = useGetBlogsQuery()
+    const { data, isLoading } = useGetBlogsQuery()
     const { user } = useSelector(state => state.local)
-    console.log(data);
 
     useEffect(() => {
 
@@ -46,7 +45,12 @@ function BlogPage() {
 
                         })
                         :
-                        <EmptyMessage text={"Something went Wrong, Please try again later!"} />
+                        isLoading ? <EmptyMessage text={"Please wait..."} /> :
+                            <EmptyMessage text={"Something went Wrong, Please try again later!"} />
+                }
+
+                {
+
                 }
 
                 {/* <div className="blog-item">

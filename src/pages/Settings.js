@@ -29,6 +29,7 @@ function Settings() {
         try {
             const responce = await cancelSubscription({ subscription: id }).unwrap()
             window.location.reload()
+
         } catch (error) {
             console.log(error);
 

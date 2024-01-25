@@ -27,6 +27,7 @@ import Package from './pages/Package.js';
 import PaymentConfirm from './pages/PaymentConfirm.js';
 import Settings from './pages/Settings.js';
 import TestPage from './pages/TestPage.js';
+import EditBlog from './pages/EditBlog.js';
 
 
 export default function App() {
@@ -57,6 +58,7 @@ export default function App() {
         <Route path='/blogs' element={<BlogPage />} exact />
         <Route path='/blog/:id' element={<SingleBlog />} exact />
         <Route path='/blog/add' element={<ProtectRoute> <AddBlog /> </ProtectRoute>} exact />
+        <Route path='/blog/edit/:id' element={<ProtectRoute> <EditBlog /> </ProtectRoute>} exact />
         <Route path='/chat' element={<ProtectRoute>  <ChatPage /> </ProtectRoute>} exact />
         <Route path='/profile' element={<ProtectRoute> <ProfilePage /></ProtectRoute>} exact />
         <Route path='/profile/:id' element={<SingleProfile />} exact />

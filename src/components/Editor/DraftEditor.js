@@ -5,59 +5,73 @@ import {
     RichUtils,
     convertToRaw,
     convertFromRaw,
+    convertFromHTML,
+    ContentState,
 } from "draft-js";
 import Toolbar from "./Toolbar";
 import "./DraftEditor.css";
 
-const DraftEditor = ({ setEditorData }) => {
+const DraftEditor = ({ setEditorData, data = null }) => {
+
     const [editorState, setEditorState] = useState(
-        EditorState.createWithContent(
-            convertFromRaw({
-                blocks: [
-                    {
-                        key: "3eesq",
-                        text: "",
-                        type: "unstyled",
-                        depth: 0,
-                        inlineStyleRanges: [
-                            {
-                                offset: 19,
-                                length: 6,
-                                style: "BOLD",
-                            },
-                            {
-                                offset: 25,
-                                length: 5,
-                                style: "ITALIC",
-                            },
-                            {
-                                offset: 30,
-                                length: 8,
-                                style: "UNDERLINE",
-                            },
-                        ],
-                        entityRanges: [],
-                        data: {},
-                    },
-                    {
-                        key: "9adb5",
-                        text: "Tell us a story!",
-                        type: "header-one",
-                        depth: 0,
-                        inlineStyleRanges: [],
-                        entityRanges: [],
-                        data: {},
-                    },
-                ],
-                entityMap: {},
-            })
-        )
+        // EditorState.createWithContent(
+        //     convertFromRaw({
+        //         blocks: [
+        //             {
+        //                 key: "3eesq",
+        //                 text: "",
+        //                 type: "unstyled",
+        //                 depth: 0,
+        //                 inlineStyleRanges: [
+        //                     {
+        //                         offset: 19,
+        //                         length: 6,
+        //                         style: "BOLD",
+        //                     },
+        //                     {
+        //                         offset: 25,
+        //                         length: 5,
+        //                         style: "ITALIC",
+        //                     },
+        //                     {
+        //                         offset: 30,
+        //                         length: 8,
+        //                         style: "UNDERLINE",
+        //                     },
+        //                 ],
+        //                 entityRanges: [],
+        //                 data: {},
+        //             },
+        //             // {
+        //             //     key: "9adb5",
+        //             //     text: "Tell us a story!",
+        //             //     type: "header-one",
+        //             //     depth: 0,
+        //             //     inlineStyleRanges: [],
+        //             //     entityRanges: [],
+        //             //     data: {},
+        //             // },
+        //         ],
+        //         entityMap: {},
+        //     })
+        // )
     );
     const editor = useRef(null);
 
-    useEffect(() => {
-        focusEditor();
-    }, []);
+    // let state, initialState = false
+
+    // if (data) {
+    //     const blocksFromHTML = convertFromHTML(data);
+    //     state = ContentState.createFromBlockArray(
+    //         blocksFromHTML.contentBlocks,
+    //         blocksFromHTML.entityMap,
+    //     );
+    // }
+
+    // if (initialState) {
+    //     initialState = false
+    //     console.log(state);
+    // }
 
     const focusEditor = () => {
         editor.current.focus();
@@ -126,6 +140,23 @@ const DraftEditor = ({ setEditorData }) => {
                 break;
         }
     };
+
+    useEffect(() => {
+
+        if (data) {
+            const blocksFromHTML = convertFromHTML(data);
+            let state = ContentState.createFromBlockArray(
+                blocksFromHTML.contentBlocks,
+                blocksFromHTML.entityMap,
+            );
+            const editorData = EditorState.createWithContent(state)
+            console.log("STATE", state, editorData);
+            setEditorState(editorData)
+        }
+
+        focusEditor();
+
+    }, [data])
 
     return (
         <div className="editor-wrapper" onClick={focusEditor}>

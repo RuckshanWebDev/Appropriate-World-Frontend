@@ -5,7 +5,7 @@ import Navigation from './Navigation'
 import LoaderContainer from './LoaderContainer';
 
 function Layout({ children, loader = false }) {
-  console.log(loader);
+
   return (
     <>
       <div className='main' >
