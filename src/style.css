@@ -1,3 +1,5 @@
+@import url(./../node_modules/@radix-ui/themes/styles.css);
+
 * {
     margin: 0;
     padding: 0;
