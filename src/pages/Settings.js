@@ -6,7 +6,9 @@ import Loader from '../components/Loader'
 import LoaderContainer from '../components/LoaderContainer'
 import { useGetProfileQuery, useLazyGetProfileQuery, useUpdateProfileMutation } from '../features/profileApi'
 import { setProfileId } from '../features/localSlice'
-import '@radix-ui/themes/styles.css';
+// import '../ @radix-ui/themes/styles.css';
+// import url('../../ node_modules/@radix-ui/themes/styles.css');
+import './../../node_modules/@radix-ui/themes/styles.css'
 import { AlertDialog, Avatar, Badge, Box, Button, Card, Flex, Heading, Separator, Table, Text, TextField, Theme } from '@radix-ui/themes'
 import getPackageName from '../utils/getPackageName'
 
