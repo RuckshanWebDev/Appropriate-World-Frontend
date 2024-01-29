@@ -1,7 +1,7 @@
 on: 
   push:
     branches:
-      - main
+      - justCreate
 name: 🚀 Deploy website on push
 
 jobs:
