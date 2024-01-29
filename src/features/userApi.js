@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const userApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: process.env.NODE_ENV === "production" ? 'https://appropriate-world-backend.onrender.com' : 'http://localhost:5000', 'credentials': 'include',
+        baseUrl: process.env.NODE_ENV === "production" ? 'https://http://api.justcreate.tv' : 'http://localhost:5000', 'credentials': 'include',
         'mode': 'cors',
         'headers': {
             'accept': 'application/json, text/plain, */*', 'content-type': 'application/json'

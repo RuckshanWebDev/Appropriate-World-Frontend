@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const chatApi = createApi({
     reducerPath: 'chatApi',
-    baseQuery: fetchBaseQuery({ baseUrl: process.env.NODE_ENV === "production" ? 'https://appropriate-world-backend.onrender.com' : 'http://localhost:5000', }),
+    baseQuery: fetchBaseQuery({ baseUrl: process.env.NODE_ENV === "production" ? 'http://api.justcreate.tv' : 'http://localhost:5000', }),
     endpoints: (builder) => ({
 
         getCoupleChat: builder.query({
