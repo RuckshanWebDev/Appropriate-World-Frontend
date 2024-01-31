@@ -13,7 +13,6 @@ const blogApi = createApi({
 
         getSigleBlogs: builder.query({
             query: (url = '') => {
-                console.log(url);
                 return `/api/blog/${url}`
             }
         }),

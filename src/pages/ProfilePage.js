@@ -21,6 +21,8 @@ function ProfilePage() {
     const [logout, dataLogout] = useLogoutUserMutation()
     const [getProfileData, data] = useLazyGetProfileQuery()
 
+    console.log(data);
+
     // const [getNotificationFn, getNotification] = useLazyGetotificationQuery()
 
 
