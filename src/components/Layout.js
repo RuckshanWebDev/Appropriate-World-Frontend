@@ -14,7 +14,7 @@ function Layout({ children, loader = false }) {
           {loader && <LoaderContainer />}
           {loader || children}
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   )

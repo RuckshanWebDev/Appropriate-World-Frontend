@@ -64,15 +64,16 @@ export default function App() {
         <Route path='/profile/:id' element={<SingleProfile />} exact />
         {/* <Route path='/community' element={<ProtectRoute> <CommunityPage /> </ProtectRoute>} exact /> */}
         <Route path='/login' element={<Login />} exact />
+        <Route path='/earlyaccess' element={<Register />} exact />
         <Route path='/register' element={<Register />} exact />
         <Route path='/forgot-password' element={<ForgotPassword />} exact />
         <Route path='/reset-password/:token' element={<ResetPassword />} exact />
         <Route path='/audio/:id' element={<ProductPage />} exact />
         <Route path='/video/:id' element={<ProductPageVideo />} exact />
         {/* <Route path='/checkout' element={<ProtectRoute> <Checkout /> </ProtectRoute>} exact /> */}
-        {/* <Route path='/packages' element={<ProtectRoute><Package /> </ProtectRoute>} exact /> */}
-        {/* <Route path='/payment-confirm' element={<ProtectRoute><PaymentConfirm /> </ProtectRoute>} exact /> */}
-        {/* <Route path='/settings' element={<ProtectRoute><Settings /> </ProtectRoute>} exact /> */}
+        <Route path='/packages' element={<ProtectRoute><Package /> </ProtectRoute>} exact />
+        <Route path='/payment-confirm' element={<ProtectRoute><PaymentConfirm /> </ProtectRoute>} exact />
+        <Route path='/settings' element={<ProtectRoute><Settings /> </ProtectRoute>} exact />
         {/* <Route path='/test' element={<ProtectRoute><TestPage /> </ProtectRoute>} exact /> */}
         <Route path='*' element={<ProtectRoute><ErrorPage /> </ProtectRoute>} />
       </Routes>
