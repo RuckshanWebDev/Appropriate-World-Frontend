@@ -105,9 +105,9 @@ function Navigation() {
         </div>
       </div>
 
-      <div className='mobile-nav' style={{ display: navOpen ? "flex" : 'none' }} >
+      <div className='mobile-nav' style={{ display: navOpen ? "flex" : 'none', justifyContent: 'center' }} >
         {/* <CiStreamOn /> */}
-        <FaShoppingCart className='white-path' />
+        {/* <FaShoppingCart className='white-path' />
         <Link to={'/community'}>
           <HiUserGroup />
         </Link>
@@ -116,7 +116,7 @@ function Navigation() {
         </Link>
         <Link to={'/blogs'}>
           <FaBlogger />
-        </Link>
+        </Link> */}
 
         {user ?
           <Link to="/profile">
