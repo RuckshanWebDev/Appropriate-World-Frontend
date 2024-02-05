@@ -19,7 +19,7 @@ const Login = () => {
   const formHandler = (e) => {
     e.preventDefault()
     loginUser({
-      email: e.target.email.value,
+      email: e.target.email.value.toLowerCase(),
       password: e.target.password.value
     })
   }
