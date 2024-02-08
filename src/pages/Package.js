@@ -99,7 +99,7 @@ function Package() {
                                 <span>Community Voting Rights</span>
                                 <span>Digital Bundle Box</span>
                             </div>
-                            <button onClick={() => handleCheckout(prices.data?.data[1]?.id)} >
+                            <button onClick={() => handleCheckout(prices.data?.data[0]?.id)} >
                                 35.99
                             </button>
                             {/* <button>
