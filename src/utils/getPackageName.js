@@ -2,8 +2,8 @@ const getPackageName = (val) => {
 
     const products = {
         'price_1OQuXOF40YQ3vkpsBlkRE9pV': 'TESTING',
-        'price_1OQ7g4F40YQ3vkpsw9E7z5aM': 'EMERALD',
-        'price_1OK1YfF40YQ3vkps5dcyQpPs': 'ONYX'
+        'price_1OgTF4ImpSftCiTAJ1k9UvZF': 'EMERALD',
+        'price_1OgTHoImpSftCiTAc7DcrZfW': 'ONYX'
     }
 
     return products[val]
