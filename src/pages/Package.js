@@ -99,7 +99,7 @@ function Package() {
                                 <span>Community Voting Rights</span>
                                 <span>Digital Bundle Box</span>
                             </div>
-                            <button onClick={() => handleCheckout(prices.data?.data[1]?.id)} >
+                            <button onClick={() => handleCheckout(prices.data?.data[2]?.id)} >
                                 35.99
                             </button>
                             {/* <button>
@@ -124,7 +124,7 @@ function Package() {
                                 <span>Priority Early Access</span>
                                 <span>Digital Bundle Box</span>
                             </div>
-                            <button onClick={() => handleCheckout(prices.data?.data[2]?.id)} >99.99
+                            <button onClick={() => handleCheckout(prices.data?.data[1]?.id)} >99.99
                             </button>
                             {/* <button>
                                 <Link to={'/checkout#type=ONYX'} style={{ textDecoration: 'none', color: '#fff' }} >99.99</Link>
