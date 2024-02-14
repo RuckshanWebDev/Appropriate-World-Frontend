@@ -100,20 +100,19 @@ function ProfilePage() {
                     <div className="top">
                         <div>
                             {
-                                profile?.isPremium ?
-                                    profile?.accountType === 'EMERALD' ?
-                                        <Link to={'/packages'} id='account-type'>
-                                            <img src="./card/emerald.gif" alt="" />
-                                        </Link>
-                                        :
+                                profile?.accountType === 'EMERALD' ?
+                                    <Link to={'/packages'} id='account-type'>
+                                        <img src="./card/emerald.gif" alt="" />
+                                    </Link>
+                                    : profile?.accountType === 'ONYX' ?
                                         <Link to={'/packages'} id='account-type' >
                                             <img src="./card/ONYX.gif" alt="" />
                                         </Link>
 
-                                    :
-                                    <Link to={'/packages'} id='account-type'>
-                                        <img src="./card/VIOLET.gif" alt="" />
-                                    </Link>
+                                        :
+                                        <Link to={'/packages'} id='account-type'>
+                                            <img src="./card/VIOLET.gif" alt="" />
+                                        </Link>
 
                             }
                             {
