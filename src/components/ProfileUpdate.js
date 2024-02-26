@@ -18,6 +18,9 @@ function ProfileUpdate({ data }) {
 
 
     const updateFormHandler = async (e) => {
+
+        let popup = toast.loading("Updating...")
+
         e.preventDefault()
 
         const params = window.location.search?.replace('?', '').split('=')
@@ -67,8 +70,10 @@ function ProfileUpdate({ data }) {
             }
 
             if (createProfileData.isSuccess) {
+                toast.dismiss()
                 toast.success("Successfully Created")
             } else if (createProfileData.isError) {
+                toast.dismiss()
                 toast.error("Something went wrong try again later!")
             }
 
@@ -98,29 +103,38 @@ function ProfileUpdate({ data }) {
                         })
                         dispatch(togglePopup())
                     }
+                    toast.update(popup, { render: "Image Updated.", type: "success", isLoading: false });
+                    toast.dismiss()
 
                 } catch (error) {
-                    console.log(error);
+                    toast.update(popup, { render: error.message, type: "error", isLoading: false });
+                    toast.dismiss()
                 }
             } else {
-                updateProfile({
-                    dob: e.target.dob.value,
-                    address: e.target.address.value,
-                    profession: e.target.profession.value,
-                    hobby: e.target.hobby.value,
-                    name: e.target.names.value,
-                    bio: e.target.bio.value,
-                })
-                dispatch(togglePopup())
+
+
+                try {
+                    dispatch(togglePopup())
+                    const res = await updateProfile({
+                        dob: e.target.dob.value,
+                        address: e.target.address.value,
+                        profession: e.target.profession.value,
+                        hobby: e.target.hobby.value,
+                        name: e.target.names.value,
+                        bio: e.target.bio.value,
+                    }).unwrap()
+                    toast.update(popup, { render: "Successfully Updated.", type: "success", isLoading: false });
+                    toast.dismiss()
+
+
+                } catch (err) {
+
+                    toast.dismiss()
+                    toast.error("Something went wrong try again later!")
+
+                }
+
             }
-
-            if (updateProfileData.isSuccess) {
-                toast.success("Successfully Updated")
-
-            } else if (updateProfileData.isError) {
-                toast.error("Something went wrong try again later!")
-            }
-
         }
     }
 
