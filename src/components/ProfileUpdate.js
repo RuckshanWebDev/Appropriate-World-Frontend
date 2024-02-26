@@ -107,6 +107,7 @@ function ProfileUpdate({ data }) {
                     toast.dismiss()
 
                 } catch (error) {
+                    dispatch(togglePopup())
                     toast.update(popup, { render: error.message, type: "error", isLoading: false });
                     toast.dismiss()
                 }
@@ -114,7 +115,6 @@ function ProfileUpdate({ data }) {
 
 
                 try {
-                    dispatch(togglePopup())
                     const res = await updateProfile({
                         dob: e.target.dob.value,
                         address: e.target.address.value,
@@ -123,12 +123,14 @@ function ProfileUpdate({ data }) {
                         name: e.target.names.value,
                         bio: e.target.bio.value,
                     }).unwrap()
+                    dispatch(togglePopup())
                     toast.update(popup, { render: "Successfully Updated.", type: "success", isLoading: false });
                     toast.dismiss()
 
 
                 } catch (err) {
 
+                    dispatch(togglePopup())
                     toast.dismiss()
                     toast.error("Something went wrong try again later!")
 
