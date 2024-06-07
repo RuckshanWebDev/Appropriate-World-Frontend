@@ -135,12 +135,14 @@ const Toolbar = ({ editorState, setEditorState }) => {
 
     const applyStyle = (e, style, method) => {
         e.preventDefault();
+        if (!editorState) return;
         method === "block"
             ? setEditorState(RichUtils.toggleBlockType(editorState, style))
             : setEditorState(RichUtils.toggleInlineStyle(editorState, style));
     };
 
     const isActive = (style, method) => {
+        if (!editorState) return false;
         if (method === "block") {
             const selection = editorState.getSelection();
             const blockType = editorState
@@ -155,20 +157,16 @@ const Toolbar = ({ editorState, setEditorState }) => {
     };
 
     return (
-        <div className="toolbar-grid">
-            {tools.map((item, idx) => (
+        <div className="toolbar">
+            {tools.map((tool) => (
                 <button
-                    style={{
-                        color: isActive(item.style, item.method)
-                            ? "rgba(0, 0, 0, 1)"
-                            : "rgba(0, 0, 0, 0.3)",
-                    }}
-                    key={`${item.label}-${idx}`}
-                    title={item.label}
-                    onClick={(e) => applyStyle(e, item.style, item.method)}
-                    onMouseDown={(e) => e.preventDefault()}
+                    type="button"
+                    key={tool.label}
+                    className={`toolbar-btn ${isActive(tool.style, tool.method) ? "active" : ""
+                        }`}
+                    onMouseDown={(e) => applyStyle(e, tool.style, tool.method)}
                 >
-                    {item.icon || item.label}
+                    {tool.icon || tool.label}
                 </button>
             ))}
         </div>

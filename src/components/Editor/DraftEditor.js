@@ -12,69 +12,22 @@ import Toolbar from "./Toolbar";
 import "./DraftEditor.css";
 
 const DraftEditor = ({ setEditorData, data = null }) => {
-
     const [editorState, setEditorState] = useState(
-        // EditorState.createWithContent(
-        //     convertFromRaw({
-        //         blocks: [
-        //             {
-        //                 key: "3eesq",
-        //                 text: "",
-        //                 type: "unstyled",
-        //                 depth: 0,
-        //                 inlineStyleRanges: [
-        //                     {
-        //                         offset: 19,
-        //                         length: 6,
-        //                         style: "BOLD",
-        //                     },
-        //                     {
-        //                         offset: 25,
-        //                         length: 5,
-        //                         style: "ITALIC",
-        //                     },
-        //                     {
-        //                         offset: 30,
-        //                         length: 8,
-        //                         style: "UNDERLINE",
-        //                     },
-        //                 ],
-        //                 entityRanges: [],
-        //                 data: {},
-        //             },
-        //             // {
-        //             //     key: "9adb5",
-        //             //     text: "Tell us a story!",
-        //             //     type: "header-one",
-        //             //     depth: 0,
-        //             //     inlineStyleRanges: [],
-        //             //     entityRanges: [],
-        //             //     data: {},
-        //             // },
-        //         ],
-        //         entityMap: {},
-        //     })
-        // )
+        data
+            ? EditorState.createWithContent(
+                ContentState.createFromBlockArray(
+                    convertFromHTML(data).contentBlocks,
+                    convertFromHTML(data).entityMap
+                )
+            )
+            : EditorState.createEmpty()
     );
     const editor = useRef(null);
 
-    // let state, initialState = false
-
-    // if (data) {
-    //     const blocksFromHTML = convertFromHTML(data);
-    //     state = ContentState.createFromBlockArray(
-    //         blocksFromHTML.contentBlocks,
-    //         blocksFromHTML.entityMap,
-    //     );
-    // }
-
-    // if (initialState) {
-    //     initialState = false
-    //     console.log(state);
-    // }
-
     const focusEditor = () => {
-        editor.current.focus();
+        if (editor.current) {
+            editor.current.focus();
+        }
     };
 
     const handleKeyCommand = (command) => {
@@ -86,7 +39,6 @@ const DraftEditor = ({ setEditorData, data = null }) => {
         return false;
     };
 
-    // FOR INLINE STYLES
     const styleMap = {
         CODE: {
             backgroundColor: "rgba(0, 0, 0, 0.05)",
@@ -110,7 +62,7 @@ const DraftEditor = ({ setEditorData, data = null }) => {
             fontStyle: "italic",
             lineHeight: 1.5,
             padding: "0.3rem 0.5rem",
-            borderRadius: " 0.2rem",
+            borderRadius: "0.2rem",
         },
         SUPERSCRIPT: {
             verticalAlign: "super",
@@ -122,7 +74,6 @@ const DraftEditor = ({ setEditorData, data = null }) => {
         },
     };
 
-    // FOR BLOCK LEVEL STYLES(Returns CSS Class From DraftEditor.css)
     const myBlockStyleFn = (contentBlock) => {
         const type = contentBlock.getType();
         switch (type) {
@@ -137,45 +88,46 @@ const DraftEditor = ({ setEditorData, data = null }) => {
             case "justifyAlign":
                 return "justifyAlign";
             default:
-                break;
+                return null;
         }
     };
 
     useEffect(() => {
-
         if (data) {
             const blocksFromHTML = convertFromHTML(data);
-            let state = ContentState.createFromBlockArray(
+            const contentState = ContentState.createFromBlockArray(
                 blocksFromHTML.contentBlocks,
-                blocksFromHTML.entityMap,
+                blocksFromHTML.entityMap
             );
-            const editorData = EditorState.createWithContent(state)
-            console.log("STATE", state, editorData);
-            setEditorState(editorData)
+            const editorData = EditorState.createWithContent(contentState);
+            setEditorState(editorData);
         }
 
         focusEditor();
-
-    }, [data])
+    }, [data]);
 
     return (
         <div className="editor-wrapper" onClick={focusEditor}>
-            <Toolbar editorState={editorState} setEditorState={setEditorState} />
-            <div className="editor-container">
-                <Editor
-                    ref={editor}
-                    placeholder="Write Here"
-                    handleKeyCommand={handleKeyCommand}
-                    editorState={editorState}
-                    customStyleMap={styleMap}
-                    blockStyleFn={myBlockStyleFn}
-                    onChange={(editorState) => {
-                        const contentState = editorState.getCurrentContent();
-                        setEditorData(contentState)
-                        setEditorState(editorState);
-                    }}
-                />
-            </div>
+            {editorState && (
+                <>
+                    <Toolbar editorState={editorState} setEditorState={setEditorState} />
+                    <div className="editor-container">
+                        <Editor
+                            ref={editor}
+                            placeholder="Write Here"
+                            handleKeyCommand={handleKeyCommand}
+                            editorState={editorState}
+                            customStyleMap={styleMap}
+                            blockStyleFn={myBlockStyleFn}
+                            onChange={(newState) => {
+                                const contentState = newState.getCurrentContent();
+                                setEditorData(contentState);
+                                setEditorState(newState);
+                            }}
+                        />
+                    </div>
+                </>
+            )}
         </div>
     );
 };

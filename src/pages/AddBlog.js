@@ -40,6 +40,7 @@ function AddBlog() {
 
     const blogFormHandler = async (e) => {
         e.preventDefault()
+        console.log(e)
 
         try {
 
@@ -84,13 +85,13 @@ function AddBlog() {
         <Layout >
             <div className='container addBlog-container' >
 
-                <h1 className="title-big-color">
+                <h1 className="title-big-color" style={{ margin: '50px auto' }}>
                     Community Post
                 </h1>
 
-                <form onSubmit={blogFormHandler}>
+                <form onSubmit={blogFormHandler} >
                     <input type="text" name='title' placeholder='Title for the Blog..' />
-                    <input type="file" name='image' value={file} accept="image/png, image/gif, image/jpeg, image/jpg" />
+                    <input type="file" name='image' value={file} accept="image/png, image/gif, image/jpeg, image/jpg" style={{ paddingTop: '24px' }} />
                     <div className="editors-container">
 
                         <DraftEditor setEditorData={setEditorData} />

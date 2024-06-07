@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addNotify, clearUser, setProfileId, togglePopup } from '../features/localSlice'
 import { useLogoutUserMutation } from '../features/userApi'
 import { toast } from 'react-toastify'
-import { useGetProfileQuery, useLazyGetProfileQuery } from '../features/profileApi'
+import { useGetProfileQuery, useLazyGetProfileQuery, useUpdateProfileMutation } from '../features/profileApi'
 import ProfileUpdate from '../components/ProfileUpdate'
 import { useLazyGetotificationQuery } from '../features/chatApi'
 import Activity from '../components/Activity'
 import { Link } from 'react-router-dom'
 import { IoMdSettings } from "react-icons/io";
+import { Theme, Switch, Flex } from '@radix-ui/themes'
+
 
 
 function ProfilePage() {
@@ -20,6 +22,7 @@ function ProfilePage() {
     const dispatch = useDispatch()
     const [logout, dataLogout] = useLogoutUserMutation()
     const [getProfileData, data] = useLazyGetProfileQuery()
+    const [updateProfile, updateProfileData] = useUpdateProfileMutation()
 
     console.log(data);
 
@@ -54,6 +57,17 @@ function ProfilePage() {
         console.log(e.target.dataset.color);
         document.documentElement.style.setProperty('--color-purple', e.target.dataset.color);
 
+    }
+
+    const profilePrivateHandler = async (e) => {
+        try {
+
+            const updated = await updateProfile({ private: e }).unwrap()
+            console.log(updated);
+            setProfile(updated.data)
+        } catch (err) {
+
+        }
     }
 
 
@@ -155,10 +169,16 @@ function ProfilePage() {
                                     <h6>Interests/Credits</h6>
                                     <h5>{profile?.hobby || '-- : --'}</h5>
                                 </div>
-                                <div>
+                                {/* <div>
                                     <h6>Joined at</h6>
                                     <h5>{profile?.createdAt.slice(0, 10) || '-- : --'}</h5>
-                                </div>
+                                </div> */}
+                                <Flex justify={'between'} >
+                                    <h6>Private</h6>
+                                    <Theme>
+                                        <Switch onCheckedChange={profilePrivateHandler} checked={profile?.private} />
+                                    </Theme>
+                                </Flex>
                             </div>
                         </div>
                         <Link to={'/settings'} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }} >

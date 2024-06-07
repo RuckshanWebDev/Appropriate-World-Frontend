@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../components/Layout'
 import { useGetContactQuery } from '../features/blogApi'
 import './community.css'
@@ -7,10 +7,12 @@ import { useAddFriendMutation, useLazyGetProfileQuery, useRemoveFriendMutation }
 import { useEffect } from 'react'
 import { setProfileId } from '../features/localSlice'
 import { toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { Box, TextField } from '@radix-ui/themes'
 
 function CommunityPage() {
 
+    // const { search } = useLocation()
     const dispatch = useDispatch()
     const { data } = useGetContactQuery()
     const { profile } = useSelector(state => state.local.user)
@@ -18,7 +20,9 @@ function CommunityPage() {
     const [addFriendFn, addFriendData] = useAddFriendMutation()
     const [removeFriendFn, removeFriendData] = useRemoveFriendMutation()
     const [profileFn, profileData] = useLazyGetProfileQuery()
-    console.log(profileData);
+    // console.log(profileData);
+
+    const [list, setList] = useState([])
 
     // setProfileId
 
@@ -51,24 +55,62 @@ function CommunityPage() {
 
     }
 
+    const clearSearch = () => {
+        if (list.length !== data.data.length) {
+            console.log('clear', data.data);
+            setList([...data.data]);
+        }
+    }
+
+    const formHandler = (e) => {
+
+        e.preventDefault()
+
+        let str = e.type === 'submit' ? e.target.form.value : e.target.value
+
+        if (!str) {
+            clearSearch()
+        } else {
+            const result = [...list]
+            console.log(result);
+            let filteredResult = result.filter(i => {
+                return i.name.toLowerCase().includes(str.toLowerCase())
+            })
+            setList([...filteredResult])
+        }
+    }
+
     useEffect(() => {
 
-    }, [])
+        if (data?.message === 'Success') {
+            // if(search){
+            //     foo.slice(1).split(';').filter(i => i.includes('page'))[0].split('=')[1] * 1
+            // }
+            setList(data.data);
+        }
+
+
+
+    }, [data])
 
     return (
         <Layout>
-
+            <form className="search-container" onSubmit={formHandler}>
+                <input type="text" name='form' onChange={formHandler} placeholder='Search...' />
+                <input type="submit" name="" id="" value='Search' />
+            </form>
             <div className="container community-container">
-
                 {
-                    data?.data.map((item, index) => {
+                    list.map((item, index) => {
                         return (
                             <div className="community-member" key={index}>
                                 <Link to={`/profile/${item._id}`} >
                                     <img className='avatar' src={item.profile_image || "/user.png"} alt="" />
                                 </Link>
                                 <div>
-                                    <h1>{item.name}</h1>
+                                    <Link to={`/profile/${item._id}`} >
+                                        <h1>{item.name}</h1>
+                                    </Link>
                                     <h6>{item.profession} &nbsp;</h6>
                                     <p>{item.bio}&nbsp;</p>
                                     {profile?.friendList.length ?

@@ -74,19 +74,21 @@ function Navigation() {
         </div>
         <div id='icons' >
           {/* <CiStreamOn /> */}
-          {/* <FaShoppingCart className='white-path' /> */}
-          {/* <Link to={'/community'}>
+          <a href='https://justcreatetvstore.myshopify.com/' target='_blank'>
+            <FaShoppingCart className='white-path' />
+          </a>
+          <Link to={'/community'}>
             <HiUserGroup />
-          </Link> */}
-          {/* <Link to={'/chat'} >
+          </Link>
+          <Link to={'/chat'} >
             <div style={{ position: 'relative' }} >
               <div className="notification-icon">{notificationCount}</div>
               <MdOutlineMessage />
             </div>
-          </Link> */}
-          {/* <Link to={'/blogs'}>
+          </Link>
+          <Link to={'/blogs'}>
             <FaBlogger />
-          </Link> */}
+          </Link>
           {user ?
             <Link to="/profile">
               <BsFillPersonFill />
@@ -107,7 +109,9 @@ function Navigation() {
 
       <div className='mobile-nav' style={{ display: navOpen ? "flex" : 'none', justifyContent: 'center' }} >
         {/* <CiStreamOn /> */}
-        {/* <FaShoppingCart className='white-path' />
+        <a href='https://justcreatetvstore.myshopify.com/' target='_blank'>
+          <FaShoppingCart className='white-path' />
+        </a>
         <Link to={'/community'}>
           <HiUserGroup />
         </Link>
@@ -116,7 +120,7 @@ function Navigation() {
         </Link>
         <Link to={'/blogs'}>
           <FaBlogger />
-        </Link> */}
+        </Link>
 
         {user ?
           <Link to="/profile">

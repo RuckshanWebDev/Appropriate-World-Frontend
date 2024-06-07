@@ -2,8 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-
-    margin: 150px auto;
+    margin: 50px auto;
     align-items: baseline;
 }
 
@@ -68,8 +67,37 @@
     display: flex;
 }
 
+.search-container {
+    width: 50%;
+    margin: 30px auto 0;
+    display: flex;
+    gap: 10px;
+}
+
+.search-container input {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px;
+    background-color: #07111A;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.search-container input[type='text'] {
+    width: 80%;
+}
+
+.search-container input[type='text']::placeholder {
+    color: #fff;
+}
+
 @media only screen and (max-width: 768px) {
     .community-member {
         max-width: 50%;
+    }
+
+    .search-container {
+        width: 100%;
+        padding: 0 10px;
     }
 }

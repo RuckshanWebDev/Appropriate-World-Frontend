@@ -9,12 +9,16 @@ import io from "socket.io-client";
 import { useDispatch, useSelector } from 'react-redux'
 import { addNotify } from '../features/localSlice'
 import ScrollableFeed from 'react-scrollable-feed'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useSearchParams } from 'react-router-dom'
 import { RiCloseCircleFill } from 'react-icons/ri'
 import { FaAngleRight } from 'react-icons/fa'
 
 function ChatPage() {
 
+    const newQueryParameters = new URLSearchParams();
+
+    const { search } = useLocation()
+    const [currentQueryParameters, setSearchParams] = useSearchParams()
     const dispatch = useDispatch()
     const messageContainerRef = useRef()
     const { profileId, profile } = useSelector(state => state.local.user)
@@ -57,8 +61,45 @@ function ChatPage() {
         e.target.message.value = ''
     }
 
+    // Switch Chat
+    const switchChat = async (id) => {
+
+        newQueryParameters.set('userId', id)
+        setSearchParams(newQueryParameters);
+
+        setRecentChat([])
+        setContactId(id)
+        localStorage.setItem('contactId', id)
+
+        try {
+
+            const chatHistory = await getChat({ id: id }).unwrap()
+            if (!chatHistory) return
+            setChat(chatHistory?.data)
+
+            const filteredUser = data?.data.filter(i => i._id === id)
+            filteredUser && setUser(filteredUser[0])
+
+            if (notifications.length) {
+
+                const filteredUserNotification = notifications.filter(i => i === id)
+                console.log(filteredUserNotification);
+                socket.emit('removeNotification', profileId, filteredUserNotification[0])
+
+                socket?.once(`removeNotification${profileId}`, (data) => {
+                    console.log(data);
+                    if (data?.from) {
+                        dispatch(addNotify([data]))
+                    }
+                })
+
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
     // Changing the cotact
-    const contactToggle = async (e) => {
+    const contactToggle = (e) => {
 
         setSideOpen(!sideOpen)
 
@@ -78,34 +119,7 @@ function ChatPage() {
 
 
         if (e.target.dataset.id) {
-
-            setRecentChat([])
-            setContactId(e.target.dataset.id)
-            localStorage.setItem('contactId', e.target.dataset.id)
-
-            const chatHistory = await getChat({ id: e.target.dataset.id }).unwrap()
-            console.log(chatData);
-            setChat(chatHistory?.data)
-
-            const filteredUser = data?.data.filter(i => i._id === e.target.dataset.id)
-            setUser(filteredUser[0])
-
-            if (notifications.length) {
-
-                const filteredUserNotification = notifications.filter(i => i === e.target.dataset.id)
-                console.log(filteredUserNotification);
-                socket.emit('removeNotification', profileId, filteredUserNotification[0])
-
-                socket?.once(`removeNotification${profileId}`, (data) => {
-                    console.log(data);
-                    if (data?.from) {
-                        dispatch(addNotify([data]))
-                    }
-                })
-
-            }
-
-
+            switchChat(e.target.dataset.id)
         }
     }
 
@@ -115,13 +129,13 @@ function ChatPage() {
         console.log("Socket :=> Add Notification");
 
         if (data?.from) {
-            notificationSound.play()
+            // notificationSound.play()
             dispatch(addNotify([data]))
         }
     })
     socket?.once(`removeNotification${profileId}`, (data) => {
 
-        console.log("Socket :=> Add Notification");
+        console.log("Socket :=> remove Notification");
 
         if (data?.from) {
             dispatch(addNotify([data]))
@@ -163,17 +177,25 @@ function ChatPage() {
 
 
     useEffect(() => {
-
-
         // Set all contact
         setAllContact(data?.data)
         if (!socket) {
             localStorage.setItem('contactId', '')
-            const newSocket = io(process.env.NODE_ENV === "production" ? 'https://appropriate-world-backend.onrender.com' : 'http://localhost:5000', { transports: ['websocket'] })
+            const newSocket = io(process.env.NODE_ENV === "production" ? 'https://appropriate-world-backend.onrender.com' : 'http://localhost:5001', { transports: ['websocket'] })
             setSocket(newSocket)
         }
 
     }, [data?.data, chatData.data?.data])
+
+    useEffect(() => {
+
+
+        if (search) {
+            const userId = search.slice(1).split(';').filter(i => i.includes('userId'))[0].split('=')[1]
+            if (data?.message === 'Success') switchChat(userId)
+            // console.log(search.slice(1).split(';').filter(i => i.includes('userId'))[0].split('=')[1]);
+        }
+    }, [data])
 
     return (
         <Layout>
@@ -247,11 +269,15 @@ function ChatPage() {
                         <>
                             <div className="details-container">
                                 <div className="contact-item-head">
-                                    <img src={user?.profile_image || "./user.png"} alt="" className="avatar" />
-                                    <div>
-                                        <h3 className="text-color">{user?.name}</h3>
-                                        {/* <span>12/06/2023</span> */}
-                                    </div>
+                                    <Link to={`/profile/${user?._id}`}>
+                                        <img src={user?.profile_image || "./user.png"} alt="" className="avatar" />
+                                    </Link>
+                                    <Link to={`/profile/${user?._id}`}>
+                                        <div>
+                                            <h3 className="text-color">{user?.name}</h3>
+                                            {/* <span>12/06/2023</span> */}
+                                        </div>
+                                    </Link>
                                 </div>
                             </div>
 

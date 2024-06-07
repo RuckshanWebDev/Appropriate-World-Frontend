@@ -70,7 +70,7 @@
     color: rgb(189, 189, 189);
 }
 
-.profile-page-container .info-container div {
+.profile-page-container .info-container>div {
     margin: 10px auto;
     padding: 8px;
     border-radius: 5px;

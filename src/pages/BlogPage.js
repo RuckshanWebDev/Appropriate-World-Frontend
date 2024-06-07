@@ -7,6 +7,7 @@ import { useEffect } from 'react'
 import AddMenu from '../components/AddMenu'
 import { useSelector } from 'react-redux'
 import EmptyMessage from '../components/EmptyMessage'
+import { Flex } from '@radix-ui/themes'
 
 function BlogPage() {
 
@@ -28,19 +29,22 @@ function BlogPage() {
                             return <div className="blog-item" key={index}>
                                 <h1>{blogItem.title} </h1>
                                 <img src={blogItem.image || "./1.png"} alt="" />
-                                <Link to={`/profile/${blogItem?.author._id}`} style={{ textDecoration: 'none' }} >
-                                    <div className="author-avatar">
-                                        <img src={blogItem.author?.profile_image || "./user.png"} alt="" />
-                                        <div>
-                                            <h3>{blogItem.author.name}</h3>
-                                            <span>{blogItem.createdAt?.slice(0, 10)}</span>
+                                <Flex align={'center'} justify={'between'} >
+                                    <Link to={`/profile/${blogItem?.author._id}`} style={{ textDecoration: 'none' }} >
+                                        <div className="author-avatar">
+                                            <img src={blogItem.author?.profile_image || "./user.png"} alt="" />
+                                            <div>
+                                                <h3>{blogItem.author.name}</h3>
+                                                <span>{blogItem.createdAt?.slice(0, 10)}</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </Link>
+                                    </Link>
+                                    <Link to={`/blog/${blogItem._id}`} >See more...</Link>
+                                </Flex>
                                 {/* <p className='blog-desc' >{blogItem.content.slice(0, 250)} </p> */}
-                                <div className='blog-desc' dangerouslySetInnerHTML={{ __html: blogItem.content.slice(0, 150).trim() }} >
-                                </div>
-                                <Link to={`/blog/${blogItem._id}`} >See more...</Link>
+                                {/* <div className='blog-desc' dangerouslySetInnerHTML={{ __html: blogItem.content.slice(0, 150).trim() }} >
+                                </div> */}
+
                             </div>
 
                         })

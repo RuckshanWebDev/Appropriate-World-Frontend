@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2rem auto;
+    margin: 1rem auto;
 }
 
 .editor-wrapper {
@@ -12,11 +12,15 @@
     padding: 1rem;
 }
 
+.toolbar {
+    padding-bottom: 20px;
+}
+
 .editor-container {
     width: 100%;
     border: 1px solid green;
     padding: 1rem;
-    background-color: black;
+    background-color: #07111a;
 }
 
 .toolbar-grid {
@@ -30,7 +34,7 @@
     font-size: 1rem;
     padding: 10px;
     border: none;
-    background: #fff;
+    background: #07111a;
     cursor: pointer;
 }
 

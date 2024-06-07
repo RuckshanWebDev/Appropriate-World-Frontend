@@ -10,7 +10,7 @@ const axiosOption = {
 const profileApi = createApi({
     reducerPath: 'profileApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: process.env.NODE_ENV === "production" ? 'https://api.justcreate.tv' : 'http://localhost:5000',
+        baseUrl: process.env.NODE_ENV === "production" ? 'https://api.justcreate.tv' : 'http://localhost:5001',
         'credentials': 'include',
         'mode': 'cors',
         'headers': {
