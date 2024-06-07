@@ -68,7 +68,7 @@ function Navigation() {
     <nav ref={navigation}>
       <div className='container navigation' >
         <div id='logo' >
-          <Link to={'/admin'}>
+          <Link to={'/earlyaccess'}>
             <img src='/logo.gif' />
           </Link>
         </div>

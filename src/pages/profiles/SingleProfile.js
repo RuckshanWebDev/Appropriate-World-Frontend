@@ -59,7 +59,7 @@ function SingleProfile() {
             <div className="container profile-page-container">
                 {getData.isError ?
 
-                    <h2 style={{ textAlign: 'center', alignSelf: 'center', margin: 'auto', padding: '50px' }}>This is Private Profile. <br />You cannot access it</h2>
+                    <h2 style={{ textAlign: 'center', alignSelf: 'center', margin: 'auto', padding: '50px' }}> This is a private profile. <br />You cannot access it</h2>
                     :
                     <>
                         <div className="top">

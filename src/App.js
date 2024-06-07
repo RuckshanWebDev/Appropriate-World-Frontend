@@ -53,7 +53,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path='/admin' element={<HomePage />} exact /> */}
+        <Route path='/earlyaccess' element={<HomePage />} exact />
         <Route path='/' element={<ComingSoon />} exact />
         <Route path='/blogs' element={<BlogPage />} exact />
         <Route path='/blog/:id' element={<SingleBlog />} exact />
