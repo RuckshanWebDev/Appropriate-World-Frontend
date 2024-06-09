@@ -107,7 +107,7 @@ function Navigation() {
         </div>
       </div>
 
-      <div className='mobile-nav' style={{ display: navOpen ? "flex" : 'none', justifyContent: 'center' }} >
+      <div className='mobile-nav' style={{ display: navOpen ? "flex" : 'none', justifyContent: 'space-between' }} >
         {/* <CiStreamOn /> */}
         <a href='https://justcreatetvstore.myshopify.com/' target='_blank'>
           <FaShoppingCart className='white-path' />

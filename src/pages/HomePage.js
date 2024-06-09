@@ -8,7 +8,10 @@ function HomePage() {
     <Layout >
       <div  >
         {/* <Header /> */}
-        <Product />
+        {/* <Product /> */}
+        <div className="container" style={{ padding: '50px', background: '#16202b', borderRadius: '10px', marginTop: '50px' }} >
+          <h1 className='title text-color ' style={{ textAlign: 'center' }} >Private Page</h1>
+        </div>
       </div>
     </Layout>
   )
