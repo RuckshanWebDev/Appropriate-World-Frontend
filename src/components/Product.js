@@ -8,6 +8,8 @@ function Product() {
     console.log("loaded");
   }, [])
 
+  const premiumUser = false
+
   return (
     <>
 
@@ -60,7 +62,7 @@ function Product() {
 
             </div>
           </Link>
-          <Link to={'/video/DETECTIVE-BLK'}>
+          {premiumUser && <Link to={'/video/DETECTIVE-BLK'}>
             <div className="product-card">
               <video
                 autoPlay
@@ -71,8 +73,8 @@ function Product() {
               </video>
 
             </div>
-          </Link>
-          <Link to={'/video/Playa-PLaya-Sophisticated-Thoughts'}>
+          </Link>}
+          {premiumUser && <Link to={'/video/Playa-PLaya-Sophisticated-Thoughts'}>
             <div className="product-card">
               <video
                 autoPlay
@@ -83,7 +85,7 @@ function Product() {
               </video>
 
             </div>
-          </Link>
+          </Link>}
           <Link to={'/video/YOUR FRIEND JIGGY'}>
             <div className="product-card">
               <video
@@ -113,7 +115,7 @@ function Product() {
 
 
         <div className="product-grid">
-          <Link to={'/video/APPROPRIATE-CULTURE-SEASON-1.5'} >
+          {premiumUser && <Link to={'/video/APPROPRIATE-CULTURE-SEASON-1.5'} >
             <div className="product-card">
               <video
                 autoPlay
@@ -124,7 +126,7 @@ function Product() {
               </video>
 
             </div>
-          </Link>
+          </Link>}
           <div className="product-card">
             <Link to={'/audio/APPROPRIATE-CULTURE-SNOWSTORM'} >
               <video
@@ -136,7 +138,7 @@ function Product() {
               </video>
             </Link>
           </div>
-          <div className="product-card">
+          {premiumUser && <div className="product-card">
             <video
               autoPlay
               loop
@@ -144,8 +146,8 @@ function Product() {
             >
               <source src="sorted-video/Tobeakidagain Cover.mp4" />
             </video>
-          </div>
-          <div className="product-card">
+          </div>}
+          {premiumUser && <div className="product-card">
             <video
               autoPlay
               loop
@@ -153,8 +155,8 @@ function Product() {
             >
               <source src="sorted-video/Swipe.mp4" />
             </video>
-          </div>
-          <Link to={'/video/01'} >
+          </div>}
+          {premiumUser && <Link to={'/video/01'} >
             <div className="product-card">
               <video
                 autoPlay
@@ -164,8 +166,8 @@ function Product() {
                 <source src="sorted-video/Realityshow.mp4" />
               </video>
             </div>
-          </Link>
-          <div className="product-card">
+          </Link>}
+          {premiumUser && <div className="product-card">
             <video
               autoPlay
               loop
@@ -173,8 +175,8 @@ function Product() {
             >
               <source src="sorted-video/Mybitchassconfessions.mp4" />
             </video>
-          </div>
-          <Link to={'/audio/MY-EX-BILLIONAIRE-TRAILER-2'} >
+          </div>}
+          {premiumUser && <Link to={'/audio/MY-EX-BILLIONAIRE-TRAILER-2'} >
             <div className="product-card">
               <video
                 autoPlay
@@ -184,8 +186,8 @@ function Product() {
                 <source src="sorted-video/Mybillionaireexfiancee.mp4" />
               </video>
             </div>
-          </Link>
-          <Link to={'/audio/HEIST-MOVIE-TRAILER'}>
+          </Link>}
+          {premiumUser && <Link to={'/audio/HEIST-MOVIE-TRAILER'}>
             <div className="product-card">
               <video
                 autoPlay
@@ -195,8 +197,8 @@ function Product() {
                 <source src="sorted-video/Heistmovie.mp4" />
               </video>
             </div>
-          </Link>
-          <div className="product-card">
+          </Link>}
+          {premiumUser && <div className="product-card">
             <video
               autoPlay
               loop
@@ -204,8 +206,8 @@ function Product() {
             >
               <source src="sorted-video/Gameshow Wm.mp4" />
             </video>
-          </div>
-          <Link to={'/audio/DAD-TRAILER'} >
+          </div>}
+          {premiumUser && <Link to={'/audio/DAD-TRAILER'} >
             <div className="product-card">
               <video
                 autoPlay
@@ -215,8 +217,8 @@ function Product() {
                 <source src="sorted-video/Dad.mp4" />
               </video>
             </div>
-          </Link>
-          <div className="product-card">
+          </Link>}
+          {premiumUser && <div className="product-card">
             <video
               autoPlay
               loop
@@ -224,8 +226,8 @@ function Product() {
             >
               <source src="sorted-video/Chroniclesofcoffy.mp4" />
             </video>
-          </div>
-          <Link to={'/audio/ADVENTURE-ISLAND-TRAILER'} >
+          </div>}
+          {premiumUser && <Link to={'/audio/ADVENTURE-ISLAND-TRAILER'} >
             <div className="product-card">
               <video
                 autoPlay
@@ -235,7 +237,7 @@ function Product() {
                 <source src="sorted-video/Adventureislandmovie.mp4" />
               </video>
             </div>
-          </Link>
+          </Link>}
           <Link to={'/audio/AUTONOMY-AUDIO'} >
             <div className="product-card">
               <video
@@ -260,7 +262,7 @@ function Product() {
 
             </div>
           </Link>
-          <Link to={'/audio/RESTART-CONTINUE'} >
+          {premiumUser && <Link to={'/audio/RESTART-CONTINUE'} >
             <div className="product-card">
               <video
                 autoPlay
@@ -270,8 +272,8 @@ function Product() {
                 <source src="Sorted Videos/Restart Continue Cover.mp4" />
               </video>
             </div>
-          </Link>
-          <div className="product-card">
+          </Link>}
+          {premiumUser && <div className="product-card">
             <video
               autoPlay
               loop
@@ -280,8 +282,8 @@ function Product() {
               <source src="Sorted Videos/Cd No Movement 1.mp4" />
             </video>
 
-          </div>
-          <Link to={'/audio/PRINCE-CHARMING-COVER'} >
+          </div>}
+          {premiumUser && <Link to={'/audio/PRINCE-CHARMING-COVER'} >
             <div className="product-card">
               <video
                 autoPlay
@@ -291,7 +293,7 @@ function Product() {
                 <source src="Sorted Videos/Prince Charming.mp4" />
               </video>
             </div>
-          </Link>
+          </Link>}
           <div className="product-card">
             <video
               autoPlay
@@ -302,7 +304,7 @@ function Product() {
             </video>
 
           </div>
-          <div className="product-card">
+          {premiumUser && <div className="product-card">
             <video
               autoPlay
               loop
@@ -311,7 +313,7 @@ function Product() {
               <source src="Sorted Videos/Villain Origin Album.mp4" />
             </video>
 
-          </div>
+          </div>}
         </div>
 
       </div>
