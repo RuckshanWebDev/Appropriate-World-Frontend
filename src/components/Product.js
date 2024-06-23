@@ -127,17 +127,31 @@ function Product() {
 
             </div>
           </Link>}
-          <div className="product-card">
-            <Link to={'/audio/APPROPRIATE-CULTURE-SNOWSTORM'} >
+          <Link to={'/audio/TO-BE-A-KID-AGAIN-DELUXE'} >
+            <div className="product-card">
               <video
-                playsInline muted
                 autoPlay
                 loop
+                playsInline muted
               >
-                <source src="Sorted Videos/Appropriate Audio.mp4" />
+                <source src="sorted-video/Tobeakidagain Cover.mp4" />
               </video>
-            </Link>
-          </div>
+
+            </div>
+          </Link>
+          <Link to={'#'} >
+            <div className="product-card">
+              <Link to={'/audio/APPROPRIATE-CULTURE-SNOWSTORM'} >
+                <video
+                  playsInline muted
+                  autoPlay
+                  loop
+                >
+                  <source src="Sorted Videos/Appropriate Audio.mp4" />
+                </video>
+              </Link>
+            </div>
+          </Link>
           {premiumUser && <div className="product-card">
             <video
               autoPlay

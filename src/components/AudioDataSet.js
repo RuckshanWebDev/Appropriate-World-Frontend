@@ -230,6 +230,56 @@ var AudioDataSet = {
             },
         ]
     },
+    'TO BE A KID AGAIN DELUXE': {
+        'title': 'TO BE A KID AGAIN DELUXE',
+        'playlist': true,
+        'videoLink': '/sorted-video/Tobeakidagain Cover.mp4',
+        'coverLink': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
+        'links': [
+            {
+                id: 1,
+                name: 'Scrolling thru',
+                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
+                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1713470716/WEBSITE%20ASSETS/TO%20BE%20A%20KID%20AGAIN%20DELUXE/scrolling%20thru.wav'
+            },
+            {
+                id: 2,
+                name: 'For the Road',
+                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
+                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1713470301/WEBSITE%20ASSETS/TO%20BE%20A%20KID%20AGAIN%20DELUXE/For%20the%20Road.wav'
+            },
+            {
+                id: 3,
+                name: 'Gaslight',
+                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
+                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1713470923/WEBSITE%20ASSETS/TO%20BE%20A%20KID%20AGAIN%20DELUXE/Gaslight.wav'
+            },
+            {
+                id: 4,
+                name: 'One of One',
+                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
+                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1713470383/WEBSITE%20ASSETS/TO%20BE%20A%20KID%20AGAIN%20DELUXE/One%20of%20One.wav'
+            },
+            {
+                id: 5,
+                name: 'Revoke Access',
+                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
+                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1713470655/WEBSITE%20ASSETS/TO%20BE%20A%20KID%20AGAIN%20DELUXE/its%20ok%20to%20revoke%20access.wav'
+            },
+            {
+                id: 6,
+                name: 'Potential',
+                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
+                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1713470617/WEBSITE%20ASSETS/TO%20BE%20A%20KID%20AGAIN%20DELUXE/Potential.wav'
+            },
+            {
+                id: 7,
+                name: 'Imposters (feat Jade Nikaylah)',
+                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
+                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1713470321/WEBSITE%20ASSETS/TO%20BE%20A%20KID%20AGAIN%20DELUXE/Imposters%20%28feat%20Jade%20Nikaylah%29.wav'
+            },
+        ]
+    },
 }
 
 export default AudioDataSet
