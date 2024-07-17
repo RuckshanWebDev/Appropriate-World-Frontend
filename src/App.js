@@ -28,6 +28,7 @@ import PaymentConfirm from './pages/PaymentConfirm.js';
 import Settings from './pages/Settings.js';
 import TestPage from './pages/TestPage.js';
 import EditBlog from './pages/EditBlog.js';
+import Faq from './pages/Faq.js';
 
 
 export default function App() {
@@ -65,6 +66,7 @@ export default function App() {
         <Route path='/community' element={<ProtectRoute> <CommunityPage /> </ProtectRoute>} exact />
         <Route path='/login' element={<Login />} exact />
         <Route path='/earlyaccess' element={<Register />} exact />
+        <Route path='/support' element={<Faq />} exact />
         <Route path='/register' element={<Register />} exact />
         <Route path='/forgot-password' element={<ForgotPassword />} exact />
         <Route path='/reset-password/:token' element={<ResetPassword />} exact />
