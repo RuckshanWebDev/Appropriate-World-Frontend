@@ -15,14 +15,17 @@ const Login = () => {
   const dispatch = useDispatch()
   const { user } = useSelector(state => state.local)
 
+  let prev = Date.now()
 
-  const formHandler = (e) => {
+  const formHandler = async (e) => {
     e.preventDefault()
     loginUser({
       email: e.target.email.value.toLowerCase(),
       password: e.target.password.value
-    })
+    }).unwrap()
+    console.log(prev - Date.now());
   }
+
 
 
   if (user && user._id) {
