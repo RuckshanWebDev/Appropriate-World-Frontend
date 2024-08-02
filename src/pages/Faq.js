@@ -56,7 +56,7 @@ function Faq() {
         e.preventDefault()
 
         try {
-            await feedbackFn({ email: e.target.email.value, mention: e.target.reason.value, feedback: e.target.feedback.value }).unwrap()
+            await feedbackFn({ userEmail: e.target.email.value, mention: e.target.reason.value, feedback: e.target.feedback.value }).unwrap()
             toast.dismiss()
             toast.success("Successfully Created")
             e.target.email.value = ''
