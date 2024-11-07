@@ -102,6 +102,7 @@ function CommunityPage() {
             <div className="container community-container">
                 {
                     list.map((item, index) => {
+                        if(item._id === profile?._id) return
                         return (
                             <div className="community-member" key={index}>
                                 <Link to={`/profile/${item._id}`} >

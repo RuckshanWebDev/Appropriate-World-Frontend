@@ -14,7 +14,7 @@
     margin: 80px auto;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     align-items: center;
 
@@ -26,7 +26,6 @@
 
 .product-card {
     width: 300px;
-
     color: #fff;
     padding: 10px;
     border-radius: 15px;

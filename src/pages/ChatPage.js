@@ -207,6 +207,11 @@ function ChatPage() {
                         <h4 className='contact-title' >Community</h4>
                     </Link>
                     {
+                        !profile.friendList.length ?
+                        <div style={{ margin : '0 15px' }}>
+                            <p>Find your community members</p>
+                        </div>
+                        :
                         profile.friendList?.map((contact, index) => {
                             if (contact._id === profileId) return
 
@@ -265,7 +270,11 @@ function ChatPage() {
 
                 <div className="chatbox-container">
                     {
-                        contactId &&
+                        !contactId ?
+                        <div style={{ width : '100%', height : '100%', display : 'flex', justifyContent : 'center', alignItems : 'center' }}>
+                            <p>Please select a Chatbox</p>
+                        </div>
+                        :
                         <>
                             <div className="details-container">
                                 <div className="contact-item-head">
