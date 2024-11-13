@@ -56,7 +56,7 @@ function Product() {
               </div>
             </Link>
           )}
-          <Link to={"/video/YOUR FRIEND JIGGY"}>
+          <Link to={"/video/YOUR-FRIEND-JIGGY"}>
             <div className="product-card">
               <video autoPlay loop playsInline muted>
                 <source src="Sorted Videos/Yourfriendjiggy Moving.mp4" />
@@ -70,14 +70,14 @@ function Product() {
               </video>
             </div>
           </Link>
-          <Link to={"/video/AUTONOMY-4"}>
+          <Link to={"/video/AUTONOMY-:-Attack-of-the-Robots"}>
             <div className="product-card">
               <video autoPlay loop playsInline muted>
                 <source src="Sorted Videos/Autonomy Aor Cover.mp4" />
               </video>
             </div>
           </Link>
-          <Link to="/video/CHRONICLES OF COFFY">
+          <Link to="/video/CHRONICLES-OF-COFFY">
             <div className="product-card">
               <video autoPlay loop playsInline muted>
                 <source src="sorted-video/Chroniclesofcoffy.mp4" />
@@ -230,11 +230,11 @@ function Product() {
               </div>
             </Link>
           )}
-          <div className="product-card">
+          {/* <div className="product-card">
             <video autoPlay loop playsInline muted>
               <source src="Sorted Videos/Autonomy Aor Cover.mp4" />
             </video>
-          </div>
+          </div> */}
           {premiumUser && (
             <div className="product-card">
               <video autoPlay loop playsInline muted>

@@ -35,6 +35,7 @@ function ProductPageVideo() {
 
     if (VideoDataSet[url]) {
       setData(VideoDataSet[url])
+      console.log(VideoDataSet[url]);
     } else {
       navigate('/404')
       console.log('redirect');
