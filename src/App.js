@@ -55,7 +55,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/earlyaccess' element={<ProtectRoute> <HomePage /> </ProtectRoute>} exact />
-        <Route path='/' element={<ComingSoon />} exact />
+        <Route path='/' element={<HomePage />} exact />
         <Route path='/blogs' element={<BlogPage />} exact />
         <Route path='/blog/:id' element={<SingleBlog />} exact />
         <Route path='/blog/add' element={<ProtectRoute> <AddBlog /> </ProtectRoute>} exact />
