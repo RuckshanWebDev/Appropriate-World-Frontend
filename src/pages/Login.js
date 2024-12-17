@@ -9,7 +9,7 @@ import { setUser } from '../features/localSlice'
 
 
 const Login = () => {
-
+  console.log('PROCESS', process.env.REACT_APP_ENV);
   const navigate = useNavigate()
   const [loginUser, data] = useLoginUserMutation()
   const dispatch = useDispatch()

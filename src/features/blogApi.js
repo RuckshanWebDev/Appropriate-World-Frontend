@@ -18,9 +18,9 @@ const blogApi = createApi({
         }),
 
         getContact: builder.query({
-            query: () => {
+            query: ({page, limit, search}) => {
                 return {
-                    url: `/api/profile/contact`,
+                    url: `/api/profile/contact?page=${page}&limit=${limit}&search=${search}`,
                     method: "GET",
                     'credentials': 'include',
                     'mode': 'cors',
@@ -81,5 +81,5 @@ const blogApi = createApi({
 })
 
 
-export const { useDeleteBlogMutation, useGetContactQuery, useGetBlogsQuery, useGetSigleBlogsQuery, useCreateBlogMutation } = blogApi
+export const { useDeleteBlogMutation, useLazyGetContactQuery,  useGetContactQuery, useGetBlogsQuery, useGetSigleBlogsQuery, useCreateBlogMutation } = blogApi
 export default blogApi;
