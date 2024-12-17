@@ -68,25 +68,27 @@ function Navigation() {
     <nav ref={navigation}>
       <div className='container navigation' >
         <div id='logo' >
-          <Link to={'/admin'}>
+          <Link to={'/'}>
             <img src='/logo.gif' />
           </Link>
         </div>
         <div id='icons' >
           {/* <CiStreamOn /> */}
-          <FaShoppingCart className='white-path' />
-          <Link to={'/community'}>
+          <a href='https://justcreatetvstore.myshopify.com/' target='_blank'>
+            <FaShoppingCart className='white-path' />
+          </a>
+          {user && <Link to={'/community'}>
             <HiUserGroup />
-          </Link>
-          <Link to={'/chat'} >
+          </Link>}
+          {user && <Link to={'/chat'} >
             <div style={{ position: 'relative' }} >
               <div className="notification-icon">{notificationCount}</div>
               <MdOutlineMessage />
             </div>
-          </Link>
-          <Link to={'/blogs'}>
+          </Link>}
+          {user && <Link to={'/blogs'}>
             <FaBlogger />
-          </Link>
+          </Link>}
           {user ?
             <Link to="/profile">
               <BsFillPersonFill />
@@ -105,10 +107,12 @@ function Navigation() {
         </div>
       </div>
 
-      <div className='mobile-nav' style={{ display: navOpen ? "flex" : 'none' }} >
+      <div className='mobile-nav' style={{ display: navOpen ? "flex" : 'none', justifyContent: 'space-evenly' }} >
         {/* <CiStreamOn /> */}
-        <FaShoppingCart className='white-path' />
-        <Link to={'/community'}>
+        <a href='https://justcreatetvstore.myshopify.com/' target='_blank'>
+          <FaShoppingCart className='white-path' />
+        </a>
+        { user && <> <Link to={'/community'}>
           <HiUserGroup />
         </Link>
         <Link to={'/chat'} >
@@ -117,7 +121,8 @@ function Navigation() {
         <Link to={'/blogs'}>
           <FaBlogger />
         </Link>
-
+        </>
+        }
         {user ?
           <Link to="/profile">
             <BsFillPersonFill />

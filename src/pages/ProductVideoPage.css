@@ -32,6 +32,12 @@
     position: relative;
 }
 
+.video-container .description{
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 17px;
+}
+
 .playlist-item-text {
     color: #1e1e1e;
     margin-top: auto;

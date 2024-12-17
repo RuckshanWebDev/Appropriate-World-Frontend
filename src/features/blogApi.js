@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const blogApi = createApi({
     reducerPath: 'blogApi',
-    baseQuery: fetchBaseQuery({ baseUrl: process.env.NODE_ENV === "production" ? 'https://appropriate-world-backend.onrender.com' : 'http://localhost:5000', }),
+    baseQuery: fetchBaseQuery({ baseUrl: process.env.NODE_ENV === "production" ? 'https://api.justcreate.tv' : 'http://localhost:5001', }),
     endpoints: (builder) => ({
 
         getBlogs: builder.query({
@@ -13,15 +13,14 @@ const blogApi = createApi({
 
         getSigleBlogs: builder.query({
             query: (url = '') => {
-                console.log(url);
                 return `/api/blog/${url}`
             }
         }),
 
         getContact: builder.query({
-            query: () => {
+            query: ({page, limit, search}) => {
                 return {
-                    url: `/api/profile/contact`,
+                    url: `/api/profile/contact?page=${page}&limit=${limit}&search=${search}`,
                     method: "GET",
                     'credentials': 'include',
                     'mode': 'cors',
@@ -82,5 +81,5 @@ const blogApi = createApi({
 })
 
 
-export const { useDeleteBlogMutation, useGetContactQuery, useGetBlogsQuery, useGetSigleBlogsQuery, useCreateBlogMutation } = blogApi
+export const { useDeleteBlogMutation, useLazyGetContactQuery,  useGetContactQuery, useGetBlogsQuery, useGetSigleBlogsQuery, useCreateBlogMutation } = blogApi
 export default blogApi;

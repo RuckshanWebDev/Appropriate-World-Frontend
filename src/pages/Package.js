@@ -9,7 +9,7 @@ import { useLazyGetProfileQuery } from '../features/profileApi'
 import { loadStripe } from '@stripe/stripe-js'
 import { toast } from 'react-toastify'
 
-let stripePromise = loadStripe('pk_test_51Nnw7qF40YQ3vkpscae5w6XGoTd8HCCzVsp7o4B53kwsV1mmweY60pfzqDfLM8CGwXeXcQA8PfklEoWC3sHgIWsx00Pv0jCcL2')
+let stripePromise = loadStripe('pk_live_51OAcXEImpSftCiTAE9ekfF0aKWDzoGtQzEpK8zAGfleOGV0TjrKru7luazwLAi50y3biJkaRfRbWzFcO8VVNS54o00igRCaivB')
 
 function Package() {
 
@@ -99,7 +99,7 @@ function Package() {
                                 <span>Community Voting Rights</span>
                                 <span>Digital Bundle Box</span>
                             </div>
-                            <button onClick={() => handleCheckout(prices.data?.data[1]?.id)} >
+                            <button onClick={() => handleCheckout(prices.data?.data[2]?.id)} >
                                 35.99
                             </button>
                             {/* <button>
@@ -124,7 +124,7 @@ function Package() {
                                 <span>Priority Early Access</span>
                                 <span>Digital Bundle Box</span>
                             </div>
-                            <button onClick={() => handleCheckout(prices.data?.data[2]?.id)} >99.99
+                            <button onClick={() => handleCheckout(prices.data?.data[1]?.id)} >99.99
                             </button>
                             {/* <button>
                                 <Link to={'/checkout#type=ONYX'} style={{ textDecoration: 'none', color: '#fff' }} >99.99</Link>

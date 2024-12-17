@@ -9,20 +9,23 @@ import { setUser } from '../features/localSlice'
 
 
 const Login = () => {
-
+  console.log('PROCESS', process.env.REACT_APP_ENV);
   const navigate = useNavigate()
   const [loginUser, data] = useLoginUserMutation()
   const dispatch = useDispatch()
   const { user } = useSelector(state => state.local)
 
+  let prev = Date.now()
 
-  const formHandler = (e) => {
+  const formHandler = async (e) => {
     e.preventDefault()
     loginUser({
-      email: e.target.email.value,
+      email: e.target.email.value.toLowerCase(),
       password: e.target.password.value
-    })
+    }).unwrap()
+    console.log(prev - Date.now());
   }
+
 
 
   if (user && user._id) {

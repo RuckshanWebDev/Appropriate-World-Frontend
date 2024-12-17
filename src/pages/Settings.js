@@ -9,7 +9,7 @@ import { setProfileId } from '../features/localSlice'
 // import '../ @radix-ui/themes/styles.css';
 // import url('../../ node_modules/@radix-ui/themes/styles.css');
 // import './../../node_modules/@radix-ui/themes/styles.css'
-import { AlertDialog, Avatar, Badge, Box, Button, Card, Flex, Heading, Separator, Table, Text, TextField, Theme } from '@radix-ui/themes'
+import { AlertDialog, Avatar, Badge, Box, Button, Card, Flex, Heading, Separator, Table, Text, TextField } from '@radix-ui/themes'
 import getPackageName from '../utils/getPackageName'
 
 
@@ -139,12 +139,11 @@ function Settings() {
 
     return (
         <Layout loader={getSubscriptionsData.isLoading || createCustomerData.isLoading || invoiceData.isLoading} >
+            <Theme>
             <div className='container' style={{ position: 'relative' }} >
 
                 {getSubscriptionsData.isSuccess &&
                     <div className="container">
-
-                        <Theme>
                             <div  >
                                 <Heading mt='5'>Account Credentials</Heading>
 
@@ -298,11 +297,12 @@ function Settings() {
                                 </Table.Body>
                             </Table.Root>
 
-                        </Theme>
+                    
 
                     </div>
                 }
             </div>
+            </Theme>
         </Layout>
     )
 }

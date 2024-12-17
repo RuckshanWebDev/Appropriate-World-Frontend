@@ -4,35 +4,43 @@
 
     display: flex;
     gap: 30px;
+    height: calc(-210px + 100vh);
 }
 
 .contact-container {
     background-color: rgba(80, 80, 80, 0.356);
-    height: 600px;
+    height: 100%;
     min-width: 250px;
     max-width: 350px;
     flex: 0 0 35%;
     border-radius: 15px;
     overflow-y: scroll;
+    min-height: 600px;
 }
 
 .chatbox-container {
     border-radius: 15px;
-    height: 600px;
+    height: 100%;
+    min-height: 600px;
     width: 100%;
     background-color: rgba(80, 80, 80, 0.356);
 
 }
 
 .contact-item {
-    padding: 15px 5px;
+    padding: 5px 5px;
     display: flex;
     gap: 20px;
-    border-bottom: 3px solid #ffffff71;
+    border-bottom: 2px solid #ffffff71;
     margin: 0 10px;
     cursor: pointer;
-
+    align-items: center;
     position: relative;
+}
+
+.contact-item .avatar {
+    width: 30px !important;
+    height: 30px !important;
 }
 
 .contact-item-head {
@@ -93,6 +101,7 @@
     width: 100%;
     height: 100%;
     overflow-y: hidden;
+    flex: 1;
 }
 
 .chatbox-container .message-container>div {

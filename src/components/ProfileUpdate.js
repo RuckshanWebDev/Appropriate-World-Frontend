@@ -18,6 +18,9 @@ function ProfileUpdate({ data }) {
 
 
     const updateFormHandler = async (e) => {
+
+        let popup = toast.loading("Updating...")
+
         e.preventDefault()
 
         const params = window.location.search?.replace('?', '').split('=')
@@ -67,8 +70,10 @@ function ProfileUpdate({ data }) {
             }
 
             if (createProfileData.isSuccess) {
+                toast.dismiss()
                 toast.success("Successfully Created")
             } else if (createProfileData.isError) {
+                toast.dismiss()
                 toast.error("Something went wrong try again later!")
             }
 
@@ -98,29 +103,40 @@ function ProfileUpdate({ data }) {
                         })
                         dispatch(togglePopup())
                     }
+                    toast.update(popup, { render: "Image Updated.", type: "success", isLoading: false });
+                    toast.dismiss()
 
                 } catch (error) {
-                    console.log(error);
+                    dispatch(togglePopup())
+                    toast.update(popup, { render: error.message, type: "error", isLoading: false });
+                    toast.dismiss()
                 }
             } else {
-                updateProfile({
-                    dob: e.target.dob.value,
-                    address: e.target.address.value,
-                    profession: e.target.profession.value,
-                    hobby: e.target.hobby.value,
-                    name: e.target.names.value,
-                    bio: e.target.bio.value,
-                })
-                dispatch(togglePopup())
+
+
+                try {
+                    const res = await updateProfile({
+                        dob: e.target.dob.value,
+                        address: e.target.address.value,
+                        profession: e.target.profession.value,
+                        hobby: e.target.hobby.value,
+                        name: e.target.names.value,
+                        bio: e.target.bio.value,
+                    }).unwrap()
+                    dispatch(togglePopup())
+                    toast.update(popup, { render: "Successfully Updated.", type: "success", isLoading: false });
+                    toast.dismiss()
+
+
+                } catch (err) {
+
+                    dispatch(togglePopup())
+                    toast.dismiss()
+                    toast.error("Something went wrong try again later!")
+
+                }
+
             }
-
-            if (updateProfileData.isSuccess) {
-                toast.success("Successfully Updated")
-
-            } else if (updateProfileData.isError) {
-                toast.error("Something went wrong try again later!")
-            }
-
         }
     }
 
@@ -175,6 +191,21 @@ function ProfileUpdate({ data }) {
                     </div>
                     <div className="input-container">
                         <label >Interests/Credits</label>
+                        <select name="dob" id="">
+                            <option value="">Select a Sign</option>
+                            <option value="Aries">Aries: March 21 - April 19</option>
+                            <option value="Taurus">Taurus: April 20 - May 20</option>
+                            <option value="Gemini">Gemini: May 21 - June 20</option>
+                            <option value="Cancer">Cancer: June 21 - July 22</option>
+                            <option value="Leo">Leo: July 23 - August 22</option>
+                            <option value="Virgo">Virgo: August 23 - September 22</option>
+                            <option value="Libra">Libra: September 23 - October 22</option>
+                            <option value="Scorpio">Scorpio: October 23 - November 21</option>
+                            <option value="Sagittarius">Sagittarius: November 22 - December 21</option>
+                            <option value="Capricorn">Capricorn: December 22 - January 19</option>
+                            <option value="Aquarius">Aquarius: January 20 - February 18</option>
+                            <option value="Pisces">Pisces: February 19 - March 20</option>
+                        </select>
                         <input type="text" name='hobby' />
                     </div>
 

@@ -35,6 +35,7 @@ function ProductPageVideo() {
 
     if (VideoDataSet[url]) {
       setData(VideoDataSet[url])
+      console.log(VideoDataSet[url]);
     } else {
       navigate('/404')
       console.log('redirect');
@@ -57,7 +58,18 @@ function ProductPageVideo() {
 
           {currentVideo && <video poster={currentVideo.img} id='video-player' controls ref={videoRef} src={currentVideo.link} ></video>}
 
+          <p className='description'>{data?.description}</p>
 
+          <div style={{ display : 'flex', flexDirection : 'column', margin : '30px 0', gap : '15px' }} >
+            <div style={{ display : 'flex' , gap: '10px' }}>
+              <p style={{ maxWidth : '100px', width : '100%' }} >Genre :</p>
+              <p>{data?.genre}</p>
+            </div>
+            <div style={{ display : 'flex' , gap: '10px' }}>
+              <p style={{ maxWidth : '100px', width : '100%' }} >Cast :</p>
+              <p>{data?.cast}</p>
+            </div>
+          </div>
 
           {data.playlist &&
             <>

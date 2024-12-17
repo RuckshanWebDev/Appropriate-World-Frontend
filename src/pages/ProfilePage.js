@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addNotify, clearUser, setProfileId, togglePopup } from '../features/localSlice'
 import { useLogoutUserMutation } from '../features/userApi'
 import { toast } from 'react-toastify'
-import { useGetProfileQuery, useLazyGetProfileQuery } from '../features/profileApi'
+import { useGetProfileQuery, useLazyGetProfileQuery, useUpdateProfileMutation } from '../features/profileApi'
 import ProfileUpdate from '../components/ProfileUpdate'
 import { useLazyGetotificationQuery } from '../features/chatApi'
 import Activity from '../components/Activity'
 import { Link } from 'react-router-dom'
 import { IoMdSettings } from "react-icons/io";
+import { Theme, Switch, Flex } from '@radix-ui/themes'
+
 
 
 function ProfilePage() {
@@ -20,6 +22,9 @@ function ProfilePage() {
     const dispatch = useDispatch()
     const [logout, dataLogout] = useLogoutUserMutation()
     const [getProfileData, data] = useLazyGetProfileQuery()
+    const [updateProfile, updateProfileData] = useUpdateProfileMutation()
+
+    console.log(data);
 
     // const [getNotificationFn, getNotification] = useLazyGetotificationQuery()
 
@@ -54,6 +59,17 @@ function ProfilePage() {
 
     }
 
+    const profilePrivateHandler = async (e) => {
+        try {
+
+            const updated = await updateProfile({ private: e }).unwrap()
+            console.log(updated);
+            setProfile(updated.data)
+        } catch (err) {
+
+        }
+    }
+
 
     useEffect(() => {
 
@@ -81,103 +97,110 @@ function ProfilePage() {
         <>
             <ProfileUpdate data={data.data?.data[0]} />
             <Layout loader={data.isLoading}  >
-                <div className="container profile-page-container">
+                <div className="container" style={{ paddingBottom: '80px' }}>
+                    <div className="profile-page-container">
 
-                    <div className="color-container">
-                        <div className="current-color"></div>
-                        <div className="color-box">
-                            <div className="color-option" id='color-1' data-color='#FBB924' onClick={colorChanger}></div>
-                            <div className="color-option" id='color-2' data-color='#FF2E56' onClick={colorChanger}></div>
-                            <div className="color-option" id='color-3' data-color='#F37F2C' onClick={colorChanger}></div>
-                            <div className="color-option" id='color-4' data-color='#5E58EC' onClick={colorChanger}></div>
-                            <div className="color-option" id='color-5' data-color='#05A2E9' onClick={colorChanger}></div>
-                            <div className="color-option" id='color-6' data-color='#F3432C' onClick={colorChanger}></div>
+                        <div className="color-container">
+                            <div className="current-color"></div>
+                            <div className="color-box">
+                                <div className="color-option" id='color-1' data-color='#FBB924' onClick={colorChanger}></div>
+                                <div className="color-option" id='color-2' data-color='#FF2E56' onClick={colorChanger}></div>
+                                <div className="color-option" id='color-3' data-color='#F37F2C' onClick={colorChanger}></div>
+                                <div className="color-option" id='color-4' data-color='#5E58EC' onClick={colorChanger}></div>
+                                <div className="color-option" id='color-5' data-color='#05A2E9' onClick={colorChanger}></div>
+                                <div className="color-option" id='color-6' data-color='#F3432C' onClick={colorChanger}></div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div className="top">
-                        <div>
-                            {
-                                profile?.isPremium ?
+                        <div className="top">
+                            <div>
+                                {
                                     profile?.accountType === 'EMERALD' ?
                                         <Link to={'/packages'} id='account-type'>
                                             <img src="./card/emerald.gif" alt="" />
                                         </Link>
+                                        : profile?.accountType === 'ONYX' ?
+                                            <Link to={'/packages'} id='account-type' >
+                                                <img src="./card/ONYX.gif" alt="" />
+                                            </Link>
+
+                                            :
+                                            <Link to={'/packages'} id='account-type'>
+                                                <img src="./card/VIOLET.gif" alt="" />
+                                            </Link>
+
+                                }
+                                {
+                                    profile?.profile_image ?
+                                        <img src={profile?.profile_image} key={profile?.profile_image} alt="" id="profile-img" />
                                         :
-                                        <Link to={'/packages'} id='account-type' >
-                                            <img src="./card/ONYX.gif" alt="" />
-                                        </Link>
+                                        <img src="./user.png" alt="" id="profile-img" />
+                                }
+                            </div>
+                            <div>
+                                <h2>{profile?.name || '-- : --'}</h2>
+                                <h3 >{profile?.bio || 'Add your bio'}</h3>
+                                <br />
+                                <br />
+                                <button onClick={() => dispatch(togglePopup())} >Edit Profile</button>
+                                <button onClick={logoutHandler} >Logout</button>
+                            </div>
 
-                                    :
-                                    <Link to={'/packages'} id='account-type'>
-                                        <img src="./card/VIOLET.gif" alt="" />
-                                    </Link>
-
-                            }
-                            {
-                                profile?.profile_image ?
-                                    <img src={profile?.profile_image} key={profile?.profile_image} alt="" id="profile-img" />
-                                    :
-                                    <img src="./user.png" alt="" id="profile-img" />
-                            }
-                        </div>
-                        <div>
-                            <h2>{profile?.name || '-- : --'}</h2>
-                            <h3 >{profile?.bio || 'Add your bio'}</h3>
-                            <br />
-                            <br />
-                            <button onClick={() => dispatch(togglePopup())} >Edit Profile</button>
-                            <button onClick={logoutHandler} >Logout</button>
-                        </div>
-
-                        <div style={{ width: '100%' }}>
-                            <h4> Information</h4>
-                            <div className="line"></div>
-                            <div className='info-container' >
-                                <div>
-                                    <h6>Creator's Name</h6>
-                                    <h5>{profile?.name || '-- : --'}</h5>
-                                </div>
-                                <div>
-                                    <h6>Sign</h6>
-                                    <h5>{profile?.dob || '-- : --'}</h5>
-                                </div>
-                                <div>
-                                    <h6>Location</h6>
-                                    <h5>{profile?.address || '-- : --'}</h5>
-                                </div>
-                                <div>
-                                    <h6>Creator Type</h6>
-                                    <h5>{profile?.profession || '-- : --'}</h5>
-                                </div>
-                                <div>
-                                    <h6>Interests/Credits</h6>
-                                    <h5>{profile?.hobby || '-- : --'}</h5>
-                                </div>
-                                <div>
+                            <div style={{ width: '100%' }}>
+                                <h4> Information</h4>
+                                <div className="line"></div>
+                                <div className='info-container' >
+                                    <div>
+                                        <h6>Creator's Name</h6>
+                                        <h5>{profile?.name || '-- : --'}</h5>
+                                    </div>
+                                    <div>
+                                        <h6>Sign</h6>
+                                        <h5>{profile?.dob || '-- : --'}</h5>
+                                    </div>
+                                    <div>
+                                        <h6>Location</h6>
+                                        <h5>{profile?.address || '-- : --'}</h5>
+                                    </div>
+                                    <div>
+                                        <h6>Creator Type</h6>
+                                        <h5>{profile?.profession || '-- : --'}</h5>
+                                    </div>
+                                    <div>
+                                        <h6>Interests/Credits</h6>
+                                        <h5>{profile?.hobby || '-- : --'}</h5>
+                                    </div>
+                                    {/* <div>
                                     <h6>Joined at</h6>
                                     <h5>{profile?.createdAt.slice(0, 10) || '-- : --'}</h5>
+                                </div> */}
+                                    <Flex justify={'between'} >
+                                        <h6>Private</h6>
+                                        <Theme>
+                                            <Switch onCheckedChange={profilePrivateHandler} checked={profile?.private} />
+                                        </Theme>
+                                    </Flex>
                                 </div>
                             </div>
-                        </div>
-                        <Link to={'/settings'} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }} >
-                            <IoMdSettings style={{ color: '#d8e6fe', fontSize: '32px' }} /> <span style={{ fontSize: '24px' }} >Account Settings</span>
-                        </Link>
+                            <Link to={'/settings'} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }} >
+                                <IoMdSettings style={{ color: '#d8e6fe', fontSize: '32px' }} /> <span style={{ fontSize: '24px' }} >Account Settings</span>
+                            </Link>
 
 
-                    </div>
-
-                    <div className="middle">
-
-
-                        <div >
-                            <h4>Activities</h4>
-                            <div className="line"></div>
-                            <Activity />
                         </div>
 
-                    </div>
+                        <div className="middle">
 
+
+                            <div >
+                                <h4>Activities</h4>
+                                <div className="line"></div>
+                                <Activity />
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
             </Layout>
         </>

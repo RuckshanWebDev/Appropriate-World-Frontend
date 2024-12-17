@@ -20,7 +20,7 @@ function Register() {
     e.preventDefault()
     registerUser({
       name: e.target.names.value,
-      email: e.target.email.value,
+      email: e.target.email.value.toLowerCase(),
       password: e.target.password.value
     })
 

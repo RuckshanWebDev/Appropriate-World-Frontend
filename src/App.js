@@ -28,6 +28,7 @@ import PaymentConfirm from './pages/PaymentConfirm.js';
 import Settings from './pages/Settings.js';
 import TestPage from './pages/TestPage.js';
 import EditBlog from './pages/EditBlog.js';
+import Faq from './pages/Faq.js';
 
 
 export default function App() {
@@ -53,8 +54,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/admin' element={<HomePage />} exact />
-        <Route path='/' element={<ComingSoon />} exact />
+        <Route path='/earlyaccess' element={<ProtectRoute> <HomePage /> </ProtectRoute>} exact />
+        <Route path='/' element={<HomePage />} exact />
         <Route path='/blogs' element={<BlogPage />} exact />
         <Route path='/blog/:id' element={<SingleBlog />} exact />
         <Route path='/blog/add' element={<ProtectRoute> <AddBlog /> </ProtectRoute>} exact />
@@ -64,6 +65,8 @@ export default function App() {
         <Route path='/profile/:id' element={<SingleProfile />} exact />
         <Route path='/community' element={<ProtectRoute> <CommunityPage /> </ProtectRoute>} exact />
         <Route path='/login' element={<Login />} exact />
+        <Route path='/earlyaccess' element={<Register />} exact />
+        <Route path='/support' element={<Faq />} exact />
         <Route path='/register' element={<Register />} exact />
         <Route path='/forgot-password' element={<ForgotPassword />} exact />
         <Route path='/reset-password/:token' element={<ResetPassword />} exact />
