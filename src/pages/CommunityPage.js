@@ -93,7 +93,7 @@ function CommunityPage() {
   }, [data]);
 
   return (
-    <Layout loader={data.isLoading}>
+    <Layout loader={data.isLoading || data.isFetching}>
       <form className="search-container" onSubmit={formHandler}>
         <input type="text" name="form" onChange={formHandler} placeholder="Search..." />
         <input type="submit" name="" id="" value="Search" />
