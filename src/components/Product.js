@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./Product.css";
 
 function Product() {
-
   const premiumUser = false;
 
   return (
@@ -38,15 +37,14 @@ function Product() {
               </video>
             </div>
           </Link>
-          {premiumUser && (
-            <Link to={"/video/DETECTIVE-BLK"}>
-              <div className="product-card">
-                <video autoPlay loop playsInline muted>
-                  <source src="Sorted Videos/Detectiveblk.mp4" />
-                </video>
-              </div>
-            </Link>
-          )}
+
+          <Link to={"/video/DETECTIVE-BLK"}>
+            <div className="product-card">
+              <video autoPlay loop playsInline muted>
+                <source src="Sorted Videos/Detectiveblk.mp4" />
+              </video>
+            </div>
+          </Link>
           {premiumUser && (
             <Link to={"/video/Playa-PLaya-Sophisticated-Thoughts"}>
               <div className="product-card">
