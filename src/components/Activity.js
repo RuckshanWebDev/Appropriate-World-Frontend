@@ -118,7 +118,6 @@ function Activity() {
             }).unwrap()
 
             var newObj = { ...res.data }
-            console.log(newObj);
             newObj.author = user.profile
             setFeed([newObj, ...feed])
         }
@@ -154,7 +153,6 @@ function Activity() {
             return i
         })
 
-        console.log(likedArray);
         setFeed(likedArray)
     }
 
@@ -176,15 +174,11 @@ function Activity() {
 
         const responce = await commentFn({ id: e.target.dataset.id, data: { comment: e.target.name.value, commetedUser: user.profileId } }).unwrap()
 
-        console.log(responce);
-
-        console.log(feed);
         MutateData(feed, responce.data)
 
         e.target.reset()
     }
 
-    console.log(commentData);
 
     // Delete
     const deleteTweet = async (e) => {
@@ -214,7 +208,6 @@ function Activity() {
             if (newArray[count].id === item.id) {
 
                 // Logic
-                console.log(newArray[count], item);
                 newArray[count] = { ...item, author: newArray[count].author }
                 setFeed(newArray)
 
@@ -248,8 +241,8 @@ function Activity() {
                     <textarea name="text" id="" cols="30" rows="4" placeholder="What's happening?" minLength={5} ></textarea>
                     <img src="" alt="" className="image-preview" ref={imagePreviewRef} />
                     <video controls src="" alt="" className="video-preview" ref={videoPreviewRef} ></video>
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }} >
-                        <div className='activity-icons' >
+                    <div style={{ display: 'flex', flexDirection : 'row', justifyContent: 'space-between' }} >
+                        <div className='activity-icons flex flex-row' >
                             <label htmlFor="image">
                                 <input onChange={(e) => mediaHandler(e, 'image')} type="file" src="" alt="" id='image' accept="image/png, image/jpeg" style={{ display: 'none' }} />
                                 <BsImage />

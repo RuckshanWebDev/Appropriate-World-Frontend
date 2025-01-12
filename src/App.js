@@ -29,6 +29,7 @@ import Settings from './pages/Settings.js';
 import TestPage from './pages/TestPage.js';
 import EditBlog from './pages/EditBlog.js';
 import Faq from './pages/Faq.js';
+import ContentUploadPage from './pages/ContentUploadPage.js';
 
 
 export default function App() {
@@ -38,8 +39,7 @@ export default function App() {
 
 
   if (getNotification.isSuccess && getNotification?.data?.data[0].from.length) {
-    console.log(getNotification.data);
-    getNotification.data.data && dispatch(addNotify(getNotification.data?.data))
+    // getNotification.data.data && dispatch(addNotify(getNotification.data?.data))
   }
 
 
@@ -47,7 +47,6 @@ export default function App() {
 
     localStorage.getItem('user') && getNotificationFn()
     localStorage.setItem('mute', true)
-    console.log("site enter");
 
   }, [])
 
@@ -76,6 +75,7 @@ export default function App() {
         <Route path='/packages' element={<ProtectRoute><Package /> </ProtectRoute>} exact />
         <Route path='/payment-confirm' element={<ProtectRoute><PaymentConfirm /> </ProtectRoute>} exact />
         <Route path='/settings' element={<ProtectRoute><Settings /> </ProtectRoute>} exact />
+        <Route path='/content-upload' element={<ContentUploadPage />} exact />
         <Route path='/test' element={<ProtectRoute><TestPage /> </ProtectRoute>} exact />
         <Route path='*' element={<ProtectRoute><ErrorPage /> </ProtectRoute>} />
       </Routes>

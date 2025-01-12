@@ -11,6 +11,8 @@ const root = ReactDOM.createRoot(document.querySelector("#root"));
 root.render(
   <Provider store={store}>
     <ToastContainer position="top-center" pauseOnFocusLoss={false} autoClose={1000} hideProgressBar={true}></ToastContainer>
+     <Theme>
       <App />
+     </Theme>
   </Provider>
 );
