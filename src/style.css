@@ -54,7 +54,7 @@ html,
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     /* background: #a12cf0; */
-    background: #000;
+    background: #111113;
     color: #fff;
 }
 
@@ -149,11 +149,11 @@ button {
 }
 
 .interface-grid {
-    background-color: #450074 !important;
+    background-color: #111113 !important;
 }
 
 .sortable-play-list .list-item-container {
-    background-color: #ff9900 !important;
+    background-color: #111113 !important;
 }
 
 .loader {
@@ -263,6 +263,11 @@ input:focus {
     font-size: 24px;
     color: #fff;
     margin: 0px 10px 2px 0;
+}
+
+.custom-toast-body{
+    border: solid 2px #5E58EC;
+    border-radius: 15px !important;
 }
 
 @media only screen and (max-width: 600px) {}

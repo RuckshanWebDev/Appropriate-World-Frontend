@@ -8,6 +8,7 @@ import chatApi from "./features/chatApi";
 import forumApi from "./features/forumApi";
 import paymentApi from "./features/paymentApi";
 import feedbackApi from "./features/feedbackApi";
+import mediaApi from "./features/mediaApi";
 
 const store = configureStore({
     reducer: {
@@ -19,6 +20,7 @@ const store = configureStore({
         [forumApi.reducerPath]: forumApi.reducer,
         [paymentApi.reducerPath]: paymentApi.reducer,
         [feedbackApi.reducerPath]: feedbackApi.reducer,
+        [mediaApi.reducerPath]: mediaApi.reducer,
     },
     middleware: (getDefaultMiddleware) => (
         getDefaultMiddleware()
@@ -29,6 +31,7 @@ const store = configureStore({
             .concat(forumApi.middleware)
             .concat(paymentApi.middleware)
             .concat(feedbackApi.middleware)
+            .concat(mediaApi.middleware)
     )
 })
 

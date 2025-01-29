@@ -3,7 +3,7 @@ var AudioDataSet = {
         'title': 'APPROPRIATE AUDIO',
         'playlist': true,
         'videoLink': '/Sorted Videos/Appropriate Audio.mp4',
-        'coverLink': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151963/cover/APPROPRIATE_AUDIO_zctlgq.jpg',
+        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151963/cover/APPROPRIATE_AUDIO_zctlgq.jpg',
         'links': [
             {
                 id: 1,
@@ -24,7 +24,7 @@ var AudioDataSet = {
         'title': 'MY EX BILLIONAIRE TRAILER 2',
         'playlist': true,
         'videoLink': '/sorted-video/Mybillionaireexfiancee.mp4',
-        'coverLink': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151960/cover/MY_BILLIONAIRE_EX_FIANCEE_y3bv7h.jpg',
+        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151960/cover/MY_BILLIONAIRE_EX_FIANCEE_y3bv7h.jpg',
         'links': [
             {
                 id: 1,
@@ -45,7 +45,7 @@ var AudioDataSet = {
         'title': 'HEIST MOVIE TRAILER',
         'playlist': true,
         'videoLink': '/sorted-video/Heistmovie.mp4',
-        'coverLink': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151953/cover/HEIST_MOVIE_COVER_oa2rxn.jpg',
+        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151953/cover/HEIST_MOVIE_COVER_oa2rxn.jpg',
         'links': [
             {
                 id: 1,
@@ -65,7 +65,7 @@ var AudioDataSet = {
         'title': 'DAD TRAILER',
         'playlist': false,
         'videoLink': '/sorted-video/Dad.mp4',
-        'coverLink': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151951/cover/DAD_COVER_jtcaza.jpg',
+        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151951/cover/DAD_COVER_jtcaza.jpg',
         'links': [
             {
                 id: 1,
@@ -79,7 +79,7 @@ var AudioDataSet = {
         'title': 'ADVENTURE ISLAND TRAILER',
         'playlist': false,
         'videoLink': '/sorted-video/Adventureislandmovie.mp4',
-        'coverLink': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151954/cover/ADVENTURE_ISLAND_MOVIE_p5bmvo.jpg',
+        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151954/cover/ADVENTURE_ISLAND_MOVIE_p5bmvo.jpg',
         'links': [
             {
                 id: 1,
@@ -93,7 +93,7 @@ var AudioDataSet = {
         'title': 'Autonomy Mission to the Analog Islands',
         'playlist': true,
         'videoLink': '/Sorted Videos/Autonomy Audio.mp4',
-        'coverLink': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151943/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
+        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151943/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
         'links': [
             {
                 id: 1,
@@ -161,7 +161,7 @@ var AudioDataSet = {
         'title': 'EVERY BODIES WATCHING',
         'playlist': true,
         'videoLink': '/Sorted Videos/Everybodieswatching Copy.mp4',
-        'coverLink': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151965/cover/EVERYBODIES_WATCHING_nmyuyd.jpg',
+        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151965/cover/EVERYBODIES_WATCHING_nmyuyd.jpg',
         'links': [
             {
                 id: 1,
@@ -199,7 +199,7 @@ var AudioDataSet = {
         'title': 'RESTART CONTINUE',
         'playlist': true,
         'videoLink': '/Sorted Videos/Restart Continue Cover.mp4',
-        'coverLink': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151969/cover/RestartContinueCover_xls8cn.jpg',
+        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151969/cover/RestartContinueCover_xls8cn.jpg',
         'links': [
             {
                 id: 1,
@@ -214,7 +214,7 @@ var AudioDataSet = {
         'title': 'PRINCE CHARMING COVER',
         'playlist': true,
         'videoLink': '/Sorted Videos/Prince Charming.mp4',
-        'coverLink': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
+        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
         'links': [
             {
                 id: 1,
@@ -234,7 +234,7 @@ var AudioDataSet = {
         'title': 'TO BE A KID AGAIN DELUXE',
         'playlist': true,
         'videoLink': '/sorted-video/Tobeakidagain Cover.mp4',
-        'coverLink': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
+        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
         'links': [
             {
                 id: 1,

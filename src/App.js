@@ -70,7 +70,9 @@ export default function App() {
         <Route path='/forgot-password' element={<ForgotPassword />} exact />
         <Route path='/reset-password/:token' element={<ResetPassword />} exact />
         <Route path='/audio/:id' element={<ProductPage />} exact />
+        <Route path='/audio/outsource/:id' element={<ProductPage />} exact />
         <Route path='/video/:id' element={<ProductPageVideo />} exact />
+        <Route path='/video/outsource/:id' element={<ProductPageVideo />} exact />
         {/* <Route path='/checkout' element={<ProtectRoute> <Checkout /> </ProtectRoute>} exact /> */}
         <Route path='/packages' element={<ProtectRoute><Package /> </ProtectRoute>} exact />
         <Route path='/payment-confirm' element={<ProtectRoute><PaymentConfirm /> </ProtectRoute>} exact />

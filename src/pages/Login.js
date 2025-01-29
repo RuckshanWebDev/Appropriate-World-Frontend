@@ -51,7 +51,7 @@ const Login = () => {
   return (
     <Layout>
       <div className='container' >
-        <div className="grid align__item">
+        <div className="grid-login align__item">
 
           <div className="register">
 
