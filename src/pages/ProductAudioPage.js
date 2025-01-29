@@ -108,7 +108,7 @@ function ProductPage() {
           {!outSource
             ? Object.keys(audioData).length && (
                 <AudioPlayer
-                  playList={audioData.links }
+                  playList={audioData.episodes }
                   audioInitialState={{ muted: false, volume: 0.5, curPlayId: 1 }}
                   placement={{
                     interface: {
@@ -130,7 +130,7 @@ function ProductPage() {
               )
             : getMediaData.isLoading || getMediaData.isSuccess && Object.keys(audioData).length && (
                 <AudioPlayer
-                  playList={[{ id: 1, name: audioData.title, img: audioData.coverImage, src: audioData.media }]}
+                  playList={audioData.episodes}
                   audioInitialState={{ muted: false, volume: 0.5, curPlayId: 1 }}
                   placement={{
                     interface: {

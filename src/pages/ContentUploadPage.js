@@ -10,24 +10,23 @@ import { useNavigate } from "react-router-dom";
 // import "./styles.css";
 
 function ContentUploadPage() {
-
   // Query
   const [getUrlFn, getUrlData] = useLazyGetPresignedUrlQuery();
   const [uploadMediaFn, uploadMediaData] = useUploadMediaMutation();
-  const [createMeidaFn, createMediaData] = useCreateMediaContentMutation()
-  const { user } = useSelector(state => state.local)
+  const [createMeidaFn, createMediaData] = useCreateMediaContentMutation();
+  const { user } = useSelector((state) => state.local);
 
   // State
   const [coverImage, setCoverImage] = useState(null);
   const [contentFile, setContentFile] = useState(null);
-  const [contentType, setContentType] = useState('video');
+  const [contentType, setContentType] = useState("video");
   const titleRef = useRef();
   const coverImg = useRef();
   const artistRef = useRef();
   const genreRef = useRef();
   const typeRef = useRef();
   const descriptionRef = useRef();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   console.log(createMediaData);
   // URL Params
@@ -38,14 +37,13 @@ function ContentUploadPage() {
 
   // Handlers
   const handleFormSubmit = async (e) => {
-
     try {
       e.preventDefault();
 
       // Showing Loading State
-      const t = toast.loading('Preparing secured connection', {
+      const t = toast.loading("Preparing secured connection", {
         position: "bottom-center",
-        isLoading : true,
+        isLoading: true,
         autoClose: false,
         hideProgressBar: false,
         closeOnClick: false,
@@ -53,78 +51,84 @@ function ContentUploadPage() {
         draggable: true,
         progress: undefined,
         theme: "dark",
-        className : 'custom-toast-body'
-        });
-
+        className: "custom-toast-body",
+      });
 
       // Upload Cover Image URL
-      const { url: coverImageUrl } = await getUrlFn({ fileName: coverImage.name, fileType: coverImage.type, folder : 'cover' }).unwrap()
+      const { url: coverImageUrl } = await getUrlFn({ fileName: coverImage.name, fileType: coverImage.type, folder: "cover" }).unwrap();
 
       // Upload Media File URL
-      const { url: contentFileUrl } = await getUrlFn({ fileName: contentFile.name, fileType: contentFile.type, folder : contentType }).unwrap()
+      const { url: contentFileUrl } = await getUrlFn({ fileName: contentFile.name, fileType: contentFile.type, folder: contentType }).unwrap();
       toast.update(t, {
-        render : 'Uploading Cover Image',
-        isLoading : true,
+        render: "Uploading Cover Image",
+        isLoading: true,
         autoClose: false,
-      })
+      });
 
       // Uploading Cover Image
       uploadMediaFn({ presignedUrl: coverImageUrl, file: coverImage });
       toast.update(t, {
-        render : 'Uploading Media Content',
-        isLoading : true,
+        render: "Uploading Media Content",
+        isLoading: true,
         autoClose: false,
-      })
-      
+      });
+
       // Uploading Media File
       uploadMediaFn({ presignedUrl: contentFileUrl, file: contentFile });
       toast.update(t, {
-        render : 'Almost Done, Please wait!',
-        isLoading : true,
+        render: "Almost Done, Please wait!",
+        isLoading: true,
         autoClose: false,
-      })
+      });
 
       // Genarating the cover and content URL
       const coverImageUri = `https://${bucketName}.s3.${region}.amazonaws.com/cover/${coverImage.name}`;
       const contentUri = `https://${bucketName}.s3.${region}.amazonaws.com/${contentType}/${contentFile.name}`;
 
       // Saving to database
-      createMeidaFn({ 
-          title: titleRef.current.value, 
-          artist: artistRef.current.value, 
-          genre: genreRef.current.value, 
-          description: descriptionRef.current.value, 
-          type: contentType, 
-          coverImage : coverImageUri, 
-          contentFile : contentUri,
-          author : user.profileId
-        });
+      const res = await createMeidaFn({
+        title: titleRef.current.value,
+        artist: artistRef.current.value,
+        genre: genreRef.current.value,
+        description: descriptionRef.current.value,
+        type: contentType,
+        coverImage: coverImageUri,
+        episodes: {
+          id: 1,
+          src: contentUri,
+        },
+        author: user.profileId,
+      }).unwrap();
 
+      console.log(res);
+      if (res.id) {
         toast.update(t, {
-          render : 'Your Media Content is updated',
-          type : 'success',
-          isLoading : false,
+          render: "Your Media Content is updated",
+          type: "success",
+          isLoading: false,
           autoClose: true,
-        })
-        if(createMediaData.isSuccess) navigate(`/${createMediaData.data.type}/outsource/${createMediaData.data.id}`)
-      // redirecting to the content page
+        });
+        setTimeout(() => {
+          navigate(`/${res.type}/outsource/${res.id}`);
+        }, 2000);  
+      }
 
+      // redirecting to the content page
 
       // const { url } = await getUrlFn({ fileName: coverImage.name, fileType: coverImage.type }).unwrap()
 
       // uploadMediaFn({ presignedUrl: url, file: coverImage });
-      
-      // createMeidaFn({ 
-      //   title: titleRef.current.value, 
-      //   artist: artistRef.current.value, 
-      //   genre: genreRef.current.value, 
-      //   description: descriptionRef.current.value, 
-      //   type: contentType, 
-      //   coverImage : 'test', 
+
+      // createMeidaFn({
+      //   title: titleRef.current.value,
+      //   artist: artistRef.current.value,
+      //   genre: genreRef.current.value,
+      //   description: descriptionRef.current.value,
+      //   type: contentType,
+      //   coverImage : 'test',
       //   contentFile : 'test',
       //   author : user.profileId
       //  });
-
     } catch (error) {
       console.log(error);
     }
@@ -162,7 +166,7 @@ function ContentUploadPage() {
               </div>
 
               <Box maxWidth="600px" className="pt-5 -ml-[10px]">
-                <RadioCards.Root defaultValue="video" onChange={(e) => setContentType(e.target.value)} >
+                <RadioCards.Root defaultValue="video" onChange={(e) => setContentType(e.target.value)}>
                   <RadioCards.Item value="video">
                     <Flex direction="column" width="100%">
                       <Text weight="bold">Video Content</Text>
@@ -209,15 +213,15 @@ function ContentUploadPage() {
                       </span>
                     </label>
                     {coverImage && <IoIosClose className="absolute top-0 right-0 z-10 text-red-600 text-4xl cursor-pointer user-select-none" onClick={() => setContentFile(null)} />}
-                    <input type="file" id="contentFile" accept={contentType === 'video' ? "video/*" : "audio/*" }  onChange={(e) => setContentFile(e.target.files[0])}  className=" w-full p-2 border rounded" required />
+                    <input type="file" id="contentFile" accept={contentType === "video" ? "video/*" : "audio/*"} onChange={(e) => setContentFile(e.target.files[0])} className=" w-full p-2 border rounded" required />
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-2 pb-10" >
+              <div className="space-y-2 pb-10">
                 <h3 className="block font-medium mb-1">About the Content</h3>
                 <Box>
-                  <TextField.Root size="3" placeholder="Artist" required ref={artistRef}  />
+                  <TextField.Root size="3" placeholder="Artist" required ref={artistRef} />
                 </Box>
                 <Box>
                   <TextField.Root size="3" placeholder="Genre" required ref={genreRef} />

@@ -1,11 +1,11 @@
 var VideoDataSet = {
   'APPROPRIATE CULTURE SEASON 2': {
       "title": "APPROPRIATE CULTURE SEASON 2",
-      'description': 'Appropriate Culture is a sitcom that follows a quirky ensemble cast family as they navigate a series of hilarious misadventures. Packed with humor and heart, each episode highlights their unique dynamics and the unexpected situations that bring them closer together.',
+      'description': 'Appropriate Culture is a sitcom that follows a quirky ensemble artist family as they navigate a series of hilarious misadventures. Packed with humor and heart, each episode highlights their unique dynamics and the unexpected situations that bring them closer together.',
       'genre': 'Comedy',
-      'cast': 'Julian Stephen, Justin Gerard, Tim Simonson, Cleverly Chloe, Julius Stukes Jr., Alexa Leighton',
+      'artist': 'Julian Stephen, Justin Gerard, Tim Simonson, Cleverly Chloe, Julius Stukes Jr., Alexa Leighton',
       'playlist': true,
-      'links': [
+      'episodes': [
           {
               'playlist-id': 1,
               'name': 'EPISODE 1',
@@ -49,8 +49,8 @@ var VideoDataSet = {
       'playlist': true,
       'description' : 'The 13-episode sitcom prequel to Appropriate Culture follows the quirky family as they navigate a series of hilarious misadventures. Packed with humor and heart, each episode showcases their unique dynamics and the unexpected situations that bring them closer together.',
       'genre' : 'Comedy',
-      'cast' : 'Julian Stephen, Justin Gerard, Tim Simonson',
-      'links': [
+      'artist' : 'Julian Stephen, Justin Gerard, Tim Simonson',
+      'episodes': [
           {
               'playlist-id': 1,
               'name': 'Bullseye',
@@ -134,10 +134,10 @@ var VideoDataSet = {
   'APPROPRIATE CULTURE SEASON ONE': {
       "title": "APPROPRIATE CULTURE SEASON ONE",
       'playlist': true,
-      'description': 'Appropriate Culture is a sitcom that follows a quirky ensemble cast family as they navigate a series of hilarious misadventures. Packed with humor and heart, each episode highlights their unique dynamics and the unexpected situations that bring them closer together.',
+      'description': 'Appropriate Culture is a sitcom that follows a quirky ensemble artist family as they navigate a series of hilarious misadventures. Packed with humor and heart, each episode highlights their unique dynamics and the unexpected situations that bring them closer together.',
       'genre': 'Comedy',
-      'cast': `Julian Stephen, Justin Gerard, Tim Simonson, Cleverly Chloe, Julius Stukes Jr., Alexa Leighton`,
-      'links': [
+      'artist': `Julian Stephen, Justin Gerard, Tim Simonson, Cleverly Chloe, Julius Stukes Jr., Alexa Leighton`,
+      'episodes': [
           {
               'playlist-id': 1,
               'name': 'EPISODE 1',
@@ -175,8 +175,8 @@ var VideoDataSet = {
       'playlist': false,
       'description': 'Bugging Gilbert is a comedic animated series from creator Justin Gerard that follows young Gilbert as he navigates life while being hilariously harassed by a mischievous roach that only he can see. Each episode features Gilbert’s wild attempts to maintain his sanity, leading to chaos and laughter as he tries to outsmart his tiny, troublesome foe!',
       'genre': 'Animation, Comedy',
-      'cast': 'Justin Gerard, Timothy Simonson',
-      'links': [
+      'artist': 'Justin Gerard, Timothy Simonson',
+      'episodes': [
           {
               'playlist-id': 1,
               'name': 'EPISODE 1',
@@ -190,8 +190,8 @@ var VideoDataSet = {
       'playlist': false,
       'description' : 'In this thrilling 70s action comedy, Detective Blk takes on a ruthless crime syndicate that’s wreaking havoc in the city. With a blend of humor and high-stakes action, he navigates a world of corruption and chaos to bring the villains to justice.',
       'genre' : 'Action Comedy',
-      'cast' : 'Julius Stukes Jr., Taurian Blakeney, June Brown, Preach Gold, Justin Gerard, Alexa Leighton, Brandon Sngdnc Mellette',
-      'links': [
+      'artist' : 'Julius Stukes Jr., Taurian Blakeney, June Brown, Preach Gold, Justin Gerard, Alexa Leighton, Brandon Sngdnc Mellette',
+      'episodes': [
           {
               'playlist-id': 1,
               'name': 'EPISODE 1',
@@ -203,7 +203,7 @@ var VideoDataSet = {
   'Playa PLaya Sophisticated Thoughts': {
       "title": "Music Visual Collection",
       'playlist': true,
-      'links': [
+      'episodes': [
           {
               'playlist-id': 1,
               'name': 'Playa Playa',
@@ -241,8 +241,8 @@ var VideoDataSet = {
       'playlist': true,
       'description' : 'In this engaging educational children’s show, follow Jiggy the Puppet as he explores a variety of subjects in a fun and interactive way. Created by Jarrett Jiggy Manigault and Brandon Sngdnc Mellette, Jiggy makes learning exciting and accessible for young audiences!',
       'genre' : 'Educational, Youth',
-      'cast' : '',
-      'links': [
+      'artist' : '',
+      'episodes': [
           {
               'playlist-id': 1,
               'name': 'Counting',
@@ -272,10 +272,10 @@ var VideoDataSet = {
   'APPROPRIATE CHRISTMAS SPECIAL': {
       "title": "APPROPRIATE CHRISTMAS SPECIAL",
       'playlist': false,
-      'description' : 'Appropriate Culture: Holiday Special is a heartwarming sitcom that follows a quirky ensemble cast family as they dive into a series of hilarious holiday misadventures. Packed with humor and warmth, this special showcases their unique dynamics and the unexpected situations that bring them closer together during the festive season. Join them for laughter, love, and the true spirit of family as they navigate the ups and downs of holiday celebrations!',
+      'description' : 'Appropriate Culture: Holiday Special is a heartwarming sitcom that follows a quirky ensemble artist family as they dive into a series of hilarious holiday misadventures. Packed with humor and warmth, this special showcases their unique dynamics and the unexpected situations that bring them closer together during the festive season. Join them for laughter, love, and the true spirit of family as they navigate the ups and downs of holiday celebrations!',
       'genre' : 'Comedy',
-      'cast' : 'Julian Stephen, Justin Gerard, Tim Simonson, Cleverly Chloe, Julius Stukes Jr., Alexa Leighton',
-      'links': [
+      'artist' : 'Julian Stephen, Justin Gerard, Tim Simonson, Cleverly Chloe, Julius Stukes Jr., Alexa Leighton',
+      'episodes': [
           {
               'playlist-id': 1,
               'name': 'EPISODE 1',
@@ -287,10 +287,10 @@ var VideoDataSet = {
   'APPROPRIATE CULTURE SEASON 1.5': {
       "title": "APPROPRIATE CULTURE SEASON 1.5",
       'playlist': true,
-      'description': 'Appropriate Culture is a sitcom that follows a quirky ensemble cast family as they navigate a series of hilarious misadventures. Packed with humor and heart, each episode highlights their unique dynamics and the unexpected situations that bring them closer together.',
+      'description': 'Appropriate Culture is a sitcom that follows a quirky ensemble artist family as they navigate a series of hilarious misadventures. Packed with humor and heart, each episode highlights their unique dynamics and the unexpected situations that bring them closer together.',
       'genre': 'Comedy',
-      'cast': `Julian Stephen, Justin Gerard, Tim Simonson, Cleverly Chloe, Julius Stukes Jr., Alexa Leighton`,
-      'links': [
+      'artist': `Julian Stephen, Justin Gerard, Tim Simonson, Cleverly Chloe, Julius Stukes Jr., Alexa Leighton`,
+      'episodes': [
           {
               'playlist-id': 1,
               'name': 'The Ex Man & The Next Man ',
@@ -316,8 +316,8 @@ var VideoDataSet = {
           'playlist': false,
           'description': "In this prequel to Detective Black, we explore Officer Coffy’s origin story as he confronts the ruthless Train Wreck. Striving to forge his own path, Coffy faces challenges that will define his role as Detective Blk's trusted sidekick.",
           'genre': 'Comedy Action',
-          'cast': `Justin Gerard, Enoch, Jeremy Arzon`,
-          'links': [
+          'artist': `Justin Gerard, Enoch, Jeremy Arzon`,
+          'episodes': [
               {
                   'playlist-id': 1,
                   'name': 'CHRONICLES OF COFFY',
@@ -330,8 +330,8 @@ var VideoDataSet = {
           'playlist': false,
           'description': "In this live-action Afro-futurism anthology saga, a daring Spaceteam fights for the last surviving humans on Earth in a post-tech world. As the looming enemy threatens their existence, they embark on an epic two-part adventure, blending culture, resilience, and innovation to protect their future.",
           'genre': 'Sci-Fi',
-          'cast': `Justin Gerard, Tim Simonson, Vince Chang, Victoria Veedot Lewis, Jade Nikaylah, Imani Brammer, Julian Stephen, Jarrett Manigault`,
-          'links': [
+          'artist': `Justin Gerard, Tim Simonson, Vince Chang, Victoria Veedot Lewis, Jade Nikaylah, Imani Brammer, Julian Stephen, Jarrett Manigault`,
+          'episodes': [
               {
                   'playlist-id': 1,
                   'name': 'AUTONOMY : Attack of the Robots',
@@ -344,8 +344,8 @@ var VideoDataSet = {
           'playlist': false,
           'description': "In this hilarious comedy, Harry discovers his new girlfriend's ex is a billionaire tech mogul. As the billionaire sets outrageous traps to break them up, Harry must outsmart him and prove that love can overcome any obstacle!",
           'genre': 'Romance Comedy',
-          'cast': `Justin Gerard, Imani Brammer, Tim Simonson, Ally Leftridge, Julian Stephen`,
-          'links': [
+          'artist': `Justin Gerard, Imani Brammer, Tim Simonson, Ally Leftridge, Julian Stephen`,
+          'episodes': [
               {
                   'playlist-id': 1,
                   'name': 'MY EX BILLIONAIRE FIANCEE',

@@ -4,7 +4,7 @@ var AudioDataSet = {
         'playlist': true,
         'videoLink': '/Sorted Videos/Appropriate Audio.mp4',
         'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151963/cover/APPROPRIATE_AUDIO_zctlgq.jpg',
-        'links': [
+        'episodes': [
             {
                 id: 1,
                 name: 'RAINFALL',
@@ -25,7 +25,7 @@ var AudioDataSet = {
         'playlist': true,
         'videoLink': '/sorted-video/Mybillionaireexfiancee.mp4',
         'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151960/cover/MY_BILLIONAIRE_EX_FIANCEE_y3bv7h.jpg',
-        'links': [
+        'episodes': [
             {
                 id: 1,
                 name: 'MY EX BILLIONAIRE TRAILER 2 - 1',
@@ -46,7 +46,7 @@ var AudioDataSet = {
         'playlist': true,
         'videoLink': '/sorted-video/Heistmovie.mp4',
         'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151953/cover/HEIST_MOVIE_COVER_oa2rxn.jpg',
-        'links': [
+        'episodes': [
             {
                 id: 1,
                 name: 'HEIST MOVIE TRAILER - 1',
@@ -66,7 +66,7 @@ var AudioDataSet = {
         'playlist': false,
         'videoLink': '/sorted-video/Dad.mp4',
         'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151951/cover/DAD_COVER_jtcaza.jpg',
-        'links': [
+        'episodes': [
             {
                 id: 1,
                 name: 'DAD TRAILER',
@@ -80,7 +80,7 @@ var AudioDataSet = {
         'playlist': false,
         'videoLink': '/sorted-video/Adventureislandmovie.mp4',
         'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151954/cover/ADVENTURE_ISLAND_MOVIE_p5bmvo.jpg',
-        'links': [
+        'episodes': [
             {
                 id: 1,
                 name: 'ADVENTURE ISLAND TRAILER',
@@ -94,7 +94,7 @@ var AudioDataSet = {
         'playlist': true,
         'videoLink': '/Sorted Videos/Autonomy Audio.mp4',
         'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151943/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
-        'links': [
+        'episodes': [
             {
                 id: 1,
                 name: 'Autonomy Mission to the Analog Islands 1',
@@ -162,7 +162,7 @@ var AudioDataSet = {
         'playlist': true,
         'videoLink': '/Sorted Videos/Everybodieswatching Copy.mp4',
         'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151965/cover/EVERYBODIES_WATCHING_nmyuyd.jpg',
-        'links': [
+        'episodes': [
             {
                 id: 1,
                 name: 'EVERY BODIES WATCHING EPISODE 1',
@@ -200,7 +200,7 @@ var AudioDataSet = {
         'playlist': true,
         'videoLink': '/Sorted Videos/Restart Continue Cover.mp4',
         'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151969/cover/RestartContinueCover_xls8cn.jpg',
-        'links': [
+        'episodes': [
             {
                 id: 1,
                 name: 'RESTART CONTINUE',
@@ -215,7 +215,7 @@ var AudioDataSet = {
         'playlist': true,
         'videoLink': '/Sorted Videos/Prince Charming.mp4',
         'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
-        'links': [
+        'episodes': [
             {
                 id: 1,
                 name: 'PRINCE CHARMING COVER 1',
@@ -235,7 +235,7 @@ var AudioDataSet = {
         'playlist': true,
         'videoLink': '/sorted-video/Tobeakidagain Cover.mp4',
         'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
-        'links': [
+        'episodes': [
             {
                 id: 1,
                 name: 'Scrolling thru',

@@ -49,13 +49,13 @@ const mediaApi = createApi({
         }),
 
         createMediaContent : builder.mutation({
-            query: ({ title, type, coverImage, contentFile, genre, description, artist, author }) => {
+            query: ({ title, type, coverImage, episodes, genre, description, artist, author }) => {
                 return {
                     url: '/api/media/',
                     method: "POST",
                     'credentials': 'include',
                     body: {
-                        title, type, coverImage, media :  contentFile, genre, description, artist, author
+                        title, type, coverImage, episodes, genre, description, artist, author
                     }
                 }
             }

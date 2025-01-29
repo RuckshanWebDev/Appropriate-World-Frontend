@@ -39,7 +39,7 @@ function ProductPageVideo() {
 
   useEffect(() => {
     if (getMediaData.isSuccess && getMediaData.data) {
-      setCurrentVideo(getMediaData.data.media);
+      setCurrentVideo(getMediaData.data.episodes[0].src);
       setData(getMediaData.data)
     }
   }, [getMediaData]);
@@ -78,6 +78,10 @@ function ProductPageVideo() {
             <div style={{ display: "flex", gap: "10px" }}>
               <p style={{ maxWidth: "100px", width: "100%" }}>Cast :</p>
               <p>{data?.cast || data?.artist}</p>
+            </div>
+            <div style={{ display: "flex", gap: "10px" }}>
+              <p style={{ maxWidth: "100px", width: "100%" }}>Description :</p>
+              <p>{data?.description}</p>
             </div>
           </div>
 
