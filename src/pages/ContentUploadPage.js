@@ -1,11 +1,12 @@
-import { Box, Button, Card, Flex, Heading, Kbd, RadioCards, Text, TextArea, TextField, Theme } from "@radix-ui/themes";
+import { Box, Button, Card, Checkbox, Flex, Heading, Kbd, Progress, RadioCards, Strong, Text, TextArea, TextField, Theme } from "@radix-ui/themes";
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import Layout from "../components/Layout";
-import { useLazyGetPresignedUrlQuery, useUploadMediaMutation, useCreateMediaContentMutation } from "../features/mediaApi";
-import { useSelector } from "react-redux";
+import { useLazyGetPresignedUrlQuery, useUploadMediaMutation, useCreateMediaContentMutation, uploadFileWithProgress } from "../features/mediaApi";
+import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+
 
 // import "./styles.css";
 
@@ -15,7 +16,9 @@ function ContentUploadPage() {
   const [uploadMediaFn, uploadMediaData] = useUploadMediaMutation();
   const [createMeidaFn, createMediaData] = useCreateMediaContentMutation();
   const { user } = useSelector((state) => state.local);
-
+  const dispatch = useDispatch();
+  const [progressState, setProgressState] = useState({ progress : 0, message : '', isSuccess : false, isError : false, isLoading : false });
+  
   // State
   const [coverImage, setCoverImage] = useState(null);
   const [contentFile, setContentFile] = useState(null);
@@ -40,52 +43,36 @@ function ContentUploadPage() {
     try {
       e.preventDefault();
 
-      // Showing Loading State
-      const t = toast.loading("Preparing secured connection", {
-        position: "bottom-center",
-        isLoading: true,
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        className: "custom-toast-body",
-      });
-
+      setProgressState((prevState)=>({ ...prevState, progress : 0, message : 'Preparing Secure Connection', isLoading : true }))
       // Upload Cover Image URL
       const { url: coverImageUrl } = await getUrlFn({ fileName: coverImage.name, fileType: coverImage.type, folder: "cover" }).unwrap();
 
       // Upload Media File URL
       const { url: contentFileUrl } = await getUrlFn({ fileName: contentFile.name, fileType: contentFile.type, folder: contentType }).unwrap();
-      toast.update(t, {
-        render: "Uploading Cover Image",
-        isLoading: true,
-        autoClose: false,
-      });
 
       // Uploading Cover Image
-      uploadMediaFn({ presignedUrl: coverImageUrl, file: coverImage });
-      toast.update(t, {
-        render: "Uploading Media Content",
-        isLoading: true,
-        autoClose: false,
-      });
+      // uploadMediaFn({ presignedUrl: coverImageUrl, file: coverImage });
+      const coverResponse = await uploadFileWithProgress({ presignedUrl: coverImageUrl, file: coverImage, onProgress: (progress) =>{ console.log(progress);      
+        setProgressState((prevState)=>({ ...prevState, progress, message : 'Uploading Cover Image' }))
+    } })
+      console.log('coverResponse', coverResponse);
+ 
+
 
       // Uploading Media File
-      uploadMediaFn({ presignedUrl: contentFileUrl, file: contentFile });
-      toast.update(t, {
-        render: "Almost Done, Please wait!",
-        isLoading: true,
-        autoClose: false,
-      });
+      // uploadMediaFn({ presignedUrl: contentFileUrl, file: contentFile });
+      const mediaResponse = await uploadFileWithProgress({ presignedUrl: contentFileUrl, file: contentFile, onProgress: (progress) => {
+        console.log(progress);
+        setProgressState((prevState)=>({ ...prevState, progress, message : 'Uploading Media File' }))
+    }})
+      console.log('mediaResponse', mediaResponse);
 
       // Genarating the cover and content URL
       const coverImageUri = `https://${bucketName}.s3.${region}.amazonaws.com/cover/${coverImage.name}`;
       const contentUri = `https://${bucketName}.s3.${region}.amazonaws.com/${contentType}/${contentFile.name}`;
 
       // Saving to database
+      setProgressState((prevState)=>({ ...prevState, progress : 100, message : 'Almost Done, Please wait!' }))
       const res = await createMeidaFn({
         title: titleRef.current.value,
         artist: artistRef.current.value,
@@ -102,15 +89,17 @@ function ContentUploadPage() {
 
       console.log(res);
       if (res.id) {
-        toast.update(t, {
-          render: "Your Media Content is updated",
-          type: "success",
-          isLoading: false,
-          autoClose: true,
-        });
+        setProgressState((prevState)=>({ ...prevState, isSuccess : true, message : 'Success' }))
+        // toast.update(t, {
+        //   render: "Your Media Content is updated",
+        //   type: "success",
+        //   isLoading: false,
+        //   autoClose: true,
+        // });
         setTimeout(() => {
+          setProgressState((prevState)=>({ ...prevState, message : 'Redirecting to the Media Page', }))
           navigate(`/${res.type}/outsource/${res.id}`);
-        }, 2000);  
+        }, 2000);
       }
 
       // redirecting to the content page
@@ -133,7 +122,7 @@ function ContentUploadPage() {
       console.log(error);
     }
   };
-
+  console.log(progressState);
   // Effects
   useEffect(() => {
     console.log(coverImage);
@@ -151,7 +140,22 @@ function ContentUploadPage() {
     <Layout>
       <div className="container py-20">
         <Theme hasBackground={false} className="min-h-min">
-          <Card className="m-5 max-w-[800px] mx-auto " variant="classic" size={"4"}>
+          <Card className="m-5 max-w-[800px] mx-auto relative" variant="classic" size={"4"}>
+            
+            {/* Loader */}
+           { progressState.isLoading &&  <div className="absolute top-0 left-0 w-full h-full bg-blue-800/10 backdrop-blur-sm z-10 flex flex-col justify-center items-center">
+              {!progressState.isSuccess ?
+               <div className="w-[100%] max-w-[250px] mb-3" >
+                <Progress value={progressState.progress} variant="soft" />
+              </div>
+              :  
+              <img src="/success.gif" className="w-32" />
+    }
+              <Text>
+                <Strong>{progressState.message}</Strong>
+              </Text>
+            </div>}
+
             <Heading>Content Upload</Heading>
 
             <form onSubmit={handleFormSubmit} className="space-y-4">
@@ -229,8 +233,15 @@ function ContentUploadPage() {
                 <TextArea placeholder="Description" required ref={descriptionRef} />
               </div>
 
+              <Text as="label" size="2" className="flex items-center" >
+              <Flex gap="2" className="items-center" >
+                <Checkbox required  className="-translate-y-2" />
+                Agree to Terms and Conditions
+              </Flex>
+            </Text>
+
               {/* Submit Button */}
-              <Button disabled={getUrlData.isLoading || uploadMediaData.isLoading || createMediaData.isLoading} className="cursor-pointer" size={"3"}>
+              <Button disabled={getUrlData.isLoading || uploadMediaData.isLoading || createMediaData.isLoading} className="cursor-pointer w-full mt-2" size={"3"}>
                 Submit
               </Button>
             </form>

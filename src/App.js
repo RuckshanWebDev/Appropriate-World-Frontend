@@ -77,7 +77,7 @@ export default function App() {
         <Route path='/packages' element={<ProtectRoute><Package /> </ProtectRoute>} exact />
         <Route path='/payment-confirm' element={<ProtectRoute><PaymentConfirm /> </ProtectRoute>} exact />
         <Route path='/settings' element={<ProtectRoute><Settings /> </ProtectRoute>} exact />
-        <Route path='/content-upload' element={<ContentUploadPage />} exact />
+        <Route path='/content-upload' element={ <ProtectRoute> <ContentUploadPage /> </ProtectRoute>} exact />
         <Route path='/test' element={<ProtectRoute><TestPage /> </ProtectRoute>} exact />
         <Route path='*' element={<ProtectRoute><ErrorPage /> </ProtectRoute>} />
       </Routes>

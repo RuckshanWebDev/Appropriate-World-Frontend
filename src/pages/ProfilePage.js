@@ -73,6 +73,11 @@ function ProfilePage() {
   }, []);
 
   useEffect(() => {
+
+    if(data.isError && data.error?.status === 401){
+      dispatch(clearUser());
+    }
+
     if (data.isSuccess) {
       if (!data.data.data.length) {
         setProfile(null);
