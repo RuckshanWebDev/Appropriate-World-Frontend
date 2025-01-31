@@ -73,8 +73,9 @@ function ProfilePage() {
   }, []);
 
   useEffect(() => {
-
-    if(data.isError && data.error?.status === 401){
+    console.log('User logout issue fixed');
+    if(data.isError){
+      logout()
       dispatch(clearUser());
     }
 
