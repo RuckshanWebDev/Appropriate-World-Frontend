@@ -44,6 +44,7 @@ function ProfilePage() {
   //     toast.error("Something went wrong!")
   // }
   const logoutHandler = () => {
+    dispatch(clearUser());
     logout();
   };
 
@@ -73,8 +74,8 @@ function ProfilePage() {
   }, []);
 
   useEffect(() => {
-    console.log('User logout issue fixed');
     if(data.isError){
+      console.log('User logout issue fixed');
       logout()
       dispatch(clearUser());
     }
@@ -92,7 +93,7 @@ function ProfilePage() {
     }
 
     // getNotificationFn()
-  }, [popup, data.data]);
+  }, [popup, data.data, data.isError]);
 
   useEffect(() => {
     const params = window.location.search?.replace("?", "").split("=");

@@ -20,12 +20,12 @@
 
 }
 
-.product-grid>div {
+/* .product-grid>div {
     flex: 0 0 250px;
-}
+} */
 
 .product-card {
-    width: 300px;
+    /* width: 300px; */
     color: #fff;
     padding: 10px;
     border-radius: 15px;
@@ -90,9 +90,9 @@
         flex: 0 0 50%;
     }
 
-    .product-card {
+    /* .product-card {
         width: 200px;
-    }
+    } */
 }
 
 

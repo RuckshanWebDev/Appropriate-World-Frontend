@@ -23,19 +23,27 @@ function ProductPageVideo() {
     }
   };
 
+  useEffect(()=>{
+    if(window.location.pathname.includes("outsource")) {
+      setOutsource(true)
+    }
+  },[])
+
   useEffect(() => {
     let url = param.id.replace(/-/g, " ");
 
-    if (VideoDataSet[url]) {
+    if (!outSource) {
       setData(VideoDataSet[url]);
-    } else if (window.location.pathname.includes("outsource")) {
+    } else if (outSource) {
       setOutsource(true);
       getMediaFn(param.id);
     } else {
       navigate("/404");
       console.log("redirect");
     }
-  }, [param.id, navigate]);
+  }, [outSource]);
+
+  console.log(data);
 
   useEffect(() => {
     if (getMediaData.isSuccess && getMediaData.data) {
@@ -45,8 +53,10 @@ function ProductPageVideo() {
   }, [getMediaData]);
 
   useEffect(() => {
-    if (data.links?.length) {
-      setCurrentVideo(data.links[0].link);
+    if ( outSource || data.episodes?.length) {
+      setCurrentVideo(data.episodes[0].link);
+    } else if(outSource){
+      setCurrentVideo(data.episodes[0].link);
     }
   }, [data]);
 
@@ -63,7 +73,7 @@ function ProductPageVideo() {
       <div className="container">
         <div className="video-container">
           <div className="title-container">
-            <h2>{data.title}</h2>
+            <h2>{data?.title}</h2>
           </div>
 
           {currentVideo && <video poster={currentVideo.img || data.coverImage} id="video-player" controls ref={videoRef} src={currentVideo}></video>}
@@ -85,13 +95,13 @@ function ProductPageVideo() {
             </div>
           </div>
 
-          {data.playlist && (
+          {data.episodes?.length && (
             <>
               <div className="title-container">
                 <h2>Related Videos</h2>
               </div>
               <div className="playlist-container">
-                {data.links.map((playlistItem) => {
+                {data.episodes.map((playlistItem) => {
                   return (
                     <div
                       className="playlist-item"
