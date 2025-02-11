@@ -55,18 +55,18 @@ const Login = () => {
 
           <div className="register">
 
-            <img src='/logo.gif' style={{ width: '80%', marginBottom: "50px" }} />
+            <img src='/logo.gif' className='text-center mx-auto' style={{ width: '80%', marginBottom: "50px" }} />
 
             <h2>Sign Up</h2>
 
             <form className="form" onSubmit={formHandler} >
 
               <div className="form__field">
-                <input type="email" placeholder="Email" name='email' required />
+                <input type="email" className="text-[#000000]" placeholder="Email" name='email' required />
               </div>
 
               <div className="form__field">
-                <input type="password" placeholder="Password" name='password' required />
+                <input type="password" className="text-[#000000]" placeholder="Password" name='password' required />
               </div>
 
               <div className="form__field">

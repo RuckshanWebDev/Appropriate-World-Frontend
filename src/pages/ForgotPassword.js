@@ -45,18 +45,18 @@ const ForgotPassword = () => {
     return (
         <Layout>
             <div className='container' >
-                <div className="grid align__item">
+                <div className="mx-auto max-w-[400px]">
 
                     <div className="register">
 
-                        <img src='/logo.gif' style={{ width: '80%', marginBottom: "50px" }} />
+                        <img src='/logo.gif' className='mx-auto' style={{ width: '80%', marginBottom: "50px" }} />
 
                         <h2>Forgot Password</h2>
 
                         <form className="form" onSubmit={formHandler} >
 
                             <div className="form__field">
-                                <input type="email" placeholder="Email" name='email' required />
+                                <input type="email" className="text-[#000000]" placeholder="Email" name='email' required />
                             </div>
 
                             <div className="form__field">

@@ -46,27 +46,27 @@ function Register() {
 
   return (
     <Layout>
-      <div className='container' >
-        <div className="grid align__item">
+      <div className='container ' >
+        <div className="mx-auto max-w-[400px]">
 
           <div className="register">
 
-            <img src='/logo.gif' style={{ width: '80%', marginBottom: "50px" }} />
+            <img src='/logo.gif' className='mx-auto' style={{ width: '80%', marginBottom: "50px" }} />
 
             <h2>Register</h2>
 
             <form className="form" onSubmit={formHandler} >
 
               <div className="form__field">
-                <input type="text" placeholder="Name" name='names' required />
+                <input type="text" className="text-[#000000]" placeholder="Name" name='names' required />
               </div>
 
               <div className="form__field">
-                <input type="email" placeholder="Email" name='email' required />
+                <input type="email" className="text-[#000000]" placeholder="Email" name='email' required />
               </div>
 
               <div className="form__field">
-                <input type="password" placeholder="Password" name='password' required minLength={8} />
+                <input type="password" className="text-[#000000]" placeholder="Password" name='password' required minLength={8} />
               </div>
               {data.isLoading ?
                 <p>Loading</p> :
