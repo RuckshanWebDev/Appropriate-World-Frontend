@@ -4,13 +4,14 @@ import "./ProductVideoPage.css";
 import { useParams, useNavigate } from "react-router-dom";
 import VideoDataSet from "../components/VideoDataSet";
 import { useLazyViewMediaContentQuery } from "../features/mediaApi";
+import { DataList, Skeleton } from "@radix-ui/themes";
 
 function ProductPageVideo() {
   const navigate = useNavigate();
   const param = useParams();
   const videoRef = useRef();
   const [outSource, setOutsource] = useState(false);
-  const [data, setData] = useState({});
+  const [data, setData] = useState(null);
   const [currentVideo, setCurrentVideo] = useState("");
   const [getMediaFn, getMediaData] = useLazyViewMediaContentQuery();
 
@@ -23,39 +24,28 @@ function ProductPageVideo() {
     }
   };
 
-  useEffect(()=>{
-    if(window.location.pathname.includes("outsource")) {
-      setOutsource(true)
-    }
-  },[])
-
   useEffect(() => {
     let url = param.id.replace(/-/g, " ");
-
-    if (!outSource) {
-      setData(VideoDataSet[url]);
-    } else if (outSource) {
+    if (window.location.pathname.includes("outsource")) {
       setOutsource(true);
       getMediaFn(param.id);
+    } else if (VideoDataSet[url]) {
+      setData(VideoDataSet[url]);
     } else {
       navigate("/404");
-      console.log("redirect");
     }
-  }, [outSource]);
-
-  console.log(data);
+  }, []);
 
   useEffect(() => {
     if (getMediaData.isSuccess && getMediaData.data) {
+      setData(getMediaData.data);
       setCurrentVideo(getMediaData.data.episodes[0].src);
-      setData(getMediaData.data)
     }
-  }, [getMediaData]);
+  }, [getMediaData.isSuccess]);
 
   useEffect(() => {
-    if ( outSource || data.episodes?.length) {
-      setCurrentVideo(data.episodes[0].link);
-    } else if(outSource){
+    if (!outSource && data && data.episodes?.length) {
+      console.log('fdsf', outSource);
       setCurrentVideo(data.episodes[0].link);
     }
   }, [data]);
@@ -63,14 +53,72 @@ function ProductPageVideo() {
   // Update video source when `currentVideo` changes
   useEffect(() => {
     if (videoRef.current && currentVideo) {
-      videoRef.current.src = currentVideo ;
+      videoRef.current.src = currentVideo;
       videoRef.current.load();
     }
   }, [currentVideo]);
 
+  console.log(currentVideo);
+
   return (
     <Layout>
       <div className="container">
+        <div className="video-container">
+          { !data ?
+          <>
+            <Skeleton className="w-[80%]" height="48px" />
+            <Skeleton width="100%" height="550px" className="my-5" />
+            <Skeleton>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque felis tellus, efficitur id convallis a, viverra eget libero. Nam magna erat, fringilla sed commodo sed, aliquet nec magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque felis tellus, efficitur id convallis a, viverra eget libero. Nam magna erat, fringilla sed commodo sed, aliquet nec magna.</Skeleton>
+          </> 
+          :
+          <>
+          <div className="title-container">
+            <h2>{data.title}</h2>
+          </div>
+           {currentVideo && <video poster={currentVideo.img || data.coverImage} id="video-player" controls ref={videoRef} src={currentVideo}></video>}
+           <p className="description pb-2">{data?.description}</p>
+           <DataList.Root orientation={{ initial: "vertical", sm: "horizontal" }}>
+              <DataList.Item>
+                <DataList.Label minWidth="88px">Genre</DataList.Label>
+                <DataList.Value>{data?.genre}</DataList.Value>
+              </DataList.Item>
+              <DataList.Item>
+                <DataList.Label minWidth="88px">Cast</DataList.Label>
+                <DataList.Value>{data?.cast || data?.artist}</DataList.Value>
+              </DataList.Item>
+           </DataList.Root>
+           {data?.episodes?.length > 1 && (
+            <>
+              <div className="title-container">
+                <h2>Related Videos</h2>
+              </div>
+              <div className="playlist-container">
+                {data.episodes.map((playlistItem) => {
+                  return (
+                    <div
+                      className="playlist-item"
+                      style={{
+                        backgroundImage: `linear-gradient(7deg, #ffffffab, transparent),
+        url(${playlistItem.img})`,
+                      }}
+                      onClick={playlistHandler}
+                      key={playlistItem["playlist-id"]}
+                      id={playlistItem["playlist-id"]}
+                    >
+                      <p id={playlistItem["playlist-id"]} className="playlist-item-text">
+                        {playlistItem.name}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
+          </>
+          }
+        </div>
+      </div>
+      {/* <div className="container">
         <div className="video-container">
           <div className="title-container">
             <h2>{data?.title}</h2>
@@ -95,7 +143,7 @@ function ProductPageVideo() {
             </div>
           </div>
 
-          {data.episodes?.length && (
+          {data && data?.episodes?.length && (
             <>
               <div className="title-container">
                 <h2>Related Videos</h2>
@@ -123,7 +171,7 @@ function ProductPageVideo() {
             </>
           )}
         </div>
-      </div>
+      </div> */}
     </Layout>
   );
 }

@@ -34,6 +34,7 @@ const mediaApi = createApi({
 
     viewMediaContent: builder.query({
       query: (mediaId) => {
+        console.log(mediaId);
         return {
           url: `/api/media/${mediaId}`,
           method: "GET",
