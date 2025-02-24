@@ -5,6 +5,8 @@ import AudioPlayer from "react-modern-audio-player";
 import AudioDataSet from "../components/AudioDataSet";
 import { useNavigate, useParams } from "react-router-dom";
 import { useLazyViewMediaContentQuery } from "../features/mediaApi.js";
+import { useSelector } from "react-redux";
+import DeleteMedia from "../utils/deleteMedia.js";
 
 function ProductPage() {
   let isMobile = false;
@@ -18,6 +20,8 @@ function ProductPage() {
   const [audioData, setAudioData] = useState({});
   const [audioLoaded, setAudioLoaded] = useState(true);
   const [id, setId] = useState();
+
+  const user = useSelector((state) => state.local.user);
 
   const fetchLocalMusic = () => {
     let url = param.id;
@@ -84,8 +88,7 @@ function ProductPage() {
     };
   }
 
-  console.log();
-
+  console.log(getMediaData);
 
   return (
     <Layout>
@@ -104,31 +107,10 @@ function ProductPage() {
           )}
           <h1 className="text-xl font-bold mt-4 text-center">{audioData.title}</h1>
         </div>
-        <div className="w-full mt-4">
-          {!outSource
-            ? Object.keys(audioData).length && (
-                <AudioPlayer
-                  playList={audioData.episodes }
-                  audioInitialState={{ muted: false, volume: 0.5, curPlayId: 1 }}
-                  placement={{
-                    interface: {
-                      templateArea: {
-                        artwork: "row1-1",
-                        trackInfo: "row1-4",
-                        trackTimeCurrent: "row1-5",
-                        trackTimeDuration: "row1-6",
-                        progress: "row2-4",
-                        repeatType: "row3-1",
-                        volume: "row3-8",
-                        playButton: "row3-3",
-                        playList: "row3-9",
-                      },
-                    },
-                  }}
-                  activeUI={{ all: true, progress: "auto" }}
-                />
-              )
-            : getMediaData.isLoading || getMediaData.isSuccess && Object.keys(audioData).length && (
+
+        {!outSource
+          ? Object.keys(audioData).length && (
+              <div className="w-full mt-4">
                 <AudioPlayer
                   playList={audioData.episodes}
                   audioInitialState={{ muted: false, volume: 0.5, curPlayId: 1 }}
@@ -149,9 +131,37 @@ function ProductPage() {
                   }}
                   activeUI={{ all: true, progress: "auto" }}
                 />
-              )}
-        </div>
+              </div>
+            )
+          : getMediaData.isLoading ||
+            (getMediaData.isSuccess && Object.keys(audioData).length && (
+              <>
+                <div className="w-full mt-4">
+                  <AudioPlayer
+                    playList={audioData.episodes}
+                    audioInitialState={{ muted: false, volume: 0.5, curPlayId: 1 }}
+                    placement={{
+                      interface: {
+                        templateArea: {
+                          artwork: "row1-1",
+                          trackInfo: "row1-4",
+                          trackTimeCurrent: "row1-5",
+                          trackTimeDuration: "row1-6",
+                          progress: "row2-4",
+                          repeatType: "row3-1",
+                          volume: "row3-8",
+                          playButton: "row3-3",
+                          playList: "row3-9",
+                        },
+                      },
+                    }}
+                    activeUI={{ all: true, progress: "auto" }}
+                  />
+                </div>
+              </>
+            ))}
       </div>
+      {user && user.profileId === getMediaData.data?.author?._id && <DeleteMedia data={getMediaData.data} />}
     </Layout>
   );
 }

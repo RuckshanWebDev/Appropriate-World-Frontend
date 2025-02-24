@@ -2,19 +2,22 @@ import { AspectRatio, Card, Separator, Skeleton } from "@radix-ui/themes";
 import React, { useEffect } from "react";
 import { useViewALlMediaContentQuery } from "../features/mediaApi";
 import { FaMusic, FaVideo } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 
 
 function MediaContent() {
   const getMediaFn = useViewALlMediaContentQuery();
-
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const refresh = searchParams.get("refresh");
   
   useEffect(() => {
     if (refresh === "true") {
       getMediaFn.refetch();
+      console.log('refreshed');
+      navigate(window.location.pathname, { replace: true }); // Remove all query params
+  
     }
   }, [refresh, getMediaFn]);
   

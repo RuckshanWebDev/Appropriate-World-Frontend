@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 function DeleteMedia({ data }) {
   const [deleteFn, deleteData] = useDeleteMediaContentMutation();
   const navigate = useNavigate();
+  console.log(data);
 
   const deleteHandler = async() => {
     try {

@@ -6,8 +6,11 @@ import VideoDataSet from "../components/VideoDataSet";
 import { useLazyViewMediaContentQuery } from "../features/mediaApi";
 import { DataList, Skeleton } from "@radix-ui/themes";
 import DeleteMedia from "../utils/deleteMedia";
+import { useSelector } from "react-redux";
 
 function ProductPageVideo() {
+
+  const user = useSelector((state) => state.local.user);
   const navigate = useNavigate();
   const param = useParams();
   const videoRef = useRef();
@@ -16,7 +19,7 @@ function ProductPageVideo() {
   const [currentVideo, setCurrentVideo] = useState("");
   const [getMediaFn, getMediaData] = useLazyViewMediaContentQuery();
 
-  console.log(getMediaData);
+  console.log(user);
 
   const playlistHandler = (e) => {
     const index = Number(e.target.id) - 1; // Ensure it's a number
@@ -73,7 +76,7 @@ function ProductPageVideo() {
           </> 
           :
           <>
-          <DeleteMedia data={data} />
+         { user && user.profileId === data?.author?._id && <DeleteMedia data={data} />}
           <div className="title-container">
             <h2>{data.title}</h2>
           </div>
