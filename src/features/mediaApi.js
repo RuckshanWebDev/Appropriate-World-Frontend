@@ -126,5 +126,5 @@ export const uploadFileWithProgress = async ({presignedUrl, file, onProgress}) =
   });
 };
 
-export const { useLazyGetPresignedUrlQuery, useUploadMediaMutation, useCreateMediaContentMutation, useViewALlMediaContentQuery, useLazyViewMediaContentQuery } = mediaApi;
+export const { useLazyGetPresignedUrlQuery, useUploadMediaMutation, useCreateMediaContentMutation, useViewALlMediaContentQuery, useLazyViewMediaContentQuery, useDeleteMediaContentMutation } = mediaApi;
 export default mediaApi;

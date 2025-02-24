@@ -5,6 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import VideoDataSet from "../components/VideoDataSet";
 import { useLazyViewMediaContentQuery } from "../features/mediaApi";
 import { DataList, Skeleton } from "@radix-ui/themes";
+import DeleteMedia from "../utils/deleteMedia";
 
 function ProductPageVideo() {
   const navigate = useNavigate();
@@ -72,6 +73,7 @@ function ProductPageVideo() {
           </> 
           :
           <>
+          <DeleteMedia data={data} />
           <div className="title-container">
             <h2>{data.title}</h2>
           </div>

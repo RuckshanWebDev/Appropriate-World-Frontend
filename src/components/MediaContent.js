@@ -1,58 +1,24 @@
 import { AspectRatio, Card, Separator, Skeleton } from "@radix-ui/themes";
-import React from "react";
+import React, { useEffect } from "react";
 import { useViewALlMediaContentQuery } from "../features/mediaApi";
 import { FaMusic, FaVideo } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+
 
 function MediaContent() {
   const getMediaFn = useViewALlMediaContentQuery();
 
-  console.log(getMediaFn);
+  const [searchParams] = useSearchParams();
+  const refresh = searchParams.get("refresh");
+  
+  useEffect(() => {
+    if (refresh === "true") {
+      getMediaFn.refetch();
+    }
+  }, [refresh, getMediaFn]);
+  
 
-  const albums = [
-    {
-      id: "1",
-      title: "The Dark Side of the Moon",
-      artist: "Pink Floyd",
-      genre: "Progressive Rock",
-      coverUrl: "/user.png",
-    },
-    {
-      id: "2",
-      title: "Thriller",
-      artist: "Michael Jackson",
-      genre: "Pop",
-      coverUrl: "/user.png",
-    },
-    {
-      id: "3",
-      title: "Back in Black",
-      artist: "AC/DC",
-      genre: "Hard Rock",
-      coverUrl: "/user.png",
-    },
-    {
-      id: "4",
-      title: "The Joshua Tree",
-      artist: "U2",
-      genre: "Rock",
-      coverUrl: "/user.png",
-    },
-    {
-      id: "5",
-      title: "21",
-      artist: "Adele",
-      genre: "Pop",
-      coverUrl: "/user.png",
-    },
-    {
-      id: "6",
-      title: "Nevermind",
-      artist: "Nirvana",
-      genre: "Grunge",
-      coverUrl: "/user.png",
-    },
-  ];
   return (
     <div>
       <div className="container mx-auto px-4 mt-10 py-8">
