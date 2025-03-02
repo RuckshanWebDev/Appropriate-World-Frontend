@@ -3,19 +3,19 @@ var AudioDataSet = {
         'title': 'APPROPRIATE AUDIO',
         'playlist': true,
         'videoLink': '/Sorted Videos/Appropriate Audio.mp4',
-        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151963/cover/APPROPRIATE_AUDIO_zctlgq.jpg',
+        'coverImage': 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/APPROPRIATE_AUDIO_zctlgq.jpg',
         'episodes': [
             {
                 id: 1,
                 name: 'RAINFALL',
-                img: "https://res.cloudinary.com/dts5uxlug/image/upload/v1681151963/cover/APPROPRIATE_AUDIO_zctlgq.jpg",
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1682911565/WEBSITE%20ASSETS/AUDIO%20ASSETS/APPROPRIATE_AUDIO%20-%20RAINFALL.wav'
+                img: "https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/APPROPRIATE_AUDIO_zctlgq.jpg",
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/APPROPRIATE_AUDIO+-+RAINFALL.wav'
             },
             {
                 id: 2,
                 name: 'SNOWSTORM',
-                img: "https://res.cloudinary.com/dts5uxlug/image/upload/v1681151963/cover/APPROPRIATE_AUDIO_zctlgq.jpg",
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675470396/WEBSITE%20ASSETS/AUDIO%20ASSETS/APPROPRIATE_AUDIO_SNOWSTORM_gkzjgh.mp3'
+                img: "https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/APPROPRIATE_AUDIO_zctlgq.jpg",
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/APPROPRIATE_AUDIO_SNOWSTORM_gkzjgh.mp3'
             },
 
         ]
@@ -24,19 +24,19 @@ var AudioDataSet = {
         'title': 'MY EX BILLIONAIRE TRAILER 2',
         'playlist': true,
         'videoLink': '/sorted-video/Mybillionaireexfiancee.mp4',
-        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151960/cover/MY_BILLIONAIRE_EX_FIANCEE_y3bv7h.jpg',
+        'coverImage': 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/MY_BILLIONAIRE_EX_FIANCEE_y3bv7h.jpg',
         'episodes': [
             {
                 id: 1,
                 name: 'MY EX BILLIONAIRE TRAILER 2 - 1',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151960/cover/MY_BILLIONAIRE_EX_FIANCEE_y3bv7h.jpg',
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/MY_BILLIONAIRE_EX_FIANCEE_y3bv7h.jpg',
                 src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675449595/MY_EX_BILLIONAIRE_TRAILER_2_copy_i5wpci.wav'
             },
             {
                 id: 2,
                 name: 'MY EX BILLIONAIRE TRAILER 2 - 2',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151960/cover/MY_BILLIONAIRE_EX_FIANCEE_y3bv7h.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675829666/WEBSITE%20ASSETS/AUDIO%20ASSETS/MY_EX_BILLIONAIRE_TRAILER_2_copy_azwb4s.wav'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/MY_BILLIONAIRE_EX_FIANCEE_y3bv7h.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/MY_EX_BILLIONAIRE_TRAILER_2_copy_azwb4s.wav'
             },
 
         ]
@@ -45,18 +45,18 @@ var AudioDataSet = {
         'title': 'HEIST MOVIE TRAILER',
         'playlist': true,
         'videoLink': '/sorted-video/Heistmovie.mp4',
-        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151953/cover/HEIST_MOVIE_COVER_oa2rxn.jpg',
+        'coverImage': 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/HEIST_MOVIE_COVER_oa2rxn.jpg',
         'episodes': [
             {
                 id: 1,
                 name: 'HEIST MOVIE TRAILER - 1',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151953/cover/HEIST_MOVIE_COVER_oa2rxn.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675829657/WEBSITE%20ASSETS/AUDIO%20ASSETS/HEIST_MOVIE_TRAILER_3_copy_qn2e6u.wav'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/HEIST_MOVIE_COVER_oa2rxn.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/HEIST_MOVIE_TRAILER_3_copy_qn2e6u.wav'
             },
             {
                 id: 2,
                 name: 'HEIST MOVIE TRAILER - 2',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151953/cover/HEIST_MOVIE_COVER_oa2rxn.jpg',
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/HEIST_MOVIE_COVER_oa2rxn.jpg',
                 src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675449587/HEIST_MOVIE_TRAILER_3_copy_ulyagp.wav'
             },
         ]
@@ -65,12 +65,12 @@ var AudioDataSet = {
         'title': 'DAD TRAILER',
         'playlist': false,
         'videoLink': '/sorted-video/Dad.mp4',
-        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151951/cover/DAD_COVER_jtcaza.jpg',
+        'coverImage': 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/DAD_COVER_jtcaza.jpg',
         'episodes': [
             {
                 id: 1,
                 name: 'DAD TRAILER',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151951/cover/DAD_COVER_jtcaza.jpg',
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/DAD_COVER_jtcaza.jpg',
                 src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675449578/DAD_TRAILER_2_copy_rgpqo9.wav'
             },
         ]
@@ -79,13 +79,13 @@ var AudioDataSet = {
         'title': 'ADVENTURE ISLAND TRAILER',
         'playlist': false,
         'videoLink': '/sorted-video/Adventureislandmovie.mp4',
-        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151954/cover/ADVENTURE_ISLAND_MOVIE_p5bmvo.jpg',
+        'coverImage': 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/ADVENTURE_ISLAND_MOVIE_p5bmvo.jpg',
         'episodes': [
             {
                 id: 1,
                 name: 'ADVENTURE ISLAND TRAILER',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151954/cover/ADVENTURE_ISLAND_MOVIE_p5bmvo.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675829667/WEBSITE%20ASSETS/AUDIO%20ASSETS/ADVENTUREISLANDMOVIE_x9kmfs.wav'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/ADVENTURE_ISLAND_MOVIE_p5bmvo.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/ADVENTUREISLANDMOVIE_x9kmfs.wav'
             },
         ]
     },
@@ -93,67 +93,67 @@ var AudioDataSet = {
         'title': 'Autonomy Mission to the Analog Islands',
         'playlist': true,
         'videoLink': '/Sorted Videos/Autonomy Audio.mp4',
-        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151943/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
+        'coverImage': 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
         'episodes': [
             {
                 id: 1,
                 name: 'Autonomy Mission to the Analog Islands 1',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151943/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675467815/WEBSITE%20ASSETS/AUDIO%20ASSETS/AUTONOMY_AUDIO_EPISODE_1_copy_z3qod1.wav'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/AUTONOMY_AUDIO_EPISODE_1_copy_z3qod1.wav'
             },
             {
                 id: 2,
                 name: 'Autonomy Mission to the Analog Islands 2',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151943/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675467702/WEBSITE%20ASSETS/AUDIO%20ASSETS/AUTONOMY_AUDIO_EPISODE_2_copy_xcz6v9.wav'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/AUTONOMY_AUDIO_EPISODE_2_copy_xcz6v9.wav'
             },
             {
                 id: 3,
                 name: 'Autonomy Mission to the Analog Islands 3',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151943/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675467774/WEBSITE%20ASSETS/AUDIO%20ASSETS/AUTONOMY_AUDIO_EPISODE_3_copy_ivsyc0.wav'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/AUTONOMY_AUDIO_EPISODE_3_copy_ivsyc0.wav'
             },
             {
                 id: 4,
                 name: 'Autonomy Mission to the Analog Islands 4',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151943/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675467712/WEBSITE%20ASSETS/AUDIO%20ASSETS/AUTONOMY_AUDIO_EPISODE_4_copy_lifgkn.wav'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/AUTONOMY_AUDIO_EPISODE_4_copy_lifgkn.wav'
             },
             {
                 id: 5,
                 name: 'Autonomy Mission to the Analog Islands 5',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151943/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1683080386/WEBSITE%20ASSETS/AUDIO%20ASSETS/AUTONOMY_AUDIO_EPISODES_5_copy_qdjggu.wav'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/AUTONOMY_AUDIO_EPISODES_5_copy_qdjggu.wav'
             },
             {
                 id: 6,
                 name: 'Autonomy Mission to the Analog Islands 6',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151943/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675467715/WEBSITE%20ASSETS/AUDIO%20ASSETS/AUTONOMY_AUDIO_EPISODE_6_copy_ogaudz.wav'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/AUTONOMY_AUDIO_EPISODE_6_copy_ogaudz.wav'
             },
             {
                 id: 7,
                 name: 'Autonomy Mission to the Analog Islands 7',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151943/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675467825/WEBSITE%20ASSETS/AUDIO%20ASSETS/AUTONOMY_AUDIO_EPISODE_8_copy_qwweru.wav'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/AUTONOMY_AUDIO_EPISODE_8_copy_qwweru.wav'
             },
             {
                 id: 8,
                 name: 'Autonomy Mission to the Analog Islands 8',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151943/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675467772/WEBSITE%20ASSETS/AUDIO%20ASSETS/AUTONOMY_AUDIO_EPISODE_7_copy_plh8dk.wav'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/AUTONOMY_AUDIO_EPISODE_7_copy_plh8dk.wav'
             },
             {
                 id: 9,
                 name: 'Autonomy Mission to the Analog Islands 9',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151943/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675467780/WEBSITE%20ASSETS/AUDIO%20ASSETS/AUTONOMY_AUDIO_EPISODE_9_copy_qbcp5e.wav'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/AUTONOMY_AUDIO_EPISODE_9_copy_qbcp5e.wav'
             },
             {
                 id: 10,
                 name: 'Autonomy Mission to the Analog Islands 10',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151943/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675474437/WEBSITE%20ASSETS/AUDIO%20ASSETS/AUTONOMY_AUDIO_EPISODE_10_bppzmz.mp3'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/AUTONOMY_AUDIO/AUTONOMY_AUDIO_EPISODES_sd7poi.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/AUTONOMY_AUDIO_EPISODE_10_bppzmz.mp3'
             }
         ]
     },
@@ -161,37 +161,37 @@ var AudioDataSet = {
         'title': 'EVERY BODIES WATCHING',
         'playlist': true,
         'videoLink': '/Sorted Videos/Everybodieswatching Copy.mp4',
-        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151965/cover/EVERYBODIES_WATCHING_nmyuyd.jpg',
+        'coverImage': 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/EVERYBODIES_WATCHING_nmyuyd.jpg',
         'episodes': [
             {
                 id: 1,
                 name: 'EVERY BODIES WATCHING EPISODE 1',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151965/cover/EVERYBODIES_WATCHING_nmyuyd.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675470655/WEBSITE%20ASSETS/AUDIO%20ASSETS/EVERYBODIES_WATCHING_EP_1_b8vngf.mp3'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/EVERYBODIES_WATCHING_nmyuyd.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/EVERYBODIES_WATCHING_EP_1_b8vngf.mp3'
             },
             {
                 id: 2,
                 name: 'EVERY BODIES WATCHING EPISODE 2',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151965/cover/EVERYBODIES_WATCHING_nmyuyd.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675470821/WEBSITE%20ASSETS/AUDIO%20ASSETS/EVERYBODIES_WATCHING_EP_2_vfw2lu.mp3'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/EVERYBODIES_WATCHING_nmyuyd.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/EVERYBODIES_WATCHING_EP_2_vfw2lu.mp3'
             },
             {
                 id: 3,
                 name: 'EVERY BODIES WATCHING EPISODE 3',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151965/cover/EVERYBODIES_WATCHING_nmyuyd.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675466181/WEBSITE%20ASSETS/AUDIO%20ASSETS/EVERYBODIES_WATCHING_EPISODE_3_copy_g3yhst.wav'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/EVERYBODIES_WATCHING_nmyuyd.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/EVERYBODIES_WATCHING_EPISODE_3_copy_g3yhst.wav'
             },
             {
                 id: 4,
                 name: 'EVERY BODIES WATCHING EPISODE 4',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151965/cover/EVERYBODIES_WATCHING_nmyuyd.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675466016/WEBSITE%20ASSETS/AUDIO%20ASSETS/EVERYBODIES_WATCHING_EP_4_copy_piwnzu.wav'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/EVERYBODIES_WATCHING_nmyuyd.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/EVERYBODIES_WATCHING_EP_4_copy_piwnzu.wav'
             },
             {
                 id: 5,
                 name: 'EVERY BODIES WATCHING EPISODE 5',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151965/cover/EVERYBODIES_WATCHING_nmyuyd.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675465397/WEBSITE%20ASSETS/AUDIO%20ASSETS/EVERYBODYS_WATCHING_EP_5_copy_fvjmgh.wav'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/EVERYBODIES_WATCHING_nmyuyd.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/EVERYBODYS_WATCHING_EP_5_copy_fvjmgh.wav'
             },
         ]
     },
@@ -205,7 +205,7 @@ var AudioDataSet = {
                 id: 1,
                 name: 'RESTART CONTINUE',
                 img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151969/cover/RestartContinueCover_xls8cn.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675468685/WEBSITE%20ASSETS/AUDIO%20ASSETS/RESTART_CONTINUE_COVER_c7tp7n.mp3'
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/RESTART_CONTINUE_COVER_c7tp7n.mp3'
             }
 
         ]
@@ -214,19 +214,19 @@ var AudioDataSet = {
         'title': 'PRINCE CHARMING COVER',
         'playlist': true,
         'videoLink': '/Sorted Videos/Prince Charming.mp4',
-        'coverImage': 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
+        'coverImage': 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
         'episodes': [
             {
                 id: 1,
                 name: 'PRINCE CHARMING COVER 1',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675468685/WEBSITE%20ASSETS/AUDIO%20ASSETS/PRINCECHARMING_COVER_hc064c.mp3'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/PRINCECHARMING_COVER_hc064c.mp3'
             },
             {
                 id: 2,
                 name: 'PRINCE CHARMING COVER 2',
-                img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1675468674/WEBSITE%20ASSETS/AUDIO%20ASSETS/PRINCECHARMING_COVER_2_zm13lg.mp3'
+                img: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/PRINCECHARMING_COVER_2_zm13lg.mp3'
             },
         ]
     },
@@ -240,25 +240,25 @@ var AudioDataSet = {
                 id: 1,
                 name: 'Scrolling thru',
                 img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1713470716/WEBSITE%20ASSETS/TO%20BE%20A%20KID%20AGAIN%20DELUXE/scrolling%20thru.wav'
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/TO+BE+A+KID+AGAIN+DELUXE/scrolling+thru.wav'
             },
             {
                 id: 2,
                 name: 'For the Road',
                 img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1713470301/WEBSITE%20ASSETS/TO%20BE%20A%20KID%20AGAIN%20DELUXE/For%20the%20Road.wav'
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/TO+BE+A+KID+AGAIN+DELUXE/For+the+Road.wav'
             },
             {
                 id: 3,
                 name: 'Gaslight',
                 img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1713470923/WEBSITE%20ASSETS/TO%20BE%20A%20KID%20AGAIN%20DELUXE/Gaslight.wav'
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/TO+BE+A+KID+AGAIN+DELUXE/Gaslight.wav'
             },
             {
                 id: 4,
                 name: 'One of One',
                 img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1713470383/WEBSITE%20ASSETS/TO%20BE%20A%20KID%20AGAIN%20DELUXE/One%20of%20One.wav'
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/TO+BE+A+KID+AGAIN+DELUXE/One+of+One.wav'
             },
             {
                 id: 5,
@@ -270,13 +270,13 @@ var AudioDataSet = {
                 id: 6,
                 name: 'Potential',
                 img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1713470617/WEBSITE%20ASSETS/TO%20BE%20A%20KID%20AGAIN%20DELUXE/Potential.wav'
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/TO+BE+A+KID+AGAIN+DELUXE/Potential.wav'
             },
             {
                 id: 7,
                 name: 'Imposters (feat Jade Nikaylah)',
                 img: 'https://res.cloudinary.com/dts5uxlug/image/upload/v1681151968/cover/Julian_Stephen_Prince_Charming-front-large_hcwhpv.jpg',
-                src: 'https://res.cloudinary.com/dts5uxlug/video/upload/v1713470321/WEBSITE%20ASSETS/TO%20BE%20A%20KID%20AGAIN%20DELUXE/Imposters%20%28feat%20Jade%20Nikaylah%29.wav'
+                src: 'https://justcreate-default-media.s3.eu-north-1.amazonaws.com/audio/TO+BE+A+KID+AGAIN+DELUXE/Imposters+(feat+Jade+Nikaylah).wav'
             },
         ]
     },
