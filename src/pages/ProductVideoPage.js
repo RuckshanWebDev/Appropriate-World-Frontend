@@ -23,8 +23,9 @@ function ProductPageVideo() {
 
   const playlistHandler = (e) => {
     const index = Number(e.target.id) - 1; // Ensure it's a number
-    if (data.links?.[index]) {
-      setCurrentVideo(data.links[index].link);
+    console.log(index, data.episodes?.[index]);
+    if (data.episodes?.[index]) {
+      setCurrentVideo(data.episodes[index].link);
     }
   };
 
