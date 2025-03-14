@@ -17,15 +17,18 @@ function ProductPageVideo() {
   const [outSource, setOutsource] = useState(false);
   const [data, setData] = useState(null);
   const [currentVideo, setCurrentVideo] = useState("");
+  const [currentImage, setCurrentImage] = useState("");
   const [getMediaFn, getMediaData] = useLazyViewMediaContentQuery();
 
   console.log(user);
 
   const playlistHandler = (e) => {
+    console.log(e);
     const index = Number(e.target.id) - 1; // Ensure it's a number
     console.log(index, data.episodes?.[index]);
     if (data.episodes?.[index]) {
-      setCurrentVideo(data.episodes[index].link);
+      setCurrentVideo(data.episodes[index].link || data.episodes[index].src);
+      setCurrentImage(data.episodes[index].img);
     }
   };
 
@@ -81,7 +84,7 @@ function ProductPageVideo() {
           <div className="title-container">
             <h2>{data.title}</h2>
           </div>
-           {currentVideo && <video poster={currentVideo.img || data.coverImage} id="video-player" controls ref={videoRef} src={currentVideo}></video>}
+           {currentVideo && <video poster={currentVideo.img || currentImage} id="video-player" autoPlay controls ref={videoRef} src={currentVideo}></video>}
            <p className="description pb-2">{data?.description}</p>
            <DataList.Root orientation={{ initial: "vertical", sm: "horizontal" }}>
               <DataList.Item>
@@ -99,19 +102,20 @@ function ProductPageVideo() {
                 <h2>Related Videos</h2>
               </div>
               <div className="playlist-container">
-                {data.episodes.map((playlistItem) => {
+                {data.episodes.map((playlistItem, i) => {
                   return (
                     <div
                       className="playlist-item"
                       style={{
+                        cursor : 'pointer',
                         backgroundImage: `linear-gradient(7deg, #ffffffab, transparent),
         url(${playlistItem.img})`,
                       }}
                       onClick={playlistHandler}
-                      key={playlistItem["playlist-id"]}
-                      id={playlistItem["playlist-id"]}
+                      key={playlistItem["playlist-id"] || i + 1}
+                      id={playlistItem["playlist-id"] || i + 1}
                     >
-                      <p id={playlistItem["playlist-id"]} className="playlist-item-text">
+                      <p id={playlistItem["playlist-id"] || i + 1} className="playlist-item-text">
                         {playlistItem.name}
                       </p>
                     </div>

@@ -6,14 +6,13 @@ const mediaApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: process.env.NODE_ENV === "production" ? "https://api.justcreate.tv" : "http://localhost:5001" }),
   endpoints: (builder) => ({
     getPresignedUrl: builder.query({
-      query: ({ folder, fileName, fileType }) => {
+      query: ({ episodes, type }) => {
         return {
           url: "/aws/presigned-url",
           method: "POST",
           body: {
-            fileName,
-            fileType,
-            folder,
+            files: episodes,
+            type: type,
           },
         };
       },
@@ -97,7 +96,7 @@ const mediaApi = createApi({
   }),
 });
 
-export const uploadFileWithProgress = async ({presignedUrl, file, onProgress}) => {
+export const uploadFileWithProgress = async ({ presignedUrl, file, onProgress }) => {
   return new Promise((resolve, reject) => {
     console.log(file);
     const xhr = new XMLHttpRequest();

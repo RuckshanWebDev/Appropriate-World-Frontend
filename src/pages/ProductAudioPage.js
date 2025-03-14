@@ -42,8 +42,17 @@ function ProductPage() {
 
   const fetchOutsourceMusic = async (id) => {
     try {
-      const responce = await getMediaFn(id).unwrap();
-      setAudioData(responce);
+      const response = await getMediaFn(id).unwrap();
+
+      const playList = {
+        ...response, // Copy all other properties
+        episodes: response.episodes.map(({ _id, ...rest }, index) => ({
+          ...rest,
+          id: index + 1,
+        })),
+      };
+
+      setAudioData(playList);
     } catch (error) {
       console.log(error);
     }
@@ -88,7 +97,7 @@ function ProductPage() {
     };
   }
 
-  console.log(getMediaData);
+  console.log(audioData);
 
   return (
     <Layout>
@@ -134,7 +143,7 @@ function ProductPage() {
               </div>
             )
           : getMediaData.isLoading ||
-            (getMediaData.isSuccess && Object.keys(audioData).length && (
+            (getMediaData.isSuccess && Object.keys(audioData).length && audioData.episodes.length && (
               <>
                 <div className="w-full mt-4">
                   <AudioPlayer
