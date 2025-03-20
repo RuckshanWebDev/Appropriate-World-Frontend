@@ -114,13 +114,6 @@ function Product() {
                 </div>
               </Link>
             </Card>
-          </div>
-        </div>
-
-        <div className="mt-20">
-        <h1 class="text-3xl font-bold pb-2">Audio Collection</h1>
-          <Separator className="w-full" />
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
             <Card className="p-0 aspect-square flex items-center">
               <Link to={"/video/APPROPRIATE-CULTURE-SEASON-1.5"}>
                 <div className="product-card">
@@ -130,6 +123,14 @@ function Product() {
                 </div>
               </Link>
             </Card>
+          </div>
+        </div>
+
+        <div className="mt-20">
+        <h1 class="text-3xl font-bold pb-2">Audio Collection</h1>
+          <Separator className="w-full" />
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
+            
             <Card className="p-0 aspect-square flex items-center">
               <Link to={"/audio/TO-BE-A-KID-AGAIN-DELUXE"}>
                 <div className="product-card">

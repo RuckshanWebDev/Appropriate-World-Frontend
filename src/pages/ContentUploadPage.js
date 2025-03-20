@@ -1,4 +1,4 @@
-import { Box, Button, Card, Checkbox, Flex, Heading, Kbd, Progress, RadioCards, Strong, Text, TextArea, TextField, Theme } from "@radix-ui/themes";
+import { Box, Button, Card, Checkbox, Dialog, Flex, Heading, Kbd, Progress, RadioCards, Strong, Text, TextArea, TextField, Theme } from "@radix-ui/themes";
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import Layout from "../components/Layout";
@@ -115,7 +115,7 @@ function ContentUploadPage() {
         }
 
         return {
-          name : index,
+          name: index,
           src: uploadedFileUrl,
           img: uploadedImageUrl,
         };
@@ -343,7 +343,59 @@ function ContentUploadPage() {
               <Text as="label" size="2" className="flex items-center">
                 <Flex gap="2" className="items-center">
                   <Checkbox required className="-translate-y-2" />
-                  Agree to Terms and Conditions
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button>Agree to Terms and Conditions</Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-3xl">
+                      <DialogHeader>
+                        <DialogTitle className="text-2xl font-bold text-center">JustCreate.tv Content Upload Terms and Agreement</DialogTitle>
+                      </DialogHeader>
+                      <CardContent>
+                        <ScrollArea className="h-[400px] p-4 border rounded-md">
+                          <p className="font-semibold">1. Acceptance of Terms</p>
+                          <p>By uploading content to JustCreate.tv, you agree to comply with and be bound by these terms.</p>
+
+                          <p className="mt-4 font-semibold">2. Content Ownership and Rights</p>
+                          <p>You retain all ownership rights but grant JustCreate.tv a non-exclusive, worldwide, royalty-free license to use and promote the content.</p>
+
+                          <p className="mt-4 font-semibold">3. Content Guidelines</p>
+                          <ul className="list-disc ml-6">
+                            <li>No infringement on third-party intellectual property rights.</li>
+                            <li>No hate speech, violence, or illegal activities.</li>
+                            <li>No malware or harmful software.</li>
+                          </ul>
+
+                          <p className="mt-4 font-semibold">4. Liability Disclaimer</p>
+                          <p>JustCreate.tv is not responsible for uploaded content.</p>
+
+                          <p className="mt-4 font-semibold">5. Indemnification</p>
+                          <p>You agree to indemnify JustCreate.tv against any claims related to your content.</p>
+
+                          <p className="mt-4 font-semibold">6. Content Removal and Termination</p>
+                          <p>We reserve the right to remove content or suspend accounts violating the terms.</p>
+
+                          <p className="mt-4 font-semibold">7. Modification of Terms</p>
+                          <p>Terms may be updated, and continued use constitutes acceptance.</p>
+
+                          <p className="mt-4 font-semibold">8. Governing Law</p>
+                          <p>Disputes are subject to the exclusive jurisdiction of the courts in New York City.</p>
+
+                          <p className="mt-4 font-semibold">9. Contact Information</p>
+                          <p>
+                            For questions, contact us at{" "}
+                            <a href="mailto:info@justcreate.tv" className="text-blue-600">
+                              info@justcreate.tv
+                            </a>
+                            .
+                          </p>
+                        </ScrollArea>
+                        <div className="mt-6 flex justify-center">
+                          <Button>Accept and Continue</Button>
+                        </div>
+                      </CardContent>
+                    </DialogContent>
+                  </Dialog>
                 </Flex>
               </Text>
 

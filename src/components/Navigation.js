@@ -86,9 +86,9 @@ function Navigation() {
               <MdOutlineMessage />
             </div>
           </Link>}
-          {user && <Link to={'/blogs'}>
+           <Link to={'/blogs'}>
             <FaBlogger />
-          </Link>}
+          </Link>
           {user ?
             <Link to="/profile">
               <BsFillPersonFill />
@@ -112,14 +112,15 @@ function Navigation() {
         <a href='https://justcreatetvstore.myshopify.com/' target='_blank'>
           <FaShoppingCart className='white-path' />
         </a>
-        { user && <> <Link to={'/community'}>
+        <Link to={'/blogs'}>
+          <FaBlogger />
+        </Link>
+        { user && <> 
+        <Link to={'/community'}>
           <HiUserGroup />
         </Link>
         <Link to={'/chat'} >
           <MdOutlineMessage />
-        </Link>
-        <Link to={'/blogs'}>
-          <FaBlogger />
         </Link>
         </>
         }

@@ -97,10 +97,10 @@ button {
     background-color: transparent;
     border: 3px solid var(--color-red);
     border-radius: 15px;
-    padding: 10px 15px;
-    font-size: 22px;
+    padding: 6px 15px;
+    font-size: 20px;
     color: #fff;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
     margin: 10px 10px 0 !important;
 }

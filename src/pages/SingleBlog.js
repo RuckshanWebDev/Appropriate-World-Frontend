@@ -67,12 +67,10 @@ function SingleBlog() {
 
             </div>
             {user.profileId === data?.data?.author._id && <div style={{ position: 'fixed', right: '10px', bottom: '50px' }} >
-                <Theme>
                     <Flex direction={'column'} >
                         {/* <IconButton onClick={() => { navigate(`/blog/edit/${data?.data._id}`) }} ><MdEdit /></IconButton> */}
-                        <IconButton color="crimson" onClick={deleteHandler}  ><MdOutlineDeleteOutline /></IconButton>
+                        <IconButton color="crimson" size={'3'} onClick={deleteHandler}  ><MdOutlineDeleteOutline size={'24px'} /></IconButton>
                     </Flex>
-                </Theme>
             </div>}
         </Layout>
     )
