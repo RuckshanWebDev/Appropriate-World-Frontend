@@ -1,4 +1,4 @@
-import { Box, Button, Card, Checkbox, Dialog, Flex, Heading, Kbd, Progress, RadioCards, Strong, Text, TextArea, TextField, Theme } from "@radix-ui/themes";
+import { Box, Button, Card, Checkbox, Dialog, Flex, Heading, Kbd, Progress, RadioCards, ScrollArea, Strong, Text, TextArea, TextField, Theme } from "@radix-ui/themes";
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import Layout from "../components/Layout";
@@ -201,17 +201,17 @@ function ContentUploadPage() {
   };
   console.log(progressState);
   // Effects
-  useEffect(() => {
-    console.log(coverImage);
-    if (coverImage) {
-      const fileReader = new FileReader();
-      fileReader.onload = (e) => {
-        console.log(e);
-        coverImg.current.src = e.target.result;
-      };
-      fileReader.readAsDataURL(coverImage);
-    }
-  }, [coverImage]);
+  // useEffect(() => {
+  //   console.log(coverImage);
+  //   if (coverImage) {
+  //     const fileReader = new FileReader();
+  //     fileReader.onload = (e) => {
+  //       console.log(e);
+  //       coverImg.current.src = e.target.result;
+  //     };
+  //     fileReader.readAsDataURL(coverImage);
+  //   }
+  // }, [coverImage]);
 
   console.log(episodes);
 
@@ -273,15 +273,15 @@ function ContentUploadPage() {
 
                   <div className="relative w-min">
                     <label htmlFor="coverImage" className="relative block font-medium mb-1 w-[300px] h-[300px] bg-[#5E58EC]/20 border-dashed border-[#5E58EC] border-2 flex justify-center items-center overflow-hidden">
-                      {!coverImage ? (
+                      {!episodes[0]?.image ? (
                         <span className="text-center">
                           Cover Image <br /> <Kbd>500px x 500px</Kbd>
                         </span>
                       ) : (
-                        <img ref={coverImg} className="w-full " />
+                        <img src={URL.createObjectURL(episodes[0].image)} className="w-full " />
                       )}
                     </label>
-                    {coverImage && <IoIosClose className="absolute top-0 right-0 z-10 text-red-600 text-4xl cursor-pointer user-select-none" onClick={() => setCoverImage(null)} />}
+                    {episodes[0]?.image && <IoIosClose className="absolute top-0 right-0 z-10 text-red-600 text-4xl cursor-pointer user-select-none" onClick={() => setEpisodes((prev)=> [ episodes, ...prev ] )} />}
                     <input type="file" id="coverImage" accept="image/*" onChange={(e) => handleInitFile(null, "image", e.target.files[0])} className=" hidden w-full p-2 border rounded" required />
                   </div>
                 </div>
@@ -343,15 +343,61 @@ function ContentUploadPage() {
               <Text as="label" size="2" className="flex items-center">
                 <Flex gap="2" className="items-center">
                   <Checkbox required className="-translate-y-2" />
-                  <Dialog>
-                    <DialogTrigger asChild>
+                  <Dialog.Root>
+                    <Dialog.Trigger asChild>
+                      <Text className="cursor-pointer underline" >Agree to Terms and Conditions</Text>
+                    </Dialog.Trigger>
+                    <Dialog.Content className="max-w-3xl">
+                      <Dialog.Title className="text-2xl font-bold text-center">JustCreate.tv Content Upload Terms and Agreement</Dialog.Title>
+                      <Flex>
+                        <ScrollArea className="h-[400px] p-4 border rounded-md">
+                          <p className="font-semibold">1. Acceptance of Terms</p>
+                          <p>By uploading content to JustCreate.tv, you agree to comply with and be bound by these terms.</p>
+
+                          <p className="mt-4 font-semibold">2. Content Ownership and Rights</p>
+                          <p>You retain all ownership rights but grant JustCreate.tv a non-exclusive, worldwide, royalty-free license to use and promote the content.</p>
+
+                          <p className="mt-4 font-semibold">3. Content Guidelines</p>
+                          <ul className="list-disc ml-6">
+                            <li>No infringement on third-party intellectual property rights.</li>
+                            <li>No hate speech, violence, or illegal activities.</li>
+                            <li>No malware or harmful software.</li>
+                          </ul>
+
+                          <p className="mt-4 font-semibold">4. Liability Disclaimer</p>
+                          <p>JustCreate.tv is not responsible for uploaded content.</p>
+
+                          <p className="mt-4 font-semibold">5. Indemnification</p>
+                          <p>You agree to indemnify JustCreate.tv against any claims related to your content.</p>
+
+                          <p className="mt-4 font-semibold">6. Content Removal and Termination</p>
+                          <p>We reserve the right to remove content or suspend accounts violating the terms.</p>
+
+                          <p className="mt-4 font-semibold">7. Modification of Terms</p>
+                          <p>Terms may be updated, and continued use constitutes acceptance.</p>
+
+                          <p className="mt-4 font-semibold">8. Governing Law</p>
+                          <p>Disputes are subject to the exclusive jurisdiction of the courts in New York City.</p>
+
+                          <p className="mt-4 font-semibold">9. Contact Information</p>
+                          <p>
+                            For questions, contact us at{" "}
+                            <a href="mailto:info@justcreate.tv" className="text-blue-600">
+                              info@justcreate.tv
+                            </a>
+                            .
+                          </p>
+                        </ScrollArea>
+                      </Flex>
+                    </Dialog.Content>
+                  </Dialog.Root>
+                  {/* <Dialog>
+                    <Dialog.Trigger>
                       <Button>Agree to Terms and Conditions</Button>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-3xl">
-                      <DialogHeader>
-                        <DialogTitle className="text-2xl font-bold text-center">JustCreate.tv Content Upload Terms and Agreement</DialogTitle>
-                      </DialogHeader>
-                      <CardContent>
+                    </Dialog.Trigger>
+                    <Dialog.Content className="max-w-3xl">
+                      <Dialog.Title className="text-2xl font-bold text-center">JustCreate.tv Content Upload Terms and Agreement</Dialog.Title>
+                      <Flex>
                         <ScrollArea className="h-[400px] p-4 border rounded-md">
                           <p className="font-semibold">1. Acceptance of Terms</p>
                           <p>By uploading content to JustCreate.tv, you agree to comply with and be bound by these terms.</p>
@@ -393,9 +439,9 @@ function ContentUploadPage() {
                         <div className="mt-6 flex justify-center">
                           <Button>Accept and Continue</Button>
                         </div>
-                      </CardContent>
-                    </DialogContent>
-                  </Dialog>
+                      </Flex>
+                    </Dialog.Content>
+                  </Dialog> */}
                 </Flex>
               </Text>
 
