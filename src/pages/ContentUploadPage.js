@@ -1,4 +1,4 @@
-import { Box, Button, Card, Checkbox, Dialog, Flex, Heading, Kbd, Progress, RadioCards, ScrollArea, Strong, Text, TextArea, TextField, Theme } from "@radix-ui/themes";
+import { Box, Button, Card, Checkbox, Dialog, Flex, Heading, Kbd, Progress, RadioCards, ScrollArea, Separator, Strong, Text, TextArea, TextField, Theme } from "@radix-ui/themes";
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import Layout from "../components/Layout";
@@ -219,7 +219,7 @@ function ContentUploadPage() {
     <Layout>
       <div className="container py-20">
         <Theme hasBackground={false} className="min-h-min">
-          <Card className="m-5 max-w-[800px] mx-auto relative" variant="classic" size={"4"}>
+          <Card className="m-5 max-w-[800px] mx-auto relative !overflow-visible pl-10" variant="classic" size={"4"}>
             {/* Loader */}
             {progressState.isLoading && (
               <div className="absolute top-0 left-0 w-full h-full bg-blue-800/10 backdrop-blur-sm z-10 flex flex-col justify-center items-center">
@@ -240,8 +240,10 @@ function ContentUploadPage() {
 
             <form onSubmit={handleFormSubmit} className="space-y-4">
               {/* Title */}
-              <div className="mt-5">
-                <label htmlFor="title" className="block font-medium mb-1">
+              <div className="mt-5 relative">
+                <h3 className="absolute -left-[30px] font-black text-4xl text-red-600" >1</h3>
+
+                <label htmlFor="title" className="block font-medium">
                   Title
                 </label>
                 <Box>
@@ -249,7 +251,7 @@ function ContentUploadPage() {
                 </Box>
               </div>
 
-              <Box maxWidth="600px" className="pt-5 -ml-[10px]">
+              <Box maxWidth="600px" className="-ml-[10px]">
                 <RadioCards.Root defaultValue="video" onValueChange={(e) => setContentType(e)}>
                   <RadioCards.Item value="video">
                     <Flex direction="column" width="100%">
@@ -266,7 +268,10 @@ function ContentUploadPage() {
                 </RadioCards.Root>
               </Box>
 
-              <div className="flex  justify-between md:flex-row flex-col">
+              <Separator className="!my-10" size="4" />
+
+              <div className="flex  justify-between md:flex-row flex-col relative">
+              <h3 className="absolute -left-[30px] font-black text-4xl text-yellow-600" >2</h3>
                 <div>
                   {/* Cover Image */}
                   <h3 className="block font-medium mb-1">Cover Image</h3>
@@ -302,8 +307,11 @@ function ContentUploadPage() {
                 </div>
               </div>
 
-              <div>
-                <h3 className="block text-xl font-medium mb-1">Episodes</h3>
+              <Separator className="!my-10" size="4" />
+
+              <div className="relative">
+                <h3 className="absolute -left-[30px] font-black text-4xl text-green-600" >3</h3>
+                <h3 className="block text-xl font-medium mb-1">Episodes <span className="text-sm">( optional )</span> </h3>
                 <Button variant="soft" type="button" onClick={handleAddEpisode} className="!m-0 cursor-pointer w-full">
                   Add Episode
                 </Button>
@@ -312,7 +320,7 @@ function ContentUploadPage() {
               {episodes.map((episode, index) => {
                 if (!index) return;
                 return (
-                  <div key={episode.id} className="border p-4 rounded-lg relative flex">
+                  <div key={episode.id} className="border p-4 rounded-lg relative flex gap-2">
                     <IoIosClose className="absolute top-2 right-2 text-red-600 text-2xl cursor-pointer" onClick={() => handleRemoveEpisode(episode.id)} />
 
                     {contentType === "video" && (
@@ -329,7 +337,10 @@ function ContentUploadPage() {
                 );
               })}
 
-              <div className="space-y-2 py-10">
+              <Separator className="!my-10" size="4" />
+
+              <div className="space-y-2 relative">
+              <h3 className="absolute -left-[30px] font-black text-4xl text-blue-600" >4</h3>
                 <h3 className="block font-medium mb-1">About the Content</h3>
                 <Box>
                   <TextField.Root size="3" placeholder="Artist" required ref={artistRef} />
