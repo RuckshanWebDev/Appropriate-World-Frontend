@@ -11,7 +11,7 @@ import { useLazyGetotificationQuery } from "../features/chatApi";
 import Activity from "../components/Activity";
 import { Link } from "react-router-dom";
 import { IoMdSettings } from "react-icons/io";
-import { Theme, Switch, Flex } from "@radix-ui/themes";
+import { Theme, Switch, Flex, Button } from "@radix-ui/themes";
 
 function ProfilePage() {
   const { popup, user } = useSelector((state) => state.local);
@@ -142,8 +142,8 @@ function ProfilePage() {
                 <h3>{profile?.bio || "Add your bio"}</h3>
                 <br />
                 <br />
-                <button onClick={() => dispatch(togglePopup())}>Edit Profile</button>
-                <button onClick={logoutHandler}>Logout</button>
+                <Button className="mr-4" onClick={() => dispatch(togglePopup())}>Edit Profile</Button>
+                <Button onClick={logoutHandler}>Logout</Button>
               </div>
 
               <div style={{ width: "100%" }}>

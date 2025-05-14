@@ -22,5 +22,8 @@ module.exports = {
     purple: '#450074',
     orange: '#ff9900'
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/typography')
+  ],
 }

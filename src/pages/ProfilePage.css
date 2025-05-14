@@ -24,6 +24,11 @@
     position: relative;
 }
 
+.profile-page-container h4{
+    font-size: 20px;
+    font-weight: 700;
+}
+
 #account-type {
     position: absolute;
     bottom: -50px;

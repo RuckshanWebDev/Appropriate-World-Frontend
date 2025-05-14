@@ -12,6 +12,7 @@ import { useCommentTweetMutation, useCreateTweetMutation, useDeleteTweetMutation
 import Loader from './Loader'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
+import { Button } from '@radix-ui/themes'
 
 
 function Activity() {
@@ -256,7 +257,7 @@ function Activity() {
                                 <FaVideo />
                             </label>
                         </div>
-                        <button ref={submitRef} type='submit'> {createData.isLoading ? 'Posting...' : "Post"} </button>
+                        <Button ref={submitRef} type='submit'> {createData.isLoading ? 'Posting...' : "Post"} </Button>
                     </div>
                 </form>
 
