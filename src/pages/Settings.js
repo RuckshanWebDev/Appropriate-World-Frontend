@@ -139,7 +139,7 @@ function Settings() {
 
     return (
         <Layout loader={getSubscriptionsData.isLoading || createCustomerData.isLoading || invoiceData.isLoading} >
-            <Theme>
+
             <div className='container' style={{ position: 'relative' }} >
 
                 {getSubscriptionsData.isSuccess &&
@@ -152,7 +152,7 @@ function Settings() {
                                         <Text as="div" size="2" mb="1" weight="bold">
                                             Name
                                         </Text>
-                                        <TextField.Input
+                                        <TextField.Root
                                             value={user.profile.name}
                                             disabled
                                             defaultValue="Freja Johnsen"
@@ -163,7 +163,7 @@ function Settings() {
                                         <Text as="div" size="2" mb="1" weight="bold">
                                             Email
                                         </Text>
-                                        <TextField.Input
+                                        <TextField.Root
                                             value={user.email}
                                             disabled
                                             defaultValue="freja@example.com"
@@ -302,7 +302,7 @@ function Settings() {
                     </div>
                 }
             </div>
-            </Theme>
+   
         </Layout>
     )
 }

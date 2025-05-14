@@ -39,13 +39,14 @@ input::placeholder {
   width: 100%;
 }
 
-.grid {
+.grid-login {
   margin: 0 auto;
   max-width: 25rem;
   width: 100%;
 }
 
-h2 {
+.grid-login h2,
+.register h2 {
   font-size: 2.75rem;
   font-weight: 100;
   margin: 0 0 1rem;

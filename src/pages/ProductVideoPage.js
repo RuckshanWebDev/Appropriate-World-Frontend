@@ -1,98 +1,189 @@
-import React, { useEffect, useRef, useState } from 'react'
-import Layout from '../components/Layout'
-import './ProductVideoPage.css'
-import { useParams, useNavigate } from 'react-router-dom'
-import VideoDataSet from '../components/VideoDataSet'
-
+import React, { useEffect, useRef, useState } from "react";
+import Layout from "../components/Layout";
+import "./ProductVideoPage.css";
+import { useParams, useNavigate } from "react-router-dom";
+import VideoDataSet from "../components/VideoDataSet";
+import { useLazyViewMediaContentQuery } from "../features/mediaApi";
+import { DataList, Skeleton } from "@radix-ui/themes";
+import DeleteMedia from "../utils/deleteMedia";
+import { useSelector } from "react-redux";
 
 function ProductPageVideo() {
 
-  const navigate = useNavigate()
+  const user = useSelector((state) => state.local.user);
+  const navigate = useNavigate();
+  const param = useParams();
+  const videoRef = useRef();
+  const [outSource, setOutsource] = useState(false);
+  const [data, setData] = useState(null);
+  const [currentVideo, setCurrentVideo] = useState("");
+  const [currentImage, setCurrentImage] = useState("");
+  const [getMediaFn, getMediaData] = useLazyViewMediaContentQuery();
 
-  const videoRef = useRef()
-
-  const [data, setData] = useState({})
-  const [currentVideo, setCurrentVideo] = useState('')
-
-  const param = useParams()
+  console.log(user);
 
   const playlistHandler = (e) => {
-
-    console.log(e.target.id - 1);
-    console.log(data.links[e.target.id - 1].link);
-    setCurrentVideo(data.links[e.target.id - 1].link)
-    console.log(currentVideo);
-
-    videoRef.current.src = currentVideo
-    videoRef.current.load();
-    console.log(videoRef.current);
-  }
+    console.log(e);
+    const index = Number(e.target.id) - 1; // Ensure it's a number
+    console.log(index, data.episodes?.[index]);
+    if (data.episodes?.[index]) {
+      setCurrentVideo(data.episodes[index].link || data.episodes[index].src);
+      setCurrentImage(data.episodes[index].img);
+    }
+  };
 
   useEffect(() => {
-
-    let url = param.id
-    url = url.replace(/-/g, " ")
-
-    if (VideoDataSet[url]) {
-      setData(VideoDataSet[url])
-      console.log(VideoDataSet[url]);
+    let url = param.id.replace(/-/g, " ");
+    if (window.location.pathname.includes("outsource")) {
+      setOutsource(true);
+      getMediaFn(param.id);
+    } else if (VideoDataSet[url]) {
+      setData(VideoDataSet[url]);
     } else {
-      navigate('/404')
-      console.log('redirect');
+      navigate("/404");
     }
-    if (Object.keys(data).length) {
-      setCurrentVideo(data.links[0])
+  }, []);
+
+  useEffect(() => {
+    if (getMediaData.isSuccess && getMediaData.data) {
+      setData(getMediaData.data);
+      setCurrentVideo(getMediaData.data.episodes[0].src);
     }
+  }, [getMediaData.isSuccess]);
 
+  useEffect(() => {
+    if (!outSource && data && data.episodes?.length) {
+      console.log('fdsf', outSource);
+      setCurrentVideo(data.episodes[0].link);
+    }
+  }, [data]);
 
-  }, [data])
+  // Update video source when `currentVideo` changes
+  useEffect(() => {
+    if (videoRef.current && currentVideo) {
+      videoRef.current.src = currentVideo;
+      videoRef.current.load();
+    }
+  }, [currentVideo]);
+
+  console.log(currentVideo);
 
   return (
     <Layout>
-      <div className='container' >
-        <div className='video-container' >
-
-          <div className='title-container' >
+      <div className="container">
+        <div className="video-container">
+          { !data ?
+          <>
+            <Skeleton className="w-[80%]" height="48px" />
+            <Skeleton width="100%" height="550px" className="my-5" />
+            <Skeleton>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque felis tellus, efficitur id convallis a, viverra eget libero. Nam magna erat, fringilla sed commodo sed, aliquet nec magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque felis tellus, efficitur id convallis a, viverra eget libero. Nam magna erat, fringilla sed commodo sed, aliquet nec magna.</Skeleton>
+          </> 
+          :
+          <>
+         { user && user.profileId === data?.author?._id && <DeleteMedia data={data} />}
+          <div className="title-container">
             <h2>{data.title}</h2>
           </div>
+           {currentVideo && <video poster={currentVideo.img || currentImage} id="video-player" autoPlay controls ref={videoRef} src={currentVideo}></video>}
+           <p className="description pb-2">{data?.description}</p>
+           <DataList.Root orientation={{ initial: "vertical", sm: "horizontal" }}>
+              <DataList.Item>
+                <DataList.Label minWidth="88px">Genre</DataList.Label>
+                <DataList.Value>{data?.genre}</DataList.Value>
+              </DataList.Item>
+              <DataList.Item>
+                <DataList.Label minWidth="88px">Cast</DataList.Label>
+                <DataList.Value>{data?.cast || data?.artist}</DataList.Value>
+              </DataList.Item>
+           </DataList.Root>
+           {data?.episodes?.length > 1 && (
+            <>
+              <div className="title-container">
+                <h2>Related Videos</h2>
+              </div>
+              <div className="playlist-container">
+                {data.episodes.map((playlistItem, i) => {
+                  return (
+                    <div
+                      className="playlist-item"
+                      style={{
+                        cursor : 'pointer',
+                        backgroundImage: `linear-gradient(7deg, #ffffffab, transparent),
+        url(${playlistItem.img})`,
+                      }}
+                      onClick={playlistHandler}
+                      key={playlistItem["playlist-id"] || i + 1}
+                      id={playlistItem["playlist-id"] || i + 1}
+                    >
+                      <p id={playlistItem["playlist-id"] || i + 1} className="playlist-item-text">
+                        {playlistItem.name}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
+          </>
+          }
+        </div>
+      </div>
+      {/* <div className="container">
+        <div className="video-container">
+          <div className="title-container">
+            <h2>{data?.title}</h2>
+          </div>
 
-          {currentVideo && <video poster={currentVideo.img} id='video-player' controls ref={videoRef} src={currentVideo.link} ></video>}
+          {currentVideo && <video poster={currentVideo.img || data.coverImage} id="video-player" controls ref={videoRef} src={currentVideo}></video>}
 
-          <p className='description'>{data?.description}</p>
+          <p className="description">{data?.description}</p>
 
-          <div style={{ display : 'flex', flexDirection : 'column', margin : '30px 0', gap : '15px' }} >
-            <div style={{ display : 'flex' , gap: '10px' }}>
-              <p style={{ maxWidth : '100px', width : '100%' }} >Genre :</p>
+          <div style={{ display: "flex", flexDirection: "column", margin: "30px 0", gap: "15px" }}>
+            <div style={{ display: "flex", gap: "10px" }}>
+              <p style={{ maxWidth: "100px", width: "100%" }}>Genre :</p>
               <p>{data?.genre}</p>
             </div>
-            <div style={{ display : 'flex' , gap: '10px' }}>
-              <p style={{ maxWidth : '100px', width : '100%' }} >Cast :</p>
-              <p>{data?.cast}</p>
+            <div style={{ display: "flex", gap: "10px" }}>
+              <p style={{ maxWidth: "100px", width: "100%" }}>Cast :</p>
+              <p>{data?.cast || data?.artist}</p>
+            </div>
+            <div style={{ display: "flex", gap: "10px" }}>
+              <p style={{ maxWidth: "100px", width: "100%" }}>Description :</p>
+              <p>{data?.description}</p>
             </div>
           </div>
 
-          {data.playlist &&
+          {data && data?.episodes?.length && (
             <>
-              <div className='title-container' >
+              <div className="title-container">
                 <h2>Related Videos</h2>
               </div>
-              <div className='playlist-container' >
-                {data.links.map((playlistItem) => {
-                  return (<div className='playlist-item' style={{
-                    backgroundImage
-                      : `linear-gradient(7deg, #ffffffab, transparent),
-        url(${playlistItem.img})`
-                  }} onClick={playlistHandler} key={playlistItem["playlist-id"]} id={playlistItem["playlist-id"]} >
-                    <p id={playlistItem["playlist-id"]} className='playlist-item-text'>{playlistItem.name}</p>
-                  </div>)
+              <div className="playlist-container">
+                {data.episodes.map((playlistItem) => {
+                  return (
+                    <div
+                      className="playlist-item"
+                      style={{
+                        backgroundImage: `linear-gradient(7deg, #ffffffab, transparent),
+        url(${playlistItem.img})`,
+                      }}
+                      onClick={playlistHandler}
+                      key={playlistItem["playlist-id"]}
+                      id={playlistItem["playlist-id"]}
+                    >
+                      <p id={playlistItem["playlist-id"]} className="playlist-item-text">
+                        {playlistItem.name}
+                      </p>
+                    </div>
+                  );
                 })}
               </div>
-            </>}
-
+            </>
+          )}
         </div>
-      </div>
+      </div> */}
     </Layout>
-  )
+  );
 }
 
-export default ProductPageVideo
+export default ProductPageVideo;

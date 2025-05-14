@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Layout from '../components/Layout'
-import { Box, Button, Card, Flex, Grid, Text, TextArea, TextFieldInput, Theme } from '@radix-ui/themes'
+import { Box, Button, Card, Flex, Grid, Text, TextArea, Theme } from '@radix-ui/themes'
 import * as Accordion from '@radix-ui/react-accordion';
 import './Faq.css'
 import { useCreateFeedbackMutation } from '../features/feedbackApi';
@@ -106,13 +106,13 @@ function Faq() {
                                                     <Text as="div" weight="bold" size="2" mb="1">
                                                         Email
                                                     </Text>
-                                                    <TextFieldInput name='email' placeholder="Email..." type='email' required />
+                                                    <Input name='email' placeholder="Email..." type='email' required />
                                                 </Grid>
                                                 <Grid gap="1">
                                                     <Text as="div" weight="bold" size="2" mb="1" >
                                                         Reason
                                                     </Text>
-                                                    <TextFieldInput name='reason' placeholder="You can specify a post, person or an issue here...." type='text' required />
+                                                    <Input name='reason' placeholder="You can specify a post, person or an issue here...." type='text' required />
                                                 </Grid>
                                                 <Grid gap="1">
                                                     <Text as="div" weight="bold" size="2" mb="1">

@@ -17,10 +17,13 @@ module.exports = {
       600: '#475569',
       700: '#334155',
       800: '#1e293b',
-      900: '#0f172a',
+      900: '#0f172a'
     },
     purple: '#450074',
     orange: '#ff9900'
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/typography')
+  ],
 }

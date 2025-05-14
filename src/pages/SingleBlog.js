@@ -1,81 +1,84 @@
-import React from 'react'
-import Layout from '../components/Layout'
-import { useNavigate, useParams } from 'react-router-dom'
-import { useDeleteBlogMutation, useGetSigleBlogsQuery } from '../features/blogApi';
-import { Flex, IconButton, Theme } from '@radix-ui/themes';
-import { AiOutlinePlus } from 'react-icons/ai';
-import { MdOutlineDeleteOutline, MdEdit } from "react-icons/md";
-import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { Flex, IconButton } from "@radix-ui/themes";
+import { MdOutlineDeleteOutline } from "react-icons/md";
 
-
+import Layout from "../components/Layout";
+import { useGetSigleBlogsQuery, useDeleteBlogMutation } from "../features/blogApi";
 
 function SingleBlog() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.local);
 
-    const { id } = useParams()
-    const { user } = useSelector(state => state.local)
-    const navigate = useNavigate()
+  const { data } = useGetSigleBlogsQuery(id);
+  const [deleteBlog] = useDeleteBlogMutation();
 
-    const { data } = useGetSigleBlogsQuery(id)
-    const [deleteBlog, deleteData] = useDeleteBlogMutation()
+  const blog = data?.data;
 
-    console.log(deleteData);
-
-    const deleteHandler = async () => {
-
-        try {
-            const responce = await deleteBlog({ id: data.data._id }).unwrap()
-            console.log(responce);
-            if (responce.message === 'Success') {
-                toast.success('Successfully deleted')
-                navigate('/blogs')
-            }
-
-        } catch (error) {
-            console.log(error);
-        }
-
+  const handleDelete = async () => {
+    try {
+      const response = await deleteBlog({ id: blog._id }).unwrap();
+      if (response.message === "Success") {
+        toast.success("Successfully deleted");
+        navigate("/blogs");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to delete the blog");
     }
+  };
 
-    return (
-        <Layout>
-            <div className="singleBlog-container container">
+  return (
+    <Layout>
+      <div className="container mx-auto px-4 py-8 text-gray-200">
+        <h1 className="text-3xl font-bold mb-4">{blog?.title}</h1>
 
+        <img
+          src={blog?.image || "/1.png"}
+          alt={blog?.title}
+          className="w-full max-h-[500px] object-cover rounded-lg mb-6 border border-zinc-700"
+        />
 
-                <h1 className='title-big-color' style={{ margin: '30px 0 10px' }} >{data?.data.title}</h1>
+        <div className="flex items-center gap-4 mb-4">
+          <img
+            src={blog?.author?.profile_image || "/user.png"}
+            alt={blog?.author?.name}
+            className="w-12 h-12 rounded-full object-cover"
+          />
+          <div>
+            <h3 className="text-lg font-semibold">{blog?.author?.name}</h3>
+            <p className="text-sm text-zinc-400">
+              {blog?.createdAt?.slice(0, 10)}
+            </p>
+          </div>
+        </div>
 
-                <img src={data?.data.image || "/1.png"} alt="" />
+        <div
+          className="prose prose-invert max-w-none"
+          dangerouslySetInnerHTML={{ __html: blog?.content }}
+        />
 
-                <div className="author-avatar">
-                    <img src={data?.data.author.profile_image || "/user.png"} alt="" />
-                    <div>
-                        <h3>{data?.data.author.name}</h3>
-                        <span>{data?.data.createdAt?.slice(0, 10)}</span>
-                    </div>
-                </div>
-
-
-                {/* <p className='blog-desc' >{data?.data.content}</p> */}
-                <div dangerouslySetInnerHTML={{ __html: data?.data.content }} style={{ paddingBottom: '30px', paddingTop: '10px' }} >
-                </div>
-
-
-                <div className="blog-share-container">
-
-                </div>
-
-
-            </div>
-            {user.profileId === data?.data?.author._id && <div style={{ position: 'fixed', right: '10px', bottom: '50px' }} >
-                <Theme>
-                    <Flex direction={'column'} >
-                        {/* <IconButton onClick={() => { navigate(`/blog/edit/${data?.data._id}`) }} ><MdEdit /></IconButton> */}
-                        <IconButton color="crimson" onClick={deleteHandler}  ><MdOutlineDeleteOutline /></IconButton>
-                    </Flex>
-                </Theme>
-            </div>}
-        </Layout>
-    )
+        {/* Delete Button (only for owner) */}
+        {user?.profileId === blog?.author._id && (
+          <div className="fixed bottom-6 right-6 z-10">
+            <Flex direction="column" gap="2">
+              <IconButton
+                color="crimson"
+                size="3"
+                onClick={handleDelete}
+                title="Delete blog"
+              >
+                <MdOutlineDeleteOutline size={24} />
+              </IconButton>
+            </Flex>
+          </div>
+        )}
+      </div>
+    </Layout>
+  );
 }
 
-export default SingleBlog
+export default SingleBlog;

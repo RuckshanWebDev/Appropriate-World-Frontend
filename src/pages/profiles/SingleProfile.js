@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setProfileId } from '../../features/localSlice'
 import { toast } from 'react-toastify'
+import { Button } from '@radix-ui/themes'
 
 function SingleProfile() {
 
@@ -71,13 +72,13 @@ function SingleProfile() {
                                 {myProfile?.friendList.length ?
 
                                     myProfile?.friendList.map(i => i._id).includes(id) ?
-                                        <button onClick={() => removeFriendHandler(id)} >Disconnect</button>
+                                        <Button onClick={() => removeFriendHandler(id)} >Disconnect</Button>
                                         :
-                                        <button onClick={() => addFriendHandler(id)}>  Connect</button>
+                                        <Button onClick={() => addFriendHandler(id)}>  Connect</Button>
                                     :
-                                    <button onClick={() => addFriendHandler(id)}>Connect</button>
+                                    <Button onClick={() => addFriendHandler(id)}>Connect</Button>
                                 }
-                                <Link to={`/chat?userId=${id}`} className='link-btn' >Message</Link>
+                                <Link to={`/chat?userId=${id}`} className='ml-4' ><Button> Message</Button></Link>
                             </div>
                         </div>
                         <div className="middle">

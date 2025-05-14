@@ -1,9 +1,7 @@
 @tailwind base;
-
-@import "@radix-ui/themes";
-
 @tailwind components;
 @tailwind utilities;
+@import "@radix-ui/themes";
 
 /* @media only screen and (max-width: 1200px) {}
 

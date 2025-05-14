@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function AddMenu({ title, link }) {
     return (
         <div className='popupMenu' >
-            <Link to={link} >
+            <Link to={link} className='flex items-center' >
                 <AiOutlinePlus /> <span>{title}</span>
             </Link>
         </div>
